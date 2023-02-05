@@ -21,8 +21,10 @@ let package = Package(
         .library(name: "UtahContacts", targets: ["UtahContacts"]),
         .library(name: "UtahMockDataStorageProvider", targets: ["UtahMockDataStorageProvider"]),
         .library(name: "UtahOnboardingFlow", targets: ["UtahOnboardingFlow"]),
+        .library(name: "UtahProfile", targets: ["UtahProfile"]),
         .library(name: "UtahSchedule", targets: ["UtahSchedule"]),
-        .library(name: "UtahSharedContext", targets: ["UtahSharedContext"])
+        .library(name: "UtahSharedContext", targets: ["UtahSharedContext"]),
+        .library(name: "UtahTrends", targets: ["UtahTrends"])
     ],
     dependencies: [
         .package(url: "https://github.com/StanfordBDHG/CardinalKit.git", .upToNextMinor(from: "0.2.1"))
@@ -62,6 +64,15 @@ let package = Package(
             ]
         ),
         .target(
+            name: "UtahProfile",
+            dependencies: [
+                .target(name: "UtahSharedContext")
+            ],
+            resources: [
+                .process("Resources")
+            ]
+        ),
+        .target(
             name: "UtahSchedule",
             dependencies: [
                 .target(name: "UtahSharedContext"),
@@ -73,6 +84,15 @@ let package = Package(
         .target(
             name: "UtahSharedContext",
             dependencies: []
+        ),
+        .target(
+            name: "UtahTrends",
+            dependencies: [
+                .target(name: "UtahSharedContext")
+            ],
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

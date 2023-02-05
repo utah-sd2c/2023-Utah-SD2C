@@ -1,5 +1,5 @@
 {
-  "title": "Social Support",
+  "title": "Edmonton Frail Scale",
   "description": "This survey measures tangible social support plus a couple of demographic questions.",
   "resourceType": "Questionnaire",
   "language": "en-US",
@@ -53,7 +53,7 @@
     {
       "linkId": "dcea2683-9815-4505-b240-e75b502b29ef",
       "type": "choice",
-      "text": "How often do you need someone to help you if you were confined to bed?",
+      "text": "In the past year, how many times have you been admitted to a hospital?",
       "required": false,
       "answerOption": [
         {
@@ -61,7 +61,7 @@
             "id": "3d6fe1b8-c64b-497c-8583-db7ddda9e94e",
             "code": "1",
             "system": "urn:uuid:e9ecdd47-2e8b-49b3-8780-9d0769a246aa",
-            "display": "None of the time"
+            "display": "0"
           }
         },
         {
@@ -69,7 +69,7 @@
             "id": "b4081e9d-d0f1-4aea-9a15-eac4a15d1d10",
             "code": "2",
             "system": "urn:uuid:e9ecdd47-2e8b-49b3-8780-9d0769a246aa",
-            "display": "A little of the time"
+            "display": "1-2"
           }
         },
         {
@@ -77,23 +77,7 @@
             "id": "e32f7952-e280-48d7-9746-c13dbb26638f",
             "code": "3",
             "system": "urn:uuid:e9ecdd47-2e8b-49b3-8780-9d0769a246aa",
-            "display": "Some of the time"
-          }
-        },
-        {
-          "valueCoding": {
-            "id": "d2f6172d-9402-4cb3-870a-584a7be3a5d7",
-            "code": "4",
-            "system": "urn:uuid:e9ecdd47-2e8b-49b3-8780-9d0769a246aa",
-            "display": "Most of the time"
-          }
-        },
-        {
-          "valueCoding": {
-            "id": "ec48001e-f03e-4a14-8a7a-9fcf34fa81d2",
-            "code": "5",
-            "system": "urn:uuid:e9ecdd47-2e8b-49b3-8780-9d0769a246aa",
-            "display": "All of the time"
+            "display": ">2"
           }
         }
       ]

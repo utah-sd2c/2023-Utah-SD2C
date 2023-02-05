@@ -33,6 +33,10 @@
 		653A255528338800005D4D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653A255428338800005D4D48 /* Assets.xcassets */; };
 		653A256228338800005D4D48 /* UtahTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256128338800005D4D48 /* UtahTests.swift */; };
 		653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */; };
+		93E00344298DC9EB00D6E494 /* UtahProfile in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00343298DC9EB00D6E494 /* UtahProfile */; };
+		93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00345298DCF6400D6E494 /* UtahTrends */; };
+		93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E00348298DFA8200D6E494 /* ProfileTests.swift */; };
+		93E0034B298DFAF200D6E494 /* TrendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0034A298DFAF200D6E494 /* TrendsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,9 @@
 		653A256728338800005D4D48 /* UtahUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtahUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAndQuestionnaireTests.swift; sourceTree = "<group>"; };
 		653A258928339462005D4D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93E00347298DD3EA00D6E494 /* temp-pic.png.license.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "temp-pic.png.license.md"; sourceTree = "<group>"; };
+		93E00348298DFA8200D6E494 /* ProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		93E0034A298DFAF200D6E494 /* TrendsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +92,8 @@
 				2F59B93F298C628800C5107F /* UtahMockDataStorageProvider in Frameworks */,
 				2F49B77A2980407C00BCB272 /* HealthKitDataSource in Frameworks */,
 				2F59B945298C628800C5107F /* UtahSharedContext in Frameworks */,
+				93E00344298DC9EB00D6E494 /* UtahProfile in Frameworks */,
+				93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */,
 				2F49B784298041F300BCB272 /* Contact in Frameworks */,
 				2F49B7782980407C00BCB272 /* FHIR in Frameworks */,
 				2F49B7802980418400BCB272 /* Onboarding in Frameworks */,
@@ -128,6 +137,7 @@
 				653A258928339462005D4D48 /* Info.plist */,
 				653A255428338800005D4D48 /* Assets.xcassets */,
 				2FC9759E2978E39600BA99FE /* Localizable.strings */,
+				93E00347298DD3EA00D6E494 /* temp-pic.png.license.md */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,6 +192,8 @@
 				2F4E237D2989A2FE0013F3D9 /* OnboardingTests.swift */,
 				653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */,
 				2F4E23862989DB360013F3D9 /* ContactsTests.swift */,
+				93E00348298DFA8200D6E494 /* ProfileTests.swift */,
+				93E0034A298DFAF200D6E494 /* TrendsTests.swift */,
 				2F4E23882989DB400013F3D9 /* HealthKitUploadTests.swift */,
 			);
 			path = UtahUITests;
@@ -224,6 +236,8 @@
 				2F59B940298C628800C5107F /* UtahOnboardingFlow */,
 				2F59B942298C628800C5107F /* UtahSchedule */,
 				2F59B944298C628800C5107F /* UtahSharedContext */,
+				93E00343298DC9EB00D6E494 /* UtahProfile */,
+				93E00345298DCF6400D6E494 /* UtahTrends */,
 			);
 			productName = TemplateApplication;
 			productReference = 653A254D283387FE005D4D48 /* Utah.app */;
@@ -365,9 +379,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E0034B298DFAF200D6E494 /* TrendsTests.swift in Sources */,
 				2F4E23872989DB360013F3D9 /* ContactsTests.swift in Sources */,
 				2F4E23892989DB400013F3D9 /* HealthKitUploadTests.swift in Sources */,
 				2F4E237E2989A2FE0013F3D9 /* OnboardingTests.swift in Sources */,
+				93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */,
 				2F4E23852989D9130013F3D9 /* XCUIApplication+DeleteAndLaunch.swift in Sources */,
 				653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */,
 			);
@@ -675,6 +691,151 @@
 			};
 			name = Release;
 		};
+		93E0034C298F381100D6E494 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TESTING;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Testing;
+		};
+		93E0034D298F381100D6E494 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Utah/Supporting Files/Utah.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Utah/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Utah;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This message should never appear. Please adjust this when you start using camera information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "The CS342 2023 Utah Team Application uses the step count to demonstrate CardinalKit's integration with HealthKit.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "The CS342 2023 Utah Team Application uses the step count to demonstrate CardinalKit's integration with HealthKit.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This message should never appear. Please adjust this when you start using location information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This message should never appear. Please adjust this when you start using microphone information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "This message should never appear. Please adjust this when you start using motion information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This message should never appear. Please adjust this when you start using speecg information. We have to put this in here as ResearchKit has the possibility to use it and not putting it here returns an error on AppStore Connect.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UITemplateApplicationlicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UITemplateApplicationlicationSupportsIndirectInputEvents = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2023.utah;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				"SWIFT_ELicenseRef-TemplateApplication_LOC_STRINGS" = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Testing;
+		};
+		93E0034E298F381100D6E494 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2023.utah.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_ELicenseRef-TemplateApplication_LOC_STRINGS" = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Utah.app/Utah";
+			};
+			name = Testing;
+		};
+		93E0034F298F381100D6E494 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 637867499T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs342.2023.utah.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_ELicenseRef-TemplateApplication_LOC_STRINGS" = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Utah;
+			};
+			name = Testing;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,6 +843,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				653A256F28338800005D4D48 /* Debug */,
+				93E0034C298F381100D6E494 /* Testing */,
 				653A257028338800005D4D48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -691,6 +853,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				653A257228338800005D4D48 /* Debug */,
+				93E0034D298F381100D6E494 /* Testing */,
 				653A257328338800005D4D48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -700,6 +863,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				653A257528338800005D4D48 /* Debug */,
+				93E0034E298F381100D6E494 /* Testing */,
 				653A257628338800005D4D48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -709,6 +873,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				653A257828338800005D4D48 /* Debug */,
+				93E0034F298F381100D6E494 /* Testing */,
 				653A257928338800005D4D48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -800,6 +965,14 @@
 		2F59B944298C628800C5107F /* UtahSharedContext */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UtahSharedContext;
+		};
+		93E00343298DC9EB00D6E494 /* UtahProfile */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UtahProfile;
+		};
+		93E00345298DCF6400D6E494 /* UtahTrends */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UtahTrends;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

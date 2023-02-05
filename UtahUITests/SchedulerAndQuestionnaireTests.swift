@@ -24,16 +24,22 @@ class SchedulerAndQuestionnaireTests: XCTestCase {
     func testSchedulerAndQuestionnaire() throws {
         let app = XCUIApplication()
         
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Schedule"].waitForExistence(timeout: 0.5))
-        app.tabBars["Tab Bar"].buttons["Schedule"].tap()
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 0.5))
+        app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.staticTexts["Social Support Questionnaire"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Please fill out the Social Support Questionnaire every day."].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Monthly Questionnaire"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Please fill out this Questionnaire every month."].waitForExistence(timeout: 0.5))
         XCTAssertTrue(app.staticTexts["Start Questionnaire"].waitForExistence(timeout: 0.5))
         
         app.staticTexts["Start Questionnaire"].tap()
         
-        for _ in 0..<4 {
+        // Custom question I changed
+        XCTAssertTrue(app.tables.staticTexts["0"].waitForExistence(timeout: 0.5))
+        app.tables.staticTexts["0"].tap()
+        XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 0.5))
+        app.tables.buttons["Next"].tap()
+        
+        for _ in 0..<3 {
             XCTAssertTrue(app.tables.staticTexts["None of the time"].waitForExistence(timeout: 0.5))
             app.tables.staticTexts["None of the time"].tap()
             XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 0.5))

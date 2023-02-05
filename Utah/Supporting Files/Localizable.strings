@@ -16,4 +16,12 @@
 
 
 // MARK: - Schedule
-"SCHEDULE_TAB_TITLE" = "Schedule";
+"SCHEDULE_TAB_TITLE" = "Questions";
+
+
+// MARK: - Contacts
+"PROFILE_TAB_TITLE" = "Profile";
+
+
+// MARK: - Trends
+"TRENDS_TAB_TITLE" = "Trends";

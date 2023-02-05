@@ -9,15 +9,19 @@
 import SwiftUI
 import UtahContacts
 import UtahMockDataStorageProvider
+import UtahProfile
 import UtahSchedule
 import UtahSharedContext
+import UtahTrends
 
 
 struct HomeView: View {
     enum Tabs: String {
         case schedule
         case contact
+        case profile
         case mockUpload
+        case trends
     }
     
     
@@ -34,7 +38,17 @@ struct HomeView: View {
             Contacts()
                 .tag(Tabs.contact)
                 .tabItem {
-                    Label("CONTACTS_TAB_TITLE", systemImage: "person.fill")
+                    Label("CONTACTS_TAB_TITLE", systemImage: "person.3.fill")
+                }
+            Trends()
+                .tag(Tabs.trends)
+                .tabItem {
+                    Label("TRENDS_TAB_TITLE", systemImage: "chart.line.uptrend.xyaxis")
+                }
+            Profile()
+                .tag(Tabs.profile)
+                .tabItem {
+                    Label("PROFILE_TAB_TITLE", systemImage: "person.fill")
                 }
             MockUploadList()
                 .tag(Tabs.mockUpload)
