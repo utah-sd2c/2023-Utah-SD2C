@@ -21,8 +21,13 @@ public struct Profile: View {
     public init() {}
 }
 
+// This just removes this section from being counted in our % "test coverage"
+#if !TESTING
+
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
         Profile()
     }
 }
+
+#endif

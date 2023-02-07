@@ -33,29 +33,18 @@ class SchedulerAndQuestionnaireTests: XCTestCase {
         
         app.staticTexts["Start Questionnaire"].tap()
         
-        // Custom question I changed
-        XCTAssertTrue(app.tables.staticTexts["0"].waitForExistence(timeout: 0.5))
-        app.tables.staticTexts["0"].tap()
-        XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 0.5))
-        app.tables.buttons["Next"].tap()
-        
-        for _ in 0..<3 {
-            XCTAssertTrue(app.tables.staticTexts["None of the time"].waitForExistence(timeout: 0.5))
-            app.tables.staticTexts["None of the time"].tap()
+        // Go through each question
+        let answers = ["0", "Good", "5-8", "Sometimes", "Yes", "No", "Yes", "No"]
+        for answer in answers {
+            XCTAssertTrue(app.tables.staticTexts[answer].waitForExistence(timeout: 0.5))
+            app.tables.staticTexts[answer].tap()
             XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 0.5))
             app.tables.buttons["Next"].tap()
         }
-                        
-        XCTAssertTrue(app.textFields["Tap to answer"].waitForExistence(timeout: 0.5))
-        app.textFields["Tap to answer"].tap()
-        app.textFields["Tap to answer"].typeText("42")
-        app.toolbars["Toolbar"].buttons["Done"].tap()
-                        
-        XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 0.5))
-        app.buttons["Next"].tap()
-        
-        XCTAssertTrue(app.tables.staticTexts["Phone call"].waitForExistence(timeout: 0.5))
-        app.tables.staticTexts["Phone call"].tap()
+         // Last Question
+        XCTAssertTrue(app.staticTexts["Do you have a problem with losing control of urine when you don’t want to?"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tables.staticTexts["No"].waitForExistence(timeout: 0.5))
+        app.tables.staticTexts["No"].tap()
         XCTAssertTrue(app.tables.buttons["Done"].waitForExistence(timeout: 0.5))
         app.tables.buttons["Done"].tap()
         

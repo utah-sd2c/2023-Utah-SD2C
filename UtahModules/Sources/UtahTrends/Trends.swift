@@ -21,6 +21,7 @@ public struct Trends: View {
     public init() {}
 }
 
+// This just removes this section from being counted in our % "test coverage"
 #if !TESTING
 
 struct Trends_Previews: PreviewProvider {
