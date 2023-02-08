@@ -27,8 +27,7 @@ class TrendsTests: XCTestCase {
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Trends"].waitForExistence(timeout: 0.5))
         app.tabBars["Tab Bar"].buttons["Trends"].tap()
         
-        XCTAssertTrue(app.staticTexts["Welcome to your trends page!"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Show previous survey responses"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Show activity history"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Daily Step Count"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Survey Score"].waitForExistence(timeout: 0.5))
     }
 }
