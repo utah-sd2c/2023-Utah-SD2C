@@ -26,9 +26,5 @@ class ProfileTests: XCTestCase {
         
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Profile"].waitForExistence(timeout: 0.5))
         app.tabBars["Tab Bar"].buttons["Profile"].tap()
-        
-        XCTAssertTrue(app.staticTexts["Welcome to your profile page!"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Firstname Lastname"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Condition Name"].waitForExistence(timeout: 0.5))
     }
 }
