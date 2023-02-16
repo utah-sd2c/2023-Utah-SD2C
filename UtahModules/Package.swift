@@ -27,7 +27,7 @@ let package = Package(
         .library(name: "UtahTrends", targets: ["UtahTrends"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordBDHG/CardinalKit.git", .upToNextMinor(from: "0.2.1"))
+        .package(url: "https://github.com/StanfordBDHG/CardinalKit.git", .upToNextMinor(from: "0.3.1"))
     ],
     targets: [
         .target(
@@ -55,9 +55,12 @@ let package = Package(
             name: "UtahOnboardingFlow",
             dependencies: [
                 .target(name: "UtahSharedContext"),
+                .product(name: "Account", package: "CardinalKit"),
                 .product(name: "FHIR", package: "CardinalKit"),
+                .product(name: "FirebaseAccount", package: "CardinalKit"),
                 .product(name: "HealthKitDataSource", package: "CardinalKit"),
-                .product(name: "Onboarding", package: "CardinalKit")
+                .product(name: "Onboarding", package: "CardinalKit"),
+                .product(name: "Views", package: "CardinalKit")
             ],
             resources: [
                 .process("Resources")
@@ -67,9 +70,6 @@ let package = Package(
             name: "UtahProfile",
             dependencies: [
                 .target(name: "UtahSharedContext")
-            ],
-            resources: [
-                .process("Resources")
             ]
         ),
         .target(
@@ -82,16 +82,12 @@ let package = Package(
             ]
         ),
         .target(
-            name: "UtahSharedContext",
-            dependencies: []
+            name: "UtahSharedContext"
         ),
         .target(
             name: "UtahTrends",
             dependencies: [
                 .target(name: "UtahSharedContext")
-            ],
-            resources: [
-                .process("Resources")
             ]
         )
     ]

@@ -113,24 +113,13 @@ public struct ScheduleView: View {
 }
 
 
+#if DEBUG
 struct SchedulerView_Previews: PreviewProvider {
     static var previews: some View {
         ScheduleView()
             .environmentObject(
-                UtahScheduler(
-                    tasks: [
-                        Task(
-                            title: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE"),
-                            description: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION"),
-                            schedule: Schedule(
-                                start: Calendar.current.startOfDay(for: Date()),
-                                dateComponents: .init(hour: 0, minute: 30), // Every Day at 12:30 AM
-                                end: .numberOfEvents(356)
-                            ),
-                            context: UtahTaskContext.questionnaire(Bundle.main.questionnaire(withName: "SocialSupportQuestionnaire"))
-                        )
-                    ]
-                )
+                UtahScheduler()
             )
     }
 }
+#endif

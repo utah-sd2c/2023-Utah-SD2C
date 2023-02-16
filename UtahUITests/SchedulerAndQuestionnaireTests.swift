@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import XCTestExtensions
 
 
 class SchedulerAndQuestionnaireTests: XCTestCase {
