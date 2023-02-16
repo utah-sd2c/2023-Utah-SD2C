@@ -11,3 +11,10 @@
 "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE" = "Monthly Questionnaire";
 "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION" = "Please fill out this Questionnaire every month.";
 "TASK_CONTEXT_ACTION_QUESTIONNAIRE" = "Start Questionnaire";
+
+// MARK: - GetUpAndGo
+"GET_UP_GO_TITLE" = "Get Up and Go";
+"GET_UP_AND_GO_DESCRIPTION" = "I would like you to sit in this chair with your back and arms resting. Then, when you are ready, click the ‘Start’ button and please stand up and walk at a safe and comfortable pace approximately 3m away. Turn around and return to the chair and sit down. Then click the 'Finish' button.";
+"GET_UP_AND_GO_WARNING" = "Do not do this alone. Please have someone by you to help you if necessary.";
+"GET_UP_AND_GO_START_BUTTON" = "Start";
+

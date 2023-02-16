@@ -25,18 +25,19 @@ public struct ScheduleView: View {
     
     public var body: some View {
         NavigationStack {
-            List(startOfDays, id: \.timeIntervalSinceNow) { startOfDay in
-                Section(format(startOfDay: startOfDay)) {
-                    ForEach(eventContextsByDate[startOfDay] ?? [], id: \.event) { eventContext in
-                        EventContextView(eventContext: eventContext)
-                            .onTapGesture {
-                                if !eventContext.event.complete {
-                                    presentedContext = eventContext
+            ZStack {
+                List(startOfDays, id: \.timeIntervalSinceNow) { startOfDay in
+                    Section(format(startOfDay: startOfDay)) {
+                        ForEach(eventContextsByDate[startOfDay] ?? [], id: \.event) { eventContext in
+                            EventContextView(eventContext: eventContext)
+                                .onTapGesture {
+                                    if !eventContext.event.complete {
+                                        presentedContext = eventContext
+                                    }
                                 }
-                            }
+                        }
                     }
                 }
-            }
                 .onChange(of: scheduler) { _ in
                     calculateEventContextsByDate()
                 }
@@ -46,7 +47,18 @@ public struct ScheduleView: View {
                 .sheet(item: $presentedContext) { presentedContext in
                     destination(withContext: presentedContext)
                 }
+                NavigationLink(destination: GetUpAndGo()) {
+                                    Text("Get Up And Go Question")
+                }.frame(alignment: .topLeading)
+                    .padding(.all, 10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 25)
+                        .stroke(Color.white, lineWidth: 2)
+                )
+                    .background(Color(.white))
+                    .cornerRadius(25)
                 .navigationTitle(String(localized: "SCHEDULE_LIST_TITLE", bundle: .module))
+            }
         }
     }
     

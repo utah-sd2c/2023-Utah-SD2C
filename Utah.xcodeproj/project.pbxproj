@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B0449B299DB70A008CD957 /* GetUpAndGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */; };
 		2F49B7762980407C00BCB272 /* CardinalKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7752980407B00BCB272 /* CardinalKit */; };
 		2F49B7782980407C00BCB272 /* FHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7772980407C00BCB272 /* FHIR */; };
 		2F49B77A2980407C00BCB272 /* HealthKitDataSource in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7792980407C00BCB272 /* HealthKitDataSource */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpAndGoTests.swift; sourceTree = "<group>"; };
 		2F49B77329803E8F00BCB272 /* UtahModules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UtahModules; sourceTree = "<group>"; };
 		2F4E237D2989A2FE0013F3D9 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		2F4E23822989D51F0013F3D9 /* UtahAppTestingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtahAppTestingSetup.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				93E00348298DFA8200D6E494 /* ProfileTests.swift */,
 				93E0034A298DFAF200D6E494 /* TrendsTests.swift */,
 				2F4E23882989DB400013F3D9 /* HealthKitUploadTests.swift */,
+				23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */,
 			);
 			path = UtahUITests;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93E0034B298DFAF200D6E494 /* TrendsTests.swift in Sources */,
+				23B0449B299DB70A008CD957 /* GetUpAndGoTests.swift in Sources */,
 				2F4E23872989DB360013F3D9 /* ContactsTests.swift in Sources */,
 				2F4E23892989DB400013F3D9 /* HealthKitUploadTests.swift in Sources */,
 				2F4E237E2989A2FE0013F3D9 /* OnboardingTests.swift in Sources */,
