@@ -22,8 +22,8 @@ extension UtahScheduler {
         self.init(
             tasks: [
                 Task(
-                    title: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_TITLE", bundle: .module),
-                    description: String(localized: "TASK_SOCIAL_SUPPORT_QUESTIONNAIRE_DESCRIPTION", bundle: .module),
+                    title: String(localized: "QUESTIONNAIRE_TITLE", bundle: .module),
+                    description: String(localized: "QUESTIONNAIRE_DESCRIPTION", bundle: .module),
                     schedule: Schedule(
                         start: Calendar.current.startOfDay(for: Date()),
                         dateComponents: .init(hour: 0, minute: 30), // Every Day at 12:30 AM

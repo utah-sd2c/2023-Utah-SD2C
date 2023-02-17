@@ -52,6 +52,7 @@ public struct MockUploadList: View {
     }
 }
 
+#if !TESTING
 
 struct MockUploadsList_Previews: PreviewProvider {
     static var previews: some View {
@@ -59,3 +60,5 @@ struct MockUploadsList_Previews: PreviewProvider {
             .environmentObject(MockDataStorageProvider())
     }
 }
+
+#endif

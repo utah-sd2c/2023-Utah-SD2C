@@ -57,7 +57,7 @@ public struct ScheduleView: View {
                 )
                     .background(Color(.white))
                     .cornerRadius(25)
-                .navigationTitle(String(localized: "SCHEDULE_LIST_TITLE", bundle: .module))
+                .navigationTitle(String(localized: "QUESTIONNAIRE_LIST_TITLE", bundle: .module))
             }
         }
     }
@@ -111,7 +111,6 @@ public struct ScheduleView: View {
         }
     }
 }
-
 
 #if DEBUG
 struct SchedulerView_Previews: PreviewProvider {

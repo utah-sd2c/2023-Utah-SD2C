@@ -27,7 +27,7 @@ public enum UtahTaskContext: Codable, Identifiable {
     var actionType: String {
         switch self {
         case .questionnaire:
-            return String(localized: "TASK_CONTEXT_ACTION_QUESTIONNAIRE", bundle: .module)
+            return String(localized: "QUESTIONNAIRE_ACTION", bundle: .module)
         }
     }
 }

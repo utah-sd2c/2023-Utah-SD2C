@@ -18,7 +18,6 @@ let package = Package(
         .iOS(.v16)
     ],
     products: [
-        .library(name: "UtahContacts", targets: ["UtahContacts"]),
         .library(name: "UtahMockDataStorageProvider", targets: ["UtahMockDataStorageProvider"]),
         .library(name: "UtahOnboardingFlow", targets: ["UtahOnboardingFlow"]),
         .library(name: "UtahProfile", targets: ["UtahProfile"]),
@@ -30,16 +29,6 @@ let package = Package(
         .package(url: "https://github.com/StanfordBDHG/CardinalKit.git", .upToNextMinor(from: "0.3.1"))
     ],
     targets: [
-        .target(
-            name: "UtahContacts",
-            dependencies: [
-                .target(name: "UtahSharedContext"),
-                .product(name: "Contact", package: "CardinalKit")
-            ],
-            resources: [
-                .process("Resources")
-            ]
-        ),
         .target(
             name: "UtahMockDataStorageProvider",
             dependencies: [

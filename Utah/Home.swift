@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UtahContacts
 import UtahMockDataStorageProvider
 import UtahProfile
 import UtahSchedule
@@ -18,7 +17,6 @@ import UtahTrends
 struct HomeView: View {
     enum Tabs: String {
         case schedule
-        case contact
         case profile
         case mockUpload
         case trends
@@ -34,11 +32,6 @@ struct HomeView: View {
                 .tag(Tabs.schedule)
                 .tabItem {
                     Label("SCHEDULE_TAB_TITLE", systemImage: "list.clipboard")
-                }
-            Contacts()
-                .tag(Tabs.contact)
-                .tabItem {
-                    Label("CONTACTS_TAB_TITLE", systemImage: "person.3.fill")
                 }
             Trends()
                 .tag(Tabs.trends)
