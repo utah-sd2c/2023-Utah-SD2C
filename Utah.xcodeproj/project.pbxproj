@@ -19,7 +19,6 @@
 		2F4E237E2989A2FE0013F3D9 /* OnboardingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E237D2989A2FE0013F3D9 /* OnboardingTests.swift */; };
 		2F4E23812989C5930013F3D9 /* XCTHealthKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F4E23802989C5930013F3D9 /* XCTHealthKit */; };
 		2F4E23832989D51F0013F3D9 /* UtahAppTestingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E23822989D51F0013F3D9 /* UtahAppTestingSetup.swift */; };
-		2F4E23852989D9130013F3D9 /* XCUIApplication+DeleteAndLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E23842989D9130013F3D9 /* XCUIApplication+DeleteAndLaunch.swift */; };
 		2F4E23892989DB400013F3D9 /* HealthKitUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4E23882989DB400013F3D9 /* HealthKitUploadTests.swift */; };
 		2F59B93F298C628800C5107F /* UtahMockDataStorageProvider in Frameworks */ = {isa = PBXBuildFile; productRef = 2F59B93E298C628800C5107F /* UtahMockDataStorageProvider */; };
 		2F59B941298C628800C5107F /* UtahOnboardingFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 2F59B940298C628800C5107F /* UtahOnboardingFlow */; };
@@ -38,6 +37,9 @@
 		653A255528338800005D4D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653A255428338800005D4D48 /* Assets.xcassets */; };
 		653A256228338800005D4D48 /* UtahTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256128338800005D4D48 /* UtahTests.swift */; };
 		653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */; };
+		93CD053729A0430400CC9DFB /* ResearchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93CD053629A0430400CC9DFB /* ResearchKit */; };
+		93CD053929A0548B00CC9DFB /* EdmontonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD053829A0548B00CC9DFB /* EdmontonTests.swift */; };
+		93CD053B29A0595A00CC9DFB /* WIQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD053A29A0595A00CC9DFB /* WIQTests.swift */; };
 		93E00344298DC9EB00D6E494 /* UtahProfile in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00343298DC9EB00D6E494 /* UtahProfile */; };
 		93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00345298DCF6400D6E494 /* UtahTrends */; };
 		93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E00348298DFA8200D6E494 /* ProfileTests.swift */; };
@@ -66,7 +68,6 @@
 		2F49B77329803E8F00BCB272 /* UtahModules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UtahModules; sourceTree = "<group>"; };
 		2F4E237D2989A2FE0013F3D9 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
 		2F4E23822989D51F0013F3D9 /* UtahAppTestingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtahAppTestingSetup.swift; sourceTree = "<group>"; };
-		2F4E23842989D9130013F3D9 /* XCUIApplication+DeleteAndLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+DeleteAndLaunch.swift"; sourceTree = "<group>"; };
 		2F4E23882989DB400013F3D9 /* HealthKitUploadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitUploadTests.swift; sourceTree = "<group>"; };
 		2F5E32BC297E05EA003432F8 /* UtahAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtahAppDelegate.swift; sourceTree = "<group>"; };
 		2F905717299E4205003D3802 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -82,6 +83,8 @@
 		653A256728338800005D4D48 /* UtahUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtahUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAndQuestionnaireTests.swift; sourceTree = "<group>"; };
 		653A258928339462005D4D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CD053829A0548B00CC9DFB /* EdmontonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdmontonTests.swift; sourceTree = "<group>"; };
+		93CD053A29A0595A00CC9DFB /* WIQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIQTests.swift; sourceTree = "<group>"; };
 		93E00348298DFA8200D6E494 /* ProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		93E0034A298DFAF200D6E494 /* TrendsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +98,7 @@
 				2F49B7822980419C00BCB272 /* Questionnaires in Frameworks */,
 				2F905715299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter in Frameworks */,
 				2F49B77E2980407C00BCB272 /* Scheduler in Frameworks */,
+				93CD053729A0430400CC9DFB /* ResearchKit in Frameworks */,
 				2F59B93F298C628800C5107F /* UtahMockDataStorageProvider in Frameworks */,
 				2F49B77A2980407C00BCB272 /* HealthKitDataSource in Frameworks */,
 				2F59B945298C628800C5107F /* UtahSharedContext in Frameworks */,
@@ -195,6 +199,8 @@
 				93E0034A298DFAF200D6E494 /* TrendsTests.swift */,
 				2F4E23882989DB400013F3D9 /* HealthKitUploadTests.swift */,
 				23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */,
+				93CD053829A0548B00CC9DFB /* EdmontonTests.swift */,
+				93CD053A29A0595A00CC9DFB /* WIQTests.swift */,
 			);
 			path = UtahUITests;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 				653A2549283387FE005D4D48 /* Sources */,
 				653A254A283387FE005D4D48 /* Frameworks */,
 				653A254B283387FE005D4D48 /* Resources */,
+				93CD053C29A1B45400CC9DFB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -241,6 +248,7 @@
 				2F905710299E3E0D003D3802 /* FirebaseAccount */,
 				2F905712299E3E0D003D3802 /* FirestoreDataStorage */,
 				2F905714299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter */,
+				93CD053629A0430400CC9DFB /* ResearchKit */,
 			);
 			productName = UtahApplication;
 			productReference = 653A254D283387FE005D4D48 /* Utah.app */;
@@ -322,6 +330,7 @@
 				2F49B7742980407B00BCB272 /* XCRemoteSwiftPackageReference "CardinalKit" */,
 				2F4E237F2989C5930013F3D9 /* XCRemoteSwiftPackageReference "XCTHealthKit" */,
 				2F90570B299E3C69003D3802 /* XCRemoteSwiftPackageReference "XCTestExtensions" */,
+				93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */,
 			);
 			productRefGroup = 653A254E283387FE005D4D48 /* Products */;
 			projectDirPath = "";
@@ -361,6 +370,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		93CD053C29A1B45400CC9DFB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		653A2549283387FE005D4D48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -385,10 +416,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CD053929A0548B00CC9DFB /* EdmontonTests.swift in Sources */,
 				93E0034B298DFAF200D6E494 /* TrendsTests.swift in Sources */,
 				23B0449B299DB70A008CD957 /* GetUpAndGoTests.swift in Sources */,
 				2F4E23892989DB400013F3D9 /* HealthKitUploadTests.swift in Sources */,
 				2F4E237E2989A2FE0013F3D9 /* OnboardingTests.swift in Sources */,
+				93CD053B29A0595A00CC9DFB /* WIQTests.swift in Sources */,
 				93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */,
 				653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */,
 			);
@@ -911,6 +944,14 @@
 				minimumVersion = 0.3.0;
 			};
 		};
+		93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:StanfordBDHG/ResearchKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -999,6 +1040,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F49B7742980407B00BCB272 /* XCRemoteSwiftPackageReference "CardinalKit" */;
 			productName = FirestoreStoragePrefixUserIdAdapter;
+		};
+		93CD053629A0430400CC9DFB /* ResearchKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */;
+			productName = ResearchKit;
 		};
 		93E00343298DC9EB00D6E494 /* UtahProfile */ = {
 			isa = XCSwiftPackageProductDependency;
