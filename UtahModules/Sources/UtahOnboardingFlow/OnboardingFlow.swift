@@ -13,11 +13,11 @@ import UtahSharedContext
 /// Displays an multi-step onboarding flow for the CS342 2023 Utah Team Application.
 public struct OnboardingFlow: View {
     enum Step: String, Codable {
-        case interestingModules
-        case consent
         case accountSetup
         case login
         case signUp
+        case consent
+        case conditionQuestion
         case healthKitPermissions
     }
     
@@ -30,16 +30,16 @@ public struct OnboardingFlow: View {
             Welcome(onboardingSteps: $onboardingSteps)
                 .navigationDestination(for: Step.self) { onboardingStep in
                     switch onboardingStep {
-                    case .interestingModules:
-                        InterestingModules(onboardingSteps: $onboardingSteps)
-                    case .consent:
-                        Consent(onboardingSteps: $onboardingSteps)
                     case .accountSetup:
                         AccountSetup(onboardingSteps: $onboardingSteps)
                     case .login:
                         UtahLogin()
                     case .signUp:
                         UtahSignUp()
+                    case .consent:
+                        Consent(onboardingSteps: $onboardingSteps)
+                    case .conditionQuestion:
+                        ConditionQuestion(onboardingSteps: $onboardingSteps)
                     case .healthKitPermissions:
                         HealthKitPermissions()
                     }

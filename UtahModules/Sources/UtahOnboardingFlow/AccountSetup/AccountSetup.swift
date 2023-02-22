@@ -37,7 +37,7 @@ struct AccountSetup: View {
         )
             .onReceive(account.objectWillChange) {
                 if account.signedIn {
-                    onboardingSteps.append(.healthKitPermissions)
+                    appendNextOnboardingStep()
                     // Unfortunately, SwiftUI currently animates changes in the navigation path that do not change
                     // the current top view. Therefore we need to do the following async procedure to remove the
                     // `.login` and `.signUp` steps while disabling the animations before and re-enabling them
@@ -91,7 +91,7 @@ struct AccountSetup: View {
             OnboardingActionsView(
                 "ACCOUNT_NEXT".moduleLocalized,
                 action: {
-                    onboardingSteps.append(.healthKitPermissions)
+                    appendNextOnboardingStep()
                 }
             )
         } else {
@@ -111,6 +111,16 @@ struct AccountSetup: View {
     
     init(onboardingSteps: Binding<[OnboardingFlow.Step]>) {
         self._onboardingSteps = onboardingSteps
+    }
+    
+    
+    private func appendNextOnboardingStep() {
+        #if targetEnvironment(simulator) && (arch(i386) || arch(x86_64))
+        print("PKCanvas view-related views are currently skipped on Intel-based iOS simulators due to a metal bug on the simulator.")
+        onboardingSteps.append(.conditionQuestion)
+        #else
+        onboardingSteps.append(.consent)
+        #endif
     }
 }
 

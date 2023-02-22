@@ -16,28 +16,32 @@ struct Welcome: View {
     
     var body: some View {
         OnboardingView(
-            title: "WELCOME_TITLE".moduleLocalized,
-            subtitle: "WELCOME_SUBTITLE".moduleLocalized,
+            title: "Welcome to VascuTrack".moduleLocalized,
+            subtitle: "A collaboration between Stanford University & University of Utah".moduleLocalized,
             areas: [
                 .init(
                     icon: Image(systemName: "apps.iphone"),
-                    title: "WELCOME_AREA1_TITLE".moduleLocalized,
-                    description: "WELCOME_AREA1_DESCRIPTION".moduleLocalized
+                    title: "Track your health".moduleLocalized,
+                    description: "Easily see your biometric data".moduleLocalized
                 ),
                 .init(
                     icon: Image(systemName: "shippingbox.fill"),
-                    title: "WELCOME_AREA2_TITLE".moduleLocalized,
-                    description: "WELCOME_AREA2_DESCRIPTION".moduleLocalized
+                    title: "Report your outcomes".moduleLocalized,
+                    description: "Fill out surveys about your health".moduleLocalized
                 ),
                 .init(
                     icon: Image(systemName: "list.bullet.clipboard.fill"),
-                    title: "WELCOME_AREA3_TITLE".moduleLocalized,
-                    description: "WELCOME_AREA3_DESCRIPTION".moduleLocalized
+                    title: "Streamline your care".moduleLocalized,
+                    description: "Help your doctors help you get better".moduleLocalized
                 )
             ],
-            actionText: "WELCOME_BUTTON".moduleLocalized,
+            actionText: "Next".moduleLocalized,
             action: {
-                onboardingSteps.append(.interestingModules)
+                if !CommandLine.arguments.contains("--disableFirebase") {
+                    onboardingSteps.append(.accountSetup)
+                } else {
+                    onboardingSteps.append(.consent)
+                }
             }
         )
     }

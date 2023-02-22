@@ -26,19 +26,15 @@ struct Consent: View {
         ConsentView(
             header: {
                 OnboardingTitleView(
-                    title: "CONSENT_TITLE".moduleLocalized,
-                    subtitle: "CONSENT_SUBTITLE".moduleLocalized
+                    title: "Consent".moduleLocalized,
+                    subtitle: "VascuTrack is asking to collect and analyze your healthcare information".moduleLocalized
                 )
             },
             asyncMarkdown: {
                 consentDocument
             },
             action: {
-                if !CommandLine.arguments.contains("--disableFirebase") {
-                    onboardingSteps.append(.accountSetup)
-                } else {
-                    onboardingSteps.append(.healthKitPermissions)
-                }
+                onboardingSteps.append(.conditionQuestion)
             }
         )
     }

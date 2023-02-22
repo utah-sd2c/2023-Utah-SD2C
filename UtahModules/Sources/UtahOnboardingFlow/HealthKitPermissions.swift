@@ -23,14 +23,14 @@ struct HealthKitPermissions: View {
             contentView: {
                 VStack {
                     OnboardingTitleView(
-                        title: "HEALTHKIT_PERMISSIONS_TITLE".moduleLocalized,
-                        subtitle: "HEALTHKIT_PERMISSIONS_SUBTITLE".moduleLocalized
+                        title: "HealthKit".moduleLocalized,
+                        subtitle: "VascuTrack is asking for read and write access to your Apple HealthKit".moduleLocalized
                     )
                     Spacer()
                     Image(systemName: "heart.text.square.fill")
                         .font(.system(size: 150))
                         .foregroundColor(.accentColor)
-                    Text("HEALTHKIT_PERMISSIONS_DESCRIPTION", bundle: .module)
+                    Text("We will ensure your privacy to the highest standard.", bundle: .module)
                         .multilineTextAlignment(.center)
                         .padding(.vertical, 16)
                     Spacer()
