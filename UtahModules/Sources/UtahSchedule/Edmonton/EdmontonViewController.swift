@@ -8,7 +8,6 @@
 
 // swiftlint:disable function_body_length
 // swiftlint:disable closure_body_length
-// swiftlint:disable legacy_objc_type
 
 import Foundation
 import ResearchKit
@@ -57,9 +56,9 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             
             // Question 2
             let q2Choices = [
-                ORKTextChoice(text: "0", value: 0 as NSNumber),
-                ORKTextChoice(text: "1-2", value: 1 as NSNumber),
-                ORKTextChoice(text: ">2", value: 2 as NSNumber)
+                ORKTextChoice(text: "0", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "1-2", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: ">2", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol)
             ]
             let q2ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q2Choices)
             let q2Step = ORKQuestionStep(
@@ -74,11 +73,11 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             
             // Question 3
             let q3Choices = [
-                ORKTextChoice(text: "Excellent", value: 0 as NSNumber),
-                ORKTextChoice(text: "Very Good", value: 0 as NSNumber),
-                ORKTextChoice(text: "Good", value: 0 as NSNumber),
-                ORKTextChoice(text: "Fair", value: 1 as NSNumber),
-                ORKTextChoice(text: "Poor", value: 2 as NSNumber)
+                ORKTextChoice(text: "Excellent", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Very Good", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Good", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Fair", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Poor", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol)
             ]
             let q3ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q3Choices)
             let q3Step = ORKQuestionStep(
@@ -93,9 +92,9 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             
             // Question 4
             let q4Choices = [
-                ORKTextChoice(text: "0-1", value: 0 as NSNumber),
-                ORKTextChoice(text: "2-4", value: 1 as NSNumber),
-                ORKTextChoice(text: "5-8", value: 2 as NSNumber)
+                ORKTextChoice(text: "0-1", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "2-4", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "5-8", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol)
             ]
             let q4ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q4Choices)
             let q4Step = ORKQuestionStep(
@@ -113,9 +112,9 @@ struct EdmontonViewController: UIViewControllerRepresentable {
 
             // Question 5
             let q5Choices = [
-                ORKTextChoice(text: "Always", value: 0 as NSNumber),
-                ORKTextChoice(text: "Sometimes", value: 1 as NSNumber),
-                ORKTextChoice(text: "Never", value: 2 as NSNumber)
+                ORKTextChoice(text: "Always", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Sometimes", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Never", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol)
             ]
             let q5ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q5Choices)
             let q5Step = ORKQuestionStep(
@@ -129,7 +128,10 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             steps += [q5Step]
             
             // Question 6-10
-            let q6to10Choices = [ ORKTextChoice(text: "Yes", value: 1 as NSNumber), ORKTextChoice(text: "No", value: 0 as NSNumber) ]
+            let q6to10Choices = [
+                ORKTextChoice(text: "Yes", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "No", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol)
+            ]
             let q6to10ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q6to10Choices)
             let questions = [
                 "Do you use five or more different prescription medications on a regular basis?",

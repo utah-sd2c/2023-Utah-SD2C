@@ -6,8 +6,6 @@
 // SPDX-License-Identifier: MIT
 //
 
-// swiftlint:disable legacy_objc_type
-
 import ResearchKit
 import SwiftUI
 import UIKit
@@ -30,13 +28,13 @@ struct WIQViewController: UIViewControllerRepresentable {
                     instruction.text = "Patient Mobility Assessment"
                     
                     steps += [instruction]
-                
+
                     let wiqChoices = [
-                        ORKTextChoice(text: "No Difficulty", value: 0 as NSNumber),
-                        ORKTextChoice(text: "Slight Difficulty", value: 1 as NSNumber),
-                        ORKTextChoice(text: "Some Difficulty", value: 2 as NSNumber),
-                        ORKTextChoice(text: "Much Difficulty", value: 3 as NSNumber),
-                        ORKTextChoice(text: "Unable to Do", value: 4 as NSNumber)
+                        ORKTextChoice(text: "No Difficulty", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                        ORKTextChoice(text: "Slight Difficulty", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                        ORKTextChoice(text: "Some Difficulty", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                        ORKTextChoice(text: "Much Difficulty", value: "3" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                        ORKTextChoice(text: "Unable to Do", value: "4" as NSSecureCoding & NSCopying & NSObjectProtocol)
                     ]
                     
                     let wiqAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: wiqChoices)

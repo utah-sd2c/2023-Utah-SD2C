@@ -11,6 +11,7 @@ import FHIR
 import FHIRToFirestoreAdapter
 import FirebaseAccount
 import FirebaseAuth
+import FirebaseCore
 import FirestoreDataStorage
 import FirestoreStoragePrefixUserIdAdapter
 import HealthKit
@@ -45,8 +46,7 @@ class UtahAppDelegate: CardinalKitAppDelegate {
             adapter: {
                 FHIRToFirestoreAdapter()
                 FirestoreStoragePrefixUserIdAdapter()
-            },
-            settings: .emulator
+            }
         )
     }
     

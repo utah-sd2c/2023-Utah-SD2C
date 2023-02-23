@@ -3,32 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>CLIENT_ID</string>
+	<string>515655571673-lb80ks5ts4uuok8h6bedjm1lcs2phr2v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>REVERSED_CLIENT_ID</string>
+	<string>com.googleusercontent.apps.515655571673-lb80ks5ts4uuok8h6bedjm1lcs2phr2v</string>
 	<key>API_KEY</key>
-	<string>API_KEY</string>
+	<string>AIzaSyDTCzr0dv4FrJ-sGHEmgXSVygWHKxvCzzA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>GCM_SENDER_ID</string>
+	<string>515655571673</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>edu.stanford.cs342.2023.utah</string>
 	<key>PROJECT_ID</key>
-	<string>cs3422023utah</string>
+	<string>cs342-2023-utah</string>
 	<key>STORAGE_BUCKET</key>
-	<string>STORAGE_BUCKET</string>
+	<string>cs342-2023-utah.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:123456789012:ios:1234567890123456789012</string>
+	<string>1:515655571673:ios:e7be75d831177550f206c8</string>
 </dict>
 </plist>
