@@ -6,9 +6,12 @@
 // SPDX-License-Identifier: MIT
 //
 
+// swiftlint:disable line_length
 import Account
 import class FHIR.FHIR
 import FirebaseAccount
+import FirebaseAuth
+import FirebaseFirestore
 import Onboarding
 import SwiftUI
 
@@ -37,6 +40,15 @@ struct AccountSetup: View {
         )
             .onReceive(account.objectWillChange) {
                 if account.signedIn {
+                    if onboardingSteps.contains(where: { $0 == .signUp }) {
+                         if let user = Auth.auth().currentUser {
+                             let fullName = user.displayName?.components(separatedBy: " ")
+                             let firstName = fullName?[0] ?? ""
+                             let lastName = fullName?[1] ?? ""
+                             let data: [String: Any] = ["firstName": firstName, "lastName": lastName, "email": user.email ?? "", "dateJoined": Timestamp()]
+                            Firestore.firestore().collection("users").document(user.uid).setData(data)
+                        }
+                    }
                     appendNextOnboardingStep()
                     // Unfortunately, SwiftUI currently animates changes in the navigation path that do not change
                     // the current top view. Therefore we need to do the following async procedure to remove the

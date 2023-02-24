@@ -28,7 +28,7 @@ class UtahAppDelegate: CardinalKitAppDelegate {
     override var configuration: Configuration {
         Configuration(standard: FHIR()) {
             if !CommandLine.arguments.contains("--disableFirebase") {
-                FirebaseAccountConfiguration(emulatorSettings: (host: "localhost", port: 9099))
+                FirebaseAccountConfiguration()
                 firestore
             }
             if HKHealthStore.isHealthDataAvailable() {
