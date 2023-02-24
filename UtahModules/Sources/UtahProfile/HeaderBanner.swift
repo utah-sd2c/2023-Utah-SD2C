@@ -12,11 +12,10 @@ struct Header: View {
     @AppStorage("rValue") var rValue = DefaultSettings.rValue
     @AppStorage("gValue") var gValue = DefaultSettings.gValue
     @AppStorage("bValue") var bValue = DefaultSettings.bValue
-    
     var body: some View {
         ZStack(alignment: .top) {
             Rectangle()
-                .foregroundColor(Color(red: rValue, green: gValue, blue: bValue, opacity: 1.0))
+                .foregroundColor(Color(red: rValue, green: gValue, blue: bValue, opacity: 1))
                 .edgesIgnoringSafeArea(.top)
                 .frame(height: 100)
             Image("jiahui")

@@ -13,31 +13,19 @@ public struct Profile: View {
 
     public var body: some View {
         VStack {
-            VStack {
-                Header()
-                ProfileText()
-                InfoView()
-            }
-            Spacer()
-//            Button (
-//                action: { self.isPresented = true },
-//                label: {
-//                    Label("Edit", systemImage: "pencil")
-//            })
-//            .sheet(isPresented: $isPresented, content: {
-//                SettingsView()
-//            })
+            Header()
+            ProfileText()
+            UserInformationView()
         }
     }
-    
     public init() {}
 }
 
 struct ProfileText: View {
-    @AppStorage("name") var name = DefaultSettings.name
-    @AppStorage("subtitle") var subtitle = DefaultSettings.subtitle
-    @AppStorage("description") var description = DefaultSettings.description
-    
+    @AppStorage("name") var name = "Jiahui Chen"
+    @AppStorage("subtitle") var subtitle = "Patient at University of Utah Hospital"
+    @AppStorage("description") var description = ""
+
     var body: some View {
         VStack(spacing: 15) {
             VStack(spacing: 5) {
