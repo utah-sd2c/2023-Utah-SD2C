@@ -8,6 +8,7 @@
 
 import Onboarding
 import SwiftUI
+import UtahSharedContext
 
 
 struct Welcome: View {
@@ -37,7 +38,7 @@ struct Welcome: View {
             ],
             actionText: "Next".moduleLocalized,
             action: {
-                if !CommandLine.arguments.contains("--disableFirebase") {
+                if !FeatureFlags.disableFirebase {
                     onboardingSteps.append(.accountSetup)
                 } else {
                     onboardingSteps.append(.consent)

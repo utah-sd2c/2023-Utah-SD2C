@@ -31,6 +31,7 @@
 		2F905711299E3E0D003D3802 /* FirebaseAccount in Frameworks */ = {isa = PBXBuildFile; productRef = 2F905710299E3E0D003D3802 /* FirebaseAccount */; };
 		2F905713299E3E0D003D3802 /* FirestoreDataStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2F905712299E3E0D003D3802 /* FirestoreDataStorage */; };
 		2F905715299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = 2F905714299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter */; };
+		2F9A484C29AAFB0D0041F064 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9A484B29AAFB0D0041F064 /* FirebaseFirestore */; };
 		2FC9759F2978E39600BA99FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9759E2978E39600BA99FE /* Localizable.strings */; };
 		2FC975A82978F11A00BA99FE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC975A72978F11A00BA99FE /* Home.swift */; };
 		653A2551283387FE005D4D48 /* Utah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A2550283387FE005D4D48 /* Utah.swift */; };
@@ -107,6 +108,7 @@
 				93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */,
 				2F49B784298041F300BCB272 /* Contact in Frameworks */,
 				2F905713299E3E0D003D3802 /* FirestoreDataStorage in Frameworks */,
+				2F9A484C29AAFB0D0041F064 /* FirebaseFirestore in Frameworks */,
 				2F49B7782980407C00BCB272 /* FHIR in Frameworks */,
 				2F49B7802980418400BCB272 /* Onboarding in Frameworks */,
 				2F905711299E3E0D003D3802 /* FirebaseAccount in Frameworks */,
@@ -249,6 +251,7 @@
 				2F905712299E3E0D003D3802 /* FirestoreDataStorage */,
 				2F905714299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter */,
 				93CD053629A0430400CC9DFB /* ResearchKit */,
+				2F9A484B29AAFB0D0041F064 /* FirebaseFirestore */,
 			);
 			productName = UtahApplication;
 			productReference = 653A254D283387FE005D4D48 /* Utah.app */;
@@ -331,6 +334,7 @@
 				2F4E237F2989C5930013F3D9 /* XCRemoteSwiftPackageReference "XCTHealthKit" */,
 				2F90570B299E3C69003D3802 /* XCRemoteSwiftPackageReference "XCTestExtensions" */,
 				93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */,
+				2F9A484A29AAFB0D0041F064 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 653A254E283387FE005D4D48 /* Products */;
 			projectDirPath = "";
@@ -925,7 +929,7 @@
 			repositoryURL = "https://github.com/StanfordBDHG/CardinalKit";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.3.1;
+				minimumVersion = 0.3.2;
 			};
 		};
 		2F4E237F2989C5930013F3D9 /* XCRemoteSwiftPackageReference "XCTHealthKit" */ = {
@@ -933,7 +937,7 @@
 			repositoryURL = "https://github.com/StanfordBDHG/XCTHealthKit";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.3.0;
+				minimumVersion = 0.3.3;
 			};
 		};
 		2F90570B299E3C69003D3802 /* XCRemoteSwiftPackageReference "XCTestExtensions" */ = {
@@ -944,12 +948,20 @@
 				minimumVersion = 0.3.0;
 			};
 		};
-		93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */ = {
+		2F9A484A29AAFB0D0041F064 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:StanfordBDHG/ResearchKit.git";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 10.5.0;
+			};
+		};
+		93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StanfordBDHG/ResearchKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1040,6 +1052,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2F49B7742980407B00BCB272 /* XCRemoteSwiftPackageReference "CardinalKit" */;
 			productName = FirestoreStoragePrefixUserIdAdapter;
+		};
+		2F9A484B29AAFB0D0041F064 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9A484A29AAFB0D0041F064 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		93CD053629A0430400CC9DFB /* ResearchKit */ = {
 			isa = XCSwiftPackageProductDependency;
