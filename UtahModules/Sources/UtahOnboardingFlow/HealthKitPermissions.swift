@@ -24,7 +24,7 @@ struct HealthKitPermissions: View {
                 VStack {
                     OnboardingTitleView(
                         title: "HealthKit".moduleLocalized,
-                        subtitle: "U-STEP is asking for read and write access to your Apple HealthKit".moduleLocalized
+                        subtitle: "VascuTrack is asking for read and write access to your Apple HealthKit".moduleLocalized
                     )
                     Spacer()
                     Image(systemName: "heart.text.square.fill")

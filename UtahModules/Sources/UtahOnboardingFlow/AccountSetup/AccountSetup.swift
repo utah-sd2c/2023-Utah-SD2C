@@ -27,19 +27,16 @@ struct AccountSetup: View {
             contentView: {
                 VStack {
                     OnboardingTitleView(
-                        title: "ACCOUNT_TITLE".moduleLocalized/*,
-                        subtitle: "ACCOUNT_SUBTITLE".moduleLocalized*/
+                        title: "ACCOUNT_TITLE".moduleLocalized,
+                        subtitle: "ACCOUNT_SUBTITLE".moduleLocalized
                     )
-                    .offset(y: 120)
-                    //Spacer(minLength: 0)
+                    Spacer(minLength: 0)
                     accountImage
-                        .offset(y: 80)
-                    //accountDescription
-                    //Spacer(minLength: 0)
+                    accountDescription
+                    Spacer(minLength: 0)
                 }
             }, actionView: {
                 actionView
-                    .offset(y: -200)
             }
         )
             .onReceive(account.objectWillChange) {
@@ -88,9 +85,9 @@ struct AccountSetup: View {
             Group {
                 if account.signedIn {
                     Text("ACCOUNT_SIGNED_IN_DESCRIPTION", bundle: .module)
-                } /*else {
+                } else {
                     Text("ACCOUNT_SETUP_DESCRIPTION", bundle: .module)
-                }*/
+                }
             }
                 .multilineTextAlignment(.center)
                 .padding(.vertical, 16)
