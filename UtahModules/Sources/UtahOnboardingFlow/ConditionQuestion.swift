@@ -7,6 +7,8 @@
 //
 
 import FHIR
+import FirebaseAuth
+import FirebaseFirestore
 import HealthKitDataSource
 import Onboarding
 import SwiftUI
@@ -15,8 +17,8 @@ import UtahSharedContext
 
 struct ConditionQuestion: View {
     @Binding var onboardingSteps: [OnboardingFlow.Step]
-    @State private var selection = "Arterial Disease"
-    let conditions = ["Arterial Disease", "Venous Disease"]
+    @State private var selection = "I Don't Know"
+    let conditions = ["Arterial Disease", "Venous Disease", "I Don't Know"]
     
     
     var body: some View {
@@ -29,18 +31,26 @@ struct ConditionQuestion: View {
                     )
                     Picker("Select a condition", selection: $selection) {
                         ForEach(conditions, id: \.self) {
-                            Text($0)
+                            Text($0).scaleEffect(2)
                         }
                     }
                     .pickerStyle(.menu)
-                    Text("Selected: \(selection)")
+                    .scaleEffect(2)
                     Spacer()
                 }
             }, actionView: {
                 OnboardingActionsView(
                     "Next".moduleLocalized,
                     action: {
-                        onboardingSteps.append(.healthKitPermissions)
+                        if let user = Auth.auth().currentUser {
+                            Firestore.firestore().collection("users").document(user.uid).updateData(["disease": selection]) { err in
+                                if let err = err {
+                                    print("Error updating document: \(err)")
+                                } else {
+                                    onboardingSteps.append(.healthKitPermissions)
+                                }
+                            }
+                       }
                     }
                 )
             }
