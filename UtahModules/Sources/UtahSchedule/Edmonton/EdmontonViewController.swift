@@ -8,6 +8,8 @@
 
 // swiftlint:disable function_body_length
 // swiftlint:disable closure_body_length
+// swiftlint:disable object_literal
+// swiftlint:disable force_unwrapping
 
 import Foundation
 import ResearchKit
@@ -48,10 +50,11 @@ struct EdmontonViewController: UIViewControllerRepresentable {
 
             steps += [clockTestInstructionStep]
             
-            // Image capture step
-            
             let imageCaptureStep = ORKImageCaptureStep(identifier: "ImageCaptureStep") // we should add a circle template image here
-            
+            if let image = UIImage(named: "circle") {
+                imageCaptureStep.templateImage = image
+            }
+            imageCaptureStep.templateImageInsets = UIEdgeInsets(top: 0.1, left: 0.1, bottom: 0.1, right: 0.1)
             steps += [imageCaptureStep]
             
             // Question 2
@@ -151,6 +154,74 @@ struct EdmontonViewController: UIViewControllerRepresentable {
                 steps += [qStep]
             }
             
+            // Get up and Go test step
+            let getUpAndGoInstructionStep = ORKInstructionStep(identifier: "getUpAndGo")
+            getUpAndGoInstructionStep.title = "Timed Get up and Go Task"
+            getUpAndGoInstructionStep.text = """
+            Sit in this chair with your back and arms resting. Then, when I say ‘GO’, please
+            stand up and walk at a safe and comfortable pace to the mark on the floor (approximately 3m away), return to the
+            chair and sit down
+                                
+            When you're ready to start, click Next
+            """
+
+            steps += [getUpAndGoInstructionStep]
+            
+            let countdownStep = ORKCountdownStep(identifier: "countdown")
+            steps += [countdownStep]
+                        
+            // https://github.com/ResearchKit/ResearchKit/issues/785
+            
+            func ifitnessActiveStep() -> ORKStep {
+                    let step = ORKFitnessStep(identifier: "getupAndGo")
+                    step.stepDuration = 60
+                    step.title = "Get up and Go Task"
+                    step.text = "Short instruction here"
+                    step.spokenInstruction = "Instruction. text to speech"
+                    step.isOptional = false
+
+                    step.shouldShowDefaultTimer = false
+
+                    step.shouldUseNextAsSkipButton = true
+                    step.shouldStartTimerAutomatically = true
+
+                    step.shouldPlaySoundOnStart = true
+                    step.shouldVibrateOnStart = true
+
+                    step.shouldVibrateOnFinish = true
+                    step.shouldPlaySoundOnFinish = true
+                    step.shouldContinueOnFinish = false
+
+                    var recorderConfigurations: [ORKRecorderConfiguration] = []
+                    recorderConfigurations.append(ORKPedometerRecorderConfiguration(identifier: "getupAndGo-pedometer"))
+                    // recorderConfigurations.append(ORKHealthQuantityTypeRecorderConfiguration(identifier: ORKHeartRateRecorderIdentifier, healthQuantityType: HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!, unit: HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())))
+                    recorderConfigurations.append(ORKAccelerometerRecorderConfiguration(identifier: "getupAndGo-accelerometer", frequency: 100))
+                    recorderConfigurations.append(ORKDeviceMotionRecorderConfiguration(identifier: "getupAndGo-deviceMotion", frequency: 100))
+                    step.recorderConfigurations = recorderConfigurations
+                    return step
+            }
+            
+            let fitnessStep = ifitnessActiveStep()
+            steps += [fitnessStep]
+            
+            // Question 11
+            let q11Choices = [
+                ORKTextChoice(text: "0-10 seconds", value: "0" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "11-20 seconds", value: "1" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: ">20 seconds", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "Could not complete", value: "2" as NSSecureCoding & NSCopying & NSObjectProtocol)
+            ]
+            let q11ChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q11Choices)
+            let q11Step = ORKQuestionStep(
+                identifier: "q11",
+                title: "",
+                question: "How long (approximately) did it take you?",
+                answer: q11ChoiceAnswerFormat
+            )
+            q11Step.isOptional = false
+            
+            steps += [q11Step]
+            
             // SUMMARY
             let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
             summaryStep.title = "Thank you."
@@ -163,6 +234,7 @@ struct EdmontonViewController: UIViewControllerRepresentable {
         
         let taskViewController = ORKTaskViewController(task: edmontonSurveyTask, taskRun: nil)
         taskViewController.delegate = context.coordinator
+        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         // & present the VC!
         return taskViewController

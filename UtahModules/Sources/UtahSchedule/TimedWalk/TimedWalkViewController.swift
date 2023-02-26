@@ -31,6 +31,13 @@ struct TimedWalkViewController: UIViewControllerRepresentable {
                 includeAssistiveDeviceForm: false,
                 options: .excludeConclusion
             )
+//            ORKOrderedTask.shortWalk(
+//                withIdentifier: "test",
+//                intendedUseDescription: nil,
+//                numberOfStepsPerLeg: 30,
+//                restDuration: 15,
+//                options: .excludeLocation
+//            )
         }()
         let taskViewController = ORKTaskViewController(task: timedWalkTask, taskRun: nil)
         taskViewController.delegate = context.coordinator
