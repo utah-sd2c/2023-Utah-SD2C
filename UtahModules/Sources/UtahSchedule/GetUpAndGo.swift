@@ -11,7 +11,7 @@ import UIKit
 import UtahSharedContext
 
 
-public struct GetUpAndGo: View {
+public struct GetUpAndGoView: View {
     @State private var primaryActionLoading = false
     private var _primaryAction = { print("hi") }
     
@@ -75,9 +75,9 @@ public struct GetUpAndGo: View {
 }
 
 #if !TESTING
-struct GetUpAndGo_Previews: PreviewProvider {
+struct GetUpAndGoView_Previews: PreviewProvider {
     static var previews: some View {
-        GetUpAndGo()
+        GetUpAndGoView()
     }
 }
 #endif

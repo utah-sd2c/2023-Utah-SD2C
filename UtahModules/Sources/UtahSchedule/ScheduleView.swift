@@ -57,7 +57,7 @@ public struct ScheduleView: View {
             .sheet(isPresented: $showingTimedWalk) {
                 TimedWalkViewController()
             }
-            NavigationLink(destination: GetUpAndGo()) {
+            NavigationLink(destination: GetUpAndGoView()) {
                 Text("Get Up And Go Question")
             }.frame(alignment: .topLeading)
                 .padding(.all, 15)

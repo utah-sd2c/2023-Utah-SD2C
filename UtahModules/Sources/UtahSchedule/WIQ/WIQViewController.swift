@@ -6,6 +6,9 @@
 // SPDX-License-Identifier: MIT
 //
 
+// swiftlint:disable closure_body_length
+// swiftlint:disable line_length
+
 import ResearchKit
 import SwiftUI
 import UIKit
@@ -25,7 +28,12 @@ struct WIQViewController: UIViewControllerRepresentable {
             
             let instruction = ORKInstructionStep(identifier: "WIQ")
                     instruction.title = "Walking Impairement Questionnaire"
-                    instruction.text = "Patient Mobility Assessment"
+                    instruction.text = """
+                        This information will help your doctors keep track of how you feel and how well you are able to do your usual activities. If you are unsure about how to answer a question, please give the best answer you can.
+                        
+                        You will be asked to complete this questionnaire at regular intervals to track your progress over time. You will be able to view your progress in the trends tab.
+
+                        """
                     
                     steps += [instruction]
 
@@ -57,7 +65,7 @@ struct WIQViewController: UIViewControllerRepresentable {
                     // SUMMARY
                     let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
                     summaryStep.title = "Thank you."
-                    summaryStep.text = "We appreciate your time."
+                    summaryStep.text = "You can view your progress in the trends tab."
                     steps += [summaryStep]
                     
                     return ORKOrderedTask(identifier: "WIQ", steps: steps)
