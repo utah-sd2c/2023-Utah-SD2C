@@ -17,7 +17,7 @@ struct Welcome: View {
     
     var body: some View {
         OnboardingView(
-            title: "Welcome to VascuTrack".moduleLocalized,
+            title: "Welcome to U-STEP".moduleLocalized,
             subtitle: "A collaboration between Stanford University & University of Utah".moduleLocalized,
             areas: [
                 .init(

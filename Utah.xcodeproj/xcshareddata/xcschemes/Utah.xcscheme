@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "653A254C283387FE005D4D48"
-               BuildableName = "Utah.app"
+               BuildableName = "U-Step.app"
                BlueprintName = "Utah"
                ReferencedContainer = "container:Utah.xcodeproj">
             </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "653A254C283387FE005D4D48"
-            BuildableName = "Utah.app"
+            BuildableName = "U-Step.app"
             BlueprintName = "Utah"
             ReferencedContainer = "container:Utah.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "653A254C283387FE005D4D48"
-            BuildableName = "Utah.app"
+            BuildableName = "U-Step.app"
             BlueprintName = "Utah"
             ReferencedContainer = "container:Utah.xcodeproj">
          </BuildableReference>

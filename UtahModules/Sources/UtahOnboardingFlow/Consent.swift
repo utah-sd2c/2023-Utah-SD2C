@@ -27,7 +27,7 @@ struct Consent: View {
             header: {
                 OnboardingTitleView(
                     title: "Consent".moduleLocalized,
-                    subtitle: "VascuTrack is asking to collect and analyze your healthcare information".moduleLocalized
+                    subtitle: "U-STEP is asking to collect and analyze your healthcare information".moduleLocalized
                 )
             },
             asyncMarkdown: {

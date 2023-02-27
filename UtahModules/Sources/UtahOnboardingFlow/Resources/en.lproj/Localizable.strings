@@ -43,8 +43,8 @@
 
 
 // MARK: Consent
-"CONSENT_TITLE" = "Consent Example";
-"CONSENT_SUBTITLE" = "CardinalKit can collect consent from a user. You can provide the consent document using a markdown file.";
+"CONSENT_TITLE" = "Review Consent Form";
+"CONSENT_SUBTITLE" = "Review the form below and tap Agree if you’re ready to continue.";
 
 "CONSENT_LOADING_ERROR" = "Please include a markdown based document named \"ConsentDocument\" in your module Bundle.";
 

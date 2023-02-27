@@ -42,7 +42,7 @@ class OnboardingTests: XCTestCase {
 
 extension XCUIApplication {
     func conductOnboardingIfNeeded() throws {
-        if self.staticTexts["Welcome to VascuTrack"].waitForExistence(timeout: 5) {
+        if self.staticTexts["Welcome to U-STEP"].waitForExistence(timeout: 5) {
             try navigateOnboardingFlow(assertThatHealthKitConsentIsShown: false)
         }
     }
