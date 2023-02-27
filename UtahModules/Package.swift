@@ -79,7 +79,8 @@ let package = Package(
         .target(
             name: "UtahTrends",
             dependencies: [
-                .target(name: "UtahSharedContext")
+                .target(name: "UtahSharedContext"),
+                .product(name: "FHIR", package: "CardinalKit")
             ]
         )
     ]
