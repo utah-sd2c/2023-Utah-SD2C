@@ -47,7 +47,11 @@ struct AccountSetup: View {
                              let firstName = fullName?[0] ?? ""
                              let lastName = fullName?[1] ?? ""
                              let data: [String: Any] = ["firstName": firstName, "lastName": lastName, "email": user.email ?? "", "dateJoined": Timestamp()]
-                            Firestore.firestore().collection("users").document(user.uid).setData(data)
+                             Firestore.firestore().collection("users").document(user.uid).setData(data) { err in
+                                 if let err = err {
+                                     print("Error updating document: \(err)")
+                                 }
+                             }
                         }
                     }
                     appendNextOnboardingStep()
