@@ -15,30 +15,35 @@ struct Consent: View {
     
     
     private var consentDocument: Data {
-        guard let path = Bundle.module.url(forResource: "ConsentDocument", withExtension: "md"),
+        guard let path = Bundle.module.url(forResource: "ConsentDocument", withExtension: "html"),
               let data = try? Data(contentsOf: path) else {
             return Data("CONSENT_LOADING_ERROR".moduleLocalized.utf8)
         }
         return data
     }
-    
+
     var body: some View {
-        ConsentView(
-            header: {
-                OnboardingTitleView(
-                    title: "Consent".moduleLocalized,
-                    subtitle: "U-STEP is asking to collect and analyze your healthcare information".moduleLocalized
-                )
-            },
-            asyncMarkdown: {
-                consentDocument
-            },
-            action: {
-                onboardingSteps.append(.conditionQuestion)
-            }
-        )
+        ScrollViewReader { _ in
+            OnboardingView(
+                contentView: {
+                    HTMLView(
+                        asyncHTML: {
+                            consentDocument
+                        }
+                    )
+                },
+                actionView: {
+                    VStack {
+                        OnboardingActionsView("I accept") {
+                            onboardingSteps.append(.conditionQuestion)
+                        }
+                        Divider()
+                    }
+                    .transition(.opacity)
+                }
+            )
+        }
     }
-    
     
     init(onboardingSteps: Binding<[OnboardingFlow.Step]>) {
         self._onboardingSteps = onboardingSteps
