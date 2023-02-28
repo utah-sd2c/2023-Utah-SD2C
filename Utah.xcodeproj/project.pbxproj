@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23B0449B299DB70A008CD957 /* GetUpAndGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */; };
 		23DA6D2D29AD46A5007A6B73 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 23DA6D2C29AD46A5007A6B73 /* FirebaseAuth */; };
+		23DA6D3129ADC1E7007A6B73 /* UtahAppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23DA6D3029ADC1E7007A6B73 /* UtahAppSetup.swift */; };
 		27A7B3E829A7B2C8000B32B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A7B3E729A7B2C8000B32B4 /* GoogleService-Info.plist */; };
 		2F49B7762980407C00BCB272 /* CardinalKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7752980407B00BCB272 /* CardinalKit */; };
 		2F49B7782980407C00BCB272 /* FHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7772980407C00BCB272 /* FHIR */; };
@@ -67,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUpAndGoTests.swift; sourceTree = "<group>"; };
+		23DA6D3029ADC1E7007A6B73 /* UtahAppSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtahAppSetup.swift; sourceTree = "<group>"; };
 		27A7B3E729A7B2C8000B32B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F49B77329803E8F00BCB272 /* UtahModules */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UtahModules; sourceTree = "<group>"; };
 		2F4E237D2989A2FE0013F3D9 /* OnboardingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTests.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				2F5E32BC297E05EA003432F8 /* UtahAppDelegate.swift */,
 				2F4E23822989D51F0013F3D9 /* UtahAppTestingSetup.swift */,
 				2FC975A72978F11A00BA99FE /* Home.swift */,
+				23DA6D3029ADC1E7007A6B73 /* UtahAppSetup.swift */,
 				2FC9759D2978E30800BA99FE /* Supporting Files */,
 			);
 			path = Utah;
@@ -406,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DA6D3129ADC1E7007A6B73 /* UtahAppSetup.swift in Sources */,
 				2FC975A82978F11A00BA99FE /* Home.swift in Sources */,
 				2F4E23832989D51F0013F3D9 /* UtahAppTestingSetup.swift in Sources */,
 				2F5E32BD297E05EA003432F8 /* UtahAppDelegate.swift in Sources */,
