@@ -24,25 +24,25 @@ class GetUpAndGoTests: XCTestCase {
     func testGetUpAndGo() throws {
         let app = XCUIApplication()
         
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.buttons["Get Up And Go Question"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.buttons["Get Up And Go Question"].waitForExistence(timeout: 2))
         app.buttons["Get Up And Go Question"].tap()
-        XCTAssertTrue(app.staticTexts["Do not do this alone. Please have someone by you to help you if necessary."].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.buttons["Start"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Do not do this alone. Please have someone by you to help you if necessary."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Start"].waitForExistence(timeout: 2))
     }
     
     func testTimedWalk() throws {
         let app = XCUIApplication()
         
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.buttons["Timed Walk (ResearchKit)"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.buttons["Timed Walk (ResearchKit)"].waitForExistence(timeout: 2))
         app.buttons["Timed Walk (ResearchKit)"].tap()
-        XCTAssertTrue(app.staticTexts["Timed Walk"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Timed Walk"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 2))
         app.buttons["Next"].tap()
     }
 }

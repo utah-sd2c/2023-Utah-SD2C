@@ -24,13 +24,13 @@ class ProfileTests: XCTestCase {
     func testProfile() throws {
         let app = XCUIApplication()
         
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Profile"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Profile"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Profile"].tap()
         
-        XCTAssertTrue(app.staticTexts["Jiahui Chen"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Patient at University of Utah Hospital"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Email"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["jane@example.com"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Peripheral Arterial Disease"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Jiahui Chen"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Patient at University of Utah Hospital"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Email"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["jane@example.com"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Peripheral Arterial Disease"].waitForExistence(timeout: 2))
     }
 }

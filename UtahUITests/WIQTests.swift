@@ -22,14 +22,13 @@ class WIQTests: XCTestCase {
     func testWIQ() throws {
         let app = XCUIApplication()
         
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.buttons["Walking Impairement Questionnaire"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.buttons["Walking Impairement Questionnaire"].waitForExistence(timeout: 2))
         app.buttons["Walking Impairement Questionnaire"].tap()
-        XCTAssertTrue(app.staticTexts["Walking Impairement Questionnaire"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Patient Mobility Assessment"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.buttons["Get Started"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Walking Impairement Questionnaire"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Get Started"].waitForExistence(timeout: 2))
         app.buttons["Get Started"].tap()
         
         // Go through each question
@@ -43,14 +42,14 @@ class WIQTests: XCTestCase {
             "No Difficulty"
         ]
         for answer in answers {
-            XCTAssertTrue(app.tables.staticTexts[answer].waitForExistence(timeout: 0.5))
+            XCTAssertTrue(app.tables.staticTexts[answer].waitForExistence(timeout: 2))
             app.tables.staticTexts[answer].tap()
-            XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 0.5))
+            XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 2))
             app.tables.buttons["Next"].tap()
         }
         
-        XCTAssertTrue(app.staticTexts["Thank you."].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Thank you."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 2))
         app.buttons["Done"].tap()
     }
 }

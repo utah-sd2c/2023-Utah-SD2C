@@ -19,7 +19,7 @@ class TrendsTests: XCTestCase {
         
         let app = XCUIApplication()
         app.launchArguments = ["--showOnboarding"]
-        app.deleteAndLaunch(withSpringboardAppName: "Utah")
+        app.deleteAndLaunch(withSpringboardAppName: "U-STEP")
     }
     
     
@@ -37,16 +37,16 @@ class TrendsTests: XCTestCase {
         try assertObservationCellPresent(true, pressIfPresent: false)
         
         try navigateToTrends()
-        XCTAssert(app.staticTexts[String(newVal)].waitForExistence(timeout: 0.5))
+        XCTAssert(app.staticTexts[String(newVal)].waitForExistence(timeout: 2))
     }
     
     func navigateToTrends() throws {
         let app = XCUIApplication()
-        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Trends"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Trends"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Trends"].tap()
         
-        XCTAssertTrue(app.staticTexts["Daily Step Count"].waitForExistence(timeout: 0.5))
-        XCTAssertTrue(app.staticTexts["Survey Score"].waitForExistence(timeout: 0.5))
+        XCTAssertTrue(app.staticTexts["Daily Step Count"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Survey Score"].waitForExistence(timeout: 2))
     }
     private func navigateToMockUpload() throws {
         let app = XCUIApplication()

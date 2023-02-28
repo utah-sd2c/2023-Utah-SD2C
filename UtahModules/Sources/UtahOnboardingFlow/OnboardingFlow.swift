@@ -31,8 +31,7 @@ public struct OnboardingFlow: View {
                 .navigationDestination(for: Step.self) { onboardingStep in
                     switch onboardingStep {
                     case .accountSetup:
-                        Consent(onboardingSteps: $onboardingSteps)
-                        // AccountSetup(onboardingSteps: $onboardingSteps)
+                        AccountSetup(onboardingSteps: $onboardingSteps)
                     case .login:
                         UtahLogin()
                     case .signUp:
