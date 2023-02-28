@@ -191,7 +191,7 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             
             steps += [summaryStep]
             
-            return ORKOrderedTask(identifier: "SurveyTask-Assessment", steps: steps)
+            return ORKOrderedTask(identifier: "edmonton", steps: steps)
         }()
         
         let taskViewController = ORKTaskViewController(task: edmontonSurveyTask, taskRun: nil)
