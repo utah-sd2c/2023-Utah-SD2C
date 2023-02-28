@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23B0449B299DB70A008CD957 /* GetUpAndGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B0449A299DB70A008CD957 /* GetUpAndGoTests.swift */; };
+		23DA6D2D29AD46A5007A6B73 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 23DA6D2C29AD46A5007A6B73 /* FirebaseAuth */; };
 		27A7B3E829A7B2C8000B32B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27A7B3E729A7B2C8000B32B4 /* GoogleService-Info.plist */; };
 		2F49B7762980407C00BCB272 /* CardinalKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7752980407B00BCB272 /* CardinalKit */; };
 		2F49B7782980407C00BCB272 /* FHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 2F49B7772980407C00BCB272 /* FHIR */; };
@@ -115,6 +116,7 @@
 				2F905711299E3E0D003D3802 /* FirebaseAccount in Frameworks */,
 				2F59B943298C628800C5107F /* UtahSchedule in Frameworks */,
 				2F49B7762980407C00BCB272 /* CardinalKit in Frameworks */,
+				23DA6D2D29AD46A5007A6B73 /* FirebaseAuth in Frameworks */,
 				2F49B77C2980407C00BCB272 /* HealthKitToFHIRAdapter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +256,7 @@
 				2F905714299E3E0D003D3802 /* FirestoreStoragePrefixUserIdAdapter */,
 				93CD053629A0430400CC9DFB /* ResearchKit */,
 				2F9A484B29AAFB0D0041F064 /* FirebaseFirestore */,
+				23DA6D2C29AD46A5007A6B73 /* FirebaseAuth */,
 			);
 			productName = UtahApplication;
 			productReference = 653A254D283387FE005D4D48 /* Utah.app */;
@@ -969,6 +972,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		23DA6D2C29AD46A5007A6B73 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9A484A29AAFB0D0041F064 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		2F49B7752980407B00BCB272 /* CardinalKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2F49B7742980407B00BCB272 /* XCRemoteSwiftPackageReference "CardinalKit" */;

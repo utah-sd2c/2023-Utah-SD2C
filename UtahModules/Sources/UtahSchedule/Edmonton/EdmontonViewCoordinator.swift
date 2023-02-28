@@ -11,8 +11,10 @@
 // swiftlint:disable force_cast
 // swiftlint:disable force_unwrapping
 // swiftlint:disable cyclomatic_complexity
+// swiftlint:disable line_length
 
 import Firebase
+import FirebaseAuth
 import FirebaseStorage
 import Foundation
 import ModelsR4
@@ -59,8 +61,9 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
                 }
             }
 
+            let user = Auth.auth().currentUser
             // Add a patient identifier to the response so we know who did this survey
-            fhirResponse.subject = Reference(reference: FHIRPrimitive(FHIRString("Patient/PATIENT_ID")))
+            fhirResponse.subject = Reference(reference: FHIRPrimitive(FHIRString("Patient/" + (user?.uid ?? "PATIENT_ID"))))
 
             do {
                 // Parse the FHIR object into JSON
@@ -89,18 +92,19 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
                     }
                 }
 
-               /*
+        
                 // Upload Score + Data to user collection
-                let userQuestionnaireData = ["score": score, "type": "edmonton", "surveyId": identifier] as [String : Any]
-                if let user = Auth.auth().currentUser {
-                    database.collection("users").document(user.uid).collection("QuestionnaireResponse").document(identifier).setData(userQuestionnaireData) { err in
+                let userQuestionnaireData = ["score": score, "type": "edmonton", "surveyId": identifier] as [String: Any]
+                let userUID = user?.uid
+                if userUID != nil {
+                    database.collection("users").document(userUID!).collection("QuestionnaireResponse").document(identifier).setData(userQuestionnaireData) { err in
                         if let err {
                             print("Error writing document: \(err)")
                         } else {
                             print("Document successfully written.")
                         }
                     }
-                }*/
+                }
                 
                 // Upload any files that are attached to the FHIR object to Firebase
                 if let responseItems = fhirResponse.item {

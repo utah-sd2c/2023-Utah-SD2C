@@ -70,7 +70,8 @@ let package = Package(
                 .product(name: "Questionnaires", package: "CardinalKit"),
                 .product(name: "Scheduler", package: "CardinalKit"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseStorage", package: "firebase-ios-sdk")
+                .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk")
             ]
         ),
         .target(
