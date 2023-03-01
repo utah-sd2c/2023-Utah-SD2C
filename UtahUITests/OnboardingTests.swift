@@ -89,10 +89,10 @@ extension XCUIApplication {
         secureTextFields["Repeat your password ..."].typeText("StanfordRocks")
         swipeUp()
         
-        try textFields["Enter your given name ..."].enter(value: "Leland")
+        try textFields["Enter your first name ..."].enter(value: "Leland")
         staticTexts["Repeat\nPassword"].swipeUp()
         
-        try textFields["Enter your family name ..."].enter(value: "Stanford")
+        try textFields["Enter your last name ..."].enter(value: "Stanford")
         staticTexts["Repeat\nPassword"].swipeUp()
         
         collectionViews.buttons["Sign Up"].tap()

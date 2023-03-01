@@ -53,7 +53,9 @@ struct WIQViewController: UIViewControllerRepresentable {
                     for (idx, question) in questions.enumerated() {
                         let wiq = ORKQuestionStep(
                             identifier: String(format: "WIQ Endurance %d", idx + 1),
-                            title: "How difficult was it for you to:", question: question, answer: wiqAnswerFormat
+                            title: "How difficult was it for you to:",
+                            question: question,
+                            answer: wiqAnswerFormat
                         )
                         wiq.isOptional = false
                         steps += [wiq]
