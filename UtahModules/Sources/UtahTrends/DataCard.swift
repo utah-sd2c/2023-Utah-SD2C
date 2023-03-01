@@ -8,8 +8,10 @@
 // Group and recalculateChartData function pulled from CardinalKit FHIRChart module
 
 
+import Charts
 import FHIR
 import SwiftUI
+
 
 struct DataCard: View {
     let icon: String
@@ -23,7 +25,7 @@ struct DataCard: View {
 
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             // title
             HStack(alignment: .firstTextBaseline) {
                 Image(systemName: icon)
@@ -42,8 +44,9 @@ struct DataCard: View {
                 Spacer()
             }
         }
-        .frame(width: 350, height: 100)
-        .padding(.leading, 20)
+        // .frame(width: 380)
+        .padding(30)
+        .frame(width: 350, height: 110)
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundColor(Color(.systemBackground))

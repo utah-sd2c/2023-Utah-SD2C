@@ -10,15 +10,18 @@ import FHIR
 import Foundation
 import SwiftUI
 
+
 public struct Trends: View {
     public var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
+                Charts()
+                Spacer()
                 TrendWrapper(code: "55423-8", icon: "shoeprints.fill", title: "Daily Step Count", unit: "steps", color: Color.green)
-                DataCard(icon: "list.clipboard.fill", title: "Survey Score", unit: "points", color: Color.blue, observations: [])
+                Spacer()
+                DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
             }
             .padding()
-            Spacer()
             .navigationTitle("Trends")
         }
     }

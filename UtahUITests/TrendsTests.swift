@@ -46,7 +46,7 @@ class TrendsTests: XCTestCase {
         app.tabBars["Tab Bar"].buttons["Trends"].tap()
         
         XCTAssertTrue(app.staticTexts["Daily Step Count"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Survey Score"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Last EFS Survey Score"].waitForExistence(timeout: 2))
     }
     private func navigateToMockUpload() throws {
         let app = XCUIApplication()
