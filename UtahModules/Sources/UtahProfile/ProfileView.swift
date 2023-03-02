@@ -9,45 +9,23 @@
 import SwiftUI
 
 public struct Profile: View {
-    @State var isPresented = false
-
+    @State var disease = "Peripheral Arterial Disease"
     public var body: some View {
         VStack {
+            EditButton(disease: $disease)
+                .padding(.trailing, 35)
             Header()
             ProfileText()
-            UserInformationView()
+                .padding(.bottom, 30)
+            UserInformationView(disease: $disease)
         }
+        .padding(.top, 30)
     }
     public init() {}
 }
 
-struct ProfileText: View {
-    @AppStorage("name") var name = "Jiahui Chen"
-    @AppStorage("subtitle") var subtitle = "Patient at University of Utah Hospital"
-    @AppStorage("description") var description = ""
-
-    var body: some View {
-        VStack(spacing: 15) {
-            VStack(spacing: 5) {
-                Text(name)
-                    .bold()
-                    .font(.title)
-                Text(subtitle)
-                    .font(.body)
-                    .foregroundColor(.secondary)
-            }.padding()
-            Text(description)
-                .multilineTextAlignment(.center)
-                .padding()
-            Spacer()
-        }
-    }
-}
-
-#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Profile()
     }
 }
-#endif

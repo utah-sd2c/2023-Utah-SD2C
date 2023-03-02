@@ -9,28 +9,19 @@
 import SwiftUI
 
 struct FormView: View {
-    @Binding var email: String
     @Binding var disease: String
     @Binding var isEditing: Bool
     let diseaseOptions = ["Peripheral Arterial Disease", "Venous Insufficiency", "I'm not sure"]
     var body: some View {
         Form {
-            Section(header: Text("Email")) {
-                TextField("Enter your email", text: $email)
-                    .font(.subheadline)
-                    .padding(.vertical, 10)
-            }
-            Section(header: Text("Disease")) {
-                Picker("Select your disease", selection: $disease) {
+            Section(header: Text("Condition").font(.system(size: 20))) {
+                Picker("Select your condition", selection: $disease) {
                     ForEach(diseaseOptions, id: \.self) { option in
                         Text(option)
                     }
                 }
+                .font(.system(size: 20))
                 .padding(.vertical, 10)
-            }
-            Section(header: Text("Profile Picture")) {
-                EditPhotoView()
-                    .frame(maxWidth: .infinity)
             }
             Button(action: {
                 isEditing = false
@@ -38,6 +29,7 @@ struct FormView: View {
                 HStack {
                     Spacer()
                     Text("Save")
+                        .font(.system(size: 25))
                     Spacer()
                 }
             }

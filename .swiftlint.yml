@@ -289,7 +289,7 @@ only_rules:
   # Operators should be declared as static functions, not free functions.
   - static_operator
   # SwiftLint ‘disable’ commands are superfluous when the disabled rule would not have triggered a violation in the disabled region. Use “ - ” if you wish to document a command.
-  - superfluous_disable_command
+  # - superfluous_disable_command
   # Case statements should vertically align with their enclosing switch statement, or indented if configured otherwise.
   - switch_case_alignment
   # Shorthand syntactic sugar should be used, i.e. [Int] instead of Array.
