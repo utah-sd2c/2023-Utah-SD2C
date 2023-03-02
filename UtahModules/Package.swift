@@ -18,7 +18,6 @@ let package = Package(
         .iOS(.v16)
     ],
     products: [
-        .library(name: "UtahMockDataStorageProvider", targets: ["UtahMockDataStorageProvider"]),
         .library(name: "UtahOnboardingFlow", targets: ["UtahOnboardingFlow"]),
         .library(name: "UtahProfile", targets: ["UtahProfile"]),
         .library(name: "UtahSchedule", targets: ["UtahSchedule"]),
@@ -30,17 +29,6 @@ let package = Package(
         .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.5.0")
     ],
     targets: [
-        .target(
-            name: "UtahMockDataStorageProvider",
-            dependencies: [
-                .target(name: "UtahSharedContext"),
-                .product(name: "CardinalKit", package: "CardinalKit"),
-                .product(name: "FHIR", package: "CardinalKit")
-            ],
-            resources: [
-                .process("Resources")
-            ]
-        ),
         .target(
             name: "UtahOnboardingFlow",
             dependencies: [

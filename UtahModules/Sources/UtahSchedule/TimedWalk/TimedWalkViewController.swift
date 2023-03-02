@@ -22,15 +22,22 @@ struct TimedWalkViewController: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> ORKTaskViewController {
         let timedWalkTask: ORKOrderedTask = {
-            ORKOrderedTask.timedWalk(
-                withIdentifier: "Get up and Go Task",
-                intendedUseDescription: nil,
-                distanceInMeters: 3,
-                timeLimit: 30,
-                turnAroundTimeLimit: 20,
-                includeAssistiveDeviceForm: false,
+            ORKOrderedTask.fitnessCheck(
+                withIdentifier: "6 minute walk test",
+                intendedUseDescription: "6 minute walk test",
+                walkDuration: 360,
+                restDuration: 30,
                 options: .excludeConclusion
             )
+//            ORKOrderedTask.timedWalk(
+//                withIdentifier: "Get up and Go Task",
+//                intendedUseDescription: nil,
+//                distanceInMeters: 3,
+//                timeLimit: 30,
+//                turnAroundTimeLimit: 20,
+//                includeAssistiveDeviceForm: false,
+//                options: .excludeConclusion
+//            )
 //            ORKOrderedTask.shortWalk(
 //                withIdentifier: "test",
 //                intendedUseDescription: nil,

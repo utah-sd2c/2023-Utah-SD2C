@@ -19,7 +19,6 @@ import HealthKitToFHIRAdapter
 import Questionnaires
 import Scheduler
 import SwiftUI
-import UtahMockDataStorageProvider
 import UtahSchedule
 import UtahSharedContext
 
@@ -39,7 +38,6 @@ class UtahAppDelegate: CardinalKitAppDelegate {
                 healthKit
             }
             QuestionnaireDataSource()
-            MockDataStorageProvider()
             UtahScheduler()
         }
     }

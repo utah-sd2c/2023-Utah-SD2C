@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UtahMockDataStorageProvider
 import UtahProfile
 import UtahSchedule
 import UtahSharedContext
@@ -18,7 +17,6 @@ struct HomeView: View {
     enum Tabs: String {
         case schedule
         case profile
-        case mockUpload
         case trends
     }
     
@@ -43,11 +41,6 @@ struct HomeView: View {
                 .tabItem {
                     Label("PROFILE_TAB_TITLE", systemImage: "person.fill")
                 }
-            MockUploadList()
-                .tag(Tabs.mockUpload)
-                .tabItem {
-                    Label("MOCK_UPLOAD_TAB_TITLE", systemImage: "server.rack")
-                }
         }
     }
 }
@@ -58,7 +51,6 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(UtahScheduler())
-            .environmentObject(MockDataStorageProvider())
     }
 }
 #endif

@@ -35,7 +35,6 @@ class OnboardingTests: XCTestCase {
         XCTAssertTrue(tabBar.buttons["Questions"].waitForExistence(timeout: 2))
         XCTAssertTrue(tabBar.buttons["Trends"].waitForExistence(timeout: 2))
         XCTAssertTrue(tabBar.buttons["Profile"].waitForExistence(timeout: 2))
-        XCTAssertTrue(tabBar.buttons["Mock Upload"].waitForExistence(timeout: 2))
     }
 }
 

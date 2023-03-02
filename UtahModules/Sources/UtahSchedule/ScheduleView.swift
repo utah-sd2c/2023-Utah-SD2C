@@ -18,7 +18,8 @@ public struct ScheduleView: View {
     @State var presentedContext: EventContext?
     @State private var showingEdmontonSurvey = false
     @State private var showingWIQSurvey = false
-    @State private var showingTimedWalk = false
+    @State private var showingVEINESSurvey = false
+    @State private var showingWalkTest = false
     
     var startOfDays: [Date] {
         Array(eventContextsByDate.keys)
@@ -47,24 +48,27 @@ public struct ScheduleView: View {
             .sheet(isPresented: $showingWIQSurvey) {
                 WIQViewController()
             }
-            Button("Timed Walk (ResearchKit)") {
-                showingTimedWalk.toggle()
+            Button("VEINES-QOL/Sym Questionnaire") {
+                showingVEINESSurvey.toggle()
+            }
+            .foregroundColor(Color.white)
+            .padding()
+            .background(.green)
+            .cornerRadius(10)
+            .sheet(isPresented: $showingVEINESSurvey) {
+                VEINESViewController()
+            }
+            Button("6 Minute Walk Test (active task)") {
+                showingWalkTest.toggle()
             }
             .foregroundColor(Color.white)
             .padding()
             .background(.pink)
             .cornerRadius(10)
-            .sheet(isPresented: $showingTimedWalk) {
+            .sheet(isPresented: $showingWalkTest) {
                 TimedWalkViewController()
             }
-            NavigationLink(destination: GetUpAndGoView()) {
-                Text("Get Up And Go Question")
-            }.frame(alignment: .topLeading)
-                .padding(.all, 15)
-                .foregroundColor(Color.white)
-                .background(.green)
-                .cornerRadius(15)
-                .navigationTitle(String(localized: "QUESTIONNAIRE_LIST_TITLE", bundle: .module))
+            .navigationTitle(String(localized: "QUESTIONNAIRE_LIST_TITLE", bundle: .module))
         }
     }
     
