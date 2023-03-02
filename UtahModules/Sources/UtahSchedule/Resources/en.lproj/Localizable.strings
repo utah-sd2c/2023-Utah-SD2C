@@ -7,7 +7,7 @@
 //
 
 // MARK: - Schedule
-"QUESTIONNAIRE_LIST_TITLE" = "Questionaires";
+"QUESTIONNAIRE_LIST_TITLE" = "Questionnaires";
 "QUESTIONNAIRE_TITLE" = "Monthly Questionnaire";
 "QUESTIONNAIRE_DESCRIPTION" = "Please fill out this Questionnaire every month.";
 "QUESTIONNAIRE_ACTION" = "Start Questionnaire";

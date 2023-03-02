@@ -19,7 +19,7 @@ struct ProfileText: View {
                     .bold()
                     .font(.system(size: 30))
                 Text(subtitle)
-                    .font(.system(size: 18))
+                    .font(.system(size: 16))
                     .foregroundColor(.secondary)
             }
                 .padding()

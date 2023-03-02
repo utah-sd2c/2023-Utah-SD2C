@@ -20,7 +20,7 @@ struct EditButton: View {
             }, label: {
                 Text("Edit")
                     .foregroundColor(.accentColor)
-                    .font(.system(size: 25))
+                    .font(.system(size: 20))
                     .fontWeight(.medium)
             })
                 .sheet(isPresented: $isEditing) {

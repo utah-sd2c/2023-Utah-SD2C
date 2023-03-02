@@ -10,6 +10,8 @@
 		<false/>
 		<key>UISceneConfigurations</key>
 		<dict/>
+		<key>UIUserInterfaceStyle</key>
+		<string>Light</string>
 	</dict>
 </dict>
 </plist>

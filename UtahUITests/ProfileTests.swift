@@ -36,7 +36,7 @@ class ProfileTests: XCTestCase {
         
         app.buttons["Edit"].tap()
         XCTAssertTrue(app.staticTexts["CONDITION"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Select your condition"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Change your condition"].waitForExistence(timeout: 2))
         app.buttons["Save"].tap()
         
         XCTAssertTrue(app.buttons["Need help?"].waitForExistence(timeout: 2))

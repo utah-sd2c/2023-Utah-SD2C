@@ -49,21 +49,21 @@
 "CONSENT_LOADING_ERROR" = "Please include a markdown based document named \"ConsentDocument\" in your module Bundle.";
 
 // MARK: Account
-"ACCOUNT_TITLE" = "Your Account";
+"ACCOUNT_TITLE" = "Welcome to U-STEP";
 "ACCOUNT_SUBTITLE" = "";
-"ACCOUNT_SETUP_DESCRIPTION" = "The login and sign up buttons use the Account Login and SignUp views.";
-"ACCOUNT_SIGNED_IN_DESCRIPTION" = "You are successfully signed in with the following account:";
-"ACCOUNT_NEXT" = "Next";
+"ACCOUNT_SETUP_DESCRIPTION" = "Sign up if this is your first time on the app, or login to an existing account.";
+"ACCOUNT_SIGNED_IN_DESCRIPTION" = "You are already signed in with the following account:";
+"ACCOUNT_NEXT" = "Continue";
 "ACCOUNT_SIGN_UP" = "Sign Up";
 "ACCOUNT_LOGIN" = "Login";
 
 "USER_VIEW_LOADING" = "Loading user information ...";
 
 "LOGIN_TITLE" = "Login";
-"LOGIN_SUBTITLE" = "Log in to U-STEP";
+"LOGIN_SUBTITLE" = "Sign in to U-STEP using your email address and password.";
 
 "SIGN_UP_TITLE" = "Sign Up";
-"SIGN_UP_SUBTITLE" = "Sign up for U-STEP";
+"SIGN_UP_SUBTITLE" = "Sign up for U-STEP using your email address and create a password.";
 
 
 // MARK: HealthKit

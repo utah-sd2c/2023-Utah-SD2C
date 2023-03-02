@@ -25,7 +25,7 @@ struct MenuButton: View {
                     .background(backgroundColor)
                     .foregroundColor(foregroundColor)
                     .cornerRadius(10)
-                    .font(.system(size: 25))
+//                    .font(.system(size: 25))
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.accentColor, lineWidth: 2)
@@ -37,7 +37,7 @@ struct MenuButton: View {
                     .background(backgroundColor)
                     .foregroundColor(foregroundColor)
                     .cornerRadius(10)
-                    .font(.system(size: 25))
+//                    .font(.system(size: 25))
             }
         }
         .padding(.bottom, 30)

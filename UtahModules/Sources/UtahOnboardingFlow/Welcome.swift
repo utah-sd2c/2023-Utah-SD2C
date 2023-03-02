@@ -18,22 +18,22 @@ struct Welcome: View {
     var body: some View {
         OnboardingView(
             title: "Welcome to U-STEP".moduleLocalized,
-            subtitle: "A collaboration between Stanford University & University of Utah".moduleLocalized,
+            subtitle: "A collaboration between University of Utah & Stanford University".moduleLocalized,
             areas: [
                 .init(
-                    icon: Image(systemName: "apps.iphone"),
-                    title: "Track your health".moduleLocalized,
-                    description: "Easily see your biometric data".moduleLocalized
-                ),
-                .init(
-                    icon: Image(systemName: "shippingbox.fill"),
-                    title: "Report your outcomes".moduleLocalized,
+                    icon: Image(systemName: "list.clipboard"),
+                    title: "Report your health outcomes".moduleLocalized,
                     description: "Fill out surveys about your health".moduleLocalized
                 ),
                 .init(
-                    icon: Image(systemName: "list.bullet.clipboard.fill"),
-                    title: "Streamline your care".moduleLocalized,
-                    description: "Help your doctors help you get better".moduleLocalized
+                    icon: Image(systemName: "figure.walk"),
+                    title: "Track your health".moduleLocalized,
+                    description: "Record your daily activity levels".moduleLocalized
+                ),
+                .init(
+                    icon: Image(systemName: "server.rack"),
+                    title: "Monitor your progress".moduleLocalized,
+                    description: "View your progression over time\n".moduleLocalized
                 )
             ],
             actionText: "Next".moduleLocalized,
