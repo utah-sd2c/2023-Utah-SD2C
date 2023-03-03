@@ -6,23 +6,33 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Account
+import class FHIR.FHIR
+import FirebaseAccount
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
+import UtahSharedContext
 
 public struct Profile: View {
-    @State var disease = "Peripheral Arterial Disease"
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    
     public var body: some View {
         VStack {
-            EditButton(disease: $disease)
+            EditButton()
                 .padding(.trailing, 35)
             Header()
             ProfileText()
                 .padding(.bottom, 30)
-            UserInformationView(disease: $disease)
+            UserInformationView()
         }
         .padding(.top, 30)
+        .environmentObject(firestoreManager)
     }
-    public init() {}
+    public init() {
+    }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import UtahSharedContext
 
 struct EditButton: View {
     @State private var isEditing = false
-    @Binding var disease: String
+    @EnvironmentObject var firestoreManager: FirestoreManager
     
     var body: some View {
         HStack {
@@ -24,7 +25,7 @@ struct EditButton: View {
                     .fontWeight(.medium)
             })
                 .sheet(isPresented: $isEditing) {
-                    FormView(disease: $disease, isEditing: $isEditing)
+                    FormView(disease: $firestoreManager.disease, isEditing: $isEditing)
                 }
         }
     }

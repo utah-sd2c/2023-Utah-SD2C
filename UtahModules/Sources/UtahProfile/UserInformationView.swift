@@ -6,28 +6,35 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Account
 import SwiftUI
+import class FHIR.FHIR
+import FirebaseAccount
+import FirebaseAuth
+import FirebaseFirestore
+import Onboarding
+import UtahSharedContext
 
 struct UserInformationView: View {
-    @State private var email = "jane@example.com"
-    @Binding var disease: String
+    let user = Auth.auth().currentUser
+    var refesh = false
     @State private var needHelp = false
     @State private var logOut = false
-    let diseaseOptions = ["Peripheral Arterial Disease", "Venous Insufficiency", "I'm not sure"]
-
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    
     var body: some View {
         VStack {
-            InfoRow(field: "EMAIL", value: $email)
-            InfoRow(field: "CONDITION", value: $disease)
+            InfoRow(field: "EMAIL", value: user?.email ?? "")
+            InfoRow(field: "CONDITION", value: firestoreManager.disease)
             Spacer()
             MenuButton(eventBool: $needHelp, buttonLabel: "Need help?", foregroundColor: Color.accentColor, backgroundColor: Color(.white))
                 .sheet(isPresented: $needHelp) {
                     HelpPage()
                 }
                 .padding(.bottom, -15)
-            MenuButton(eventBool: $logOut, buttonLabel: "Logout", foregroundColor: Color(.white), backgroundColor: Color.accentColor)
+            LogoutButton(eventBool: $logOut, buttonLabel: "Logout", foregroundColor: Color(.white), backgroundColor: Color.accentColor)
                 .sheet(isPresented: $needHelp) {
-                    FormView(disease: $disease, isEditing: $needHelp)
+                    FormView(disease: $firestoreManager.disease, isEditing: $needHelp)
                 }
         }
         .padding(.horizontal, 30)

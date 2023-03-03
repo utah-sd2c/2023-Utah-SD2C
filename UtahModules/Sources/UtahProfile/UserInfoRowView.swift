@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InfoRow: View {
     var field: String
-    @Binding var value: String
+    var value: String
     
     var body: some View {
         HStack {

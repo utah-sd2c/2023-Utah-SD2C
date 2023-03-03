@@ -15,7 +15,7 @@ struct Header: View {
             .foregroundColor(Color.accentColor)
             .scaledToFit()
             .frame(width: 150, height: 150)
-            .accessibility(label: Text("jiahui headshot"))
+            .accessibility(label: Text("headshot"))
     }
 }
 

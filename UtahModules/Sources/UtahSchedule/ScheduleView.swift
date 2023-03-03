@@ -5,9 +5,7 @@
 //
 // SPDX-License-Identifier: MIT
 //
-
 // swiftlint:disable closure_body_length
-
 import Questionnaires
 import Scheduler
 import SwiftUI

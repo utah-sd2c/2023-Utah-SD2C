@@ -6,17 +6,19 @@
 // SPDX-License-Identifier: MIT
 //
 
+import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
+import UtahSharedContext
 
 struct FormView: View {
     @Binding var disease: String
     @Binding var isEditing: Bool
-    let diseaseOptions = ["Peripheral Arterial Disease", "Venous Insufficiency", "I'm not sure"]
     var body: some View {
         Form {
             Section(header: Text("Condition")) {
                 Picker("Change your condition", selection: $disease) {
-                    ForEach(diseaseOptions, id: \.self) { option in
+                    ForEach(StorageKeys.conditions, id: \.self) { option in
                         Text(option)
                     }
                 }
@@ -24,6 +26,13 @@ struct FormView: View {
             }
             Button(action: {
                 isEditing = false
+                if let user = Auth.auth().currentUser {
+                    Firestore.firestore().collection("users").document(user.uid).updateData(["disease": disease]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        }
+                    }
+               }
             }) {
                 HStack {
                     Spacer()

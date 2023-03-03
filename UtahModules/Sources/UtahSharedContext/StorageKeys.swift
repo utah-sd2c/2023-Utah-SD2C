@@ -18,4 +18,8 @@ public enum StorageKeys {
     // MARK: - Home
     /// The currently selected home tab.
     public static let homeTabSelection = "home.tabselection"
+    
+    // MARK: - Condition
+    /// The conditions the patients can choose from
+    public static var conditions = ["Arterial Disease", "Venous Disease", "I Don't Know"]
 }
