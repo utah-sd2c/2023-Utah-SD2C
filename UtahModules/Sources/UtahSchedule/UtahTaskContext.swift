@@ -6,20 +6,18 @@
 // SPDX-License-Identifier: MIT
 //
 import FHIR
-
-
 /// The context attached to each task in the CS342 2023 Utah Team Application.
-///
-/// We currently only support `Questionnaire`s, more cases can be added in the future.
 public enum UtahTaskContext: Codable, Identifiable {
-    /// The task schould display a `Questionnaire`.
     case questionnaire(Questionnaire)
+    case researchKitTask(ResearchKitTaskContext)
     
     
-    public var id: Questionnaire.ID {
+    public var id: String {
         switch self {
         case let .questionnaire(questionnaire):
-            return questionnaire.id
+            return questionnaire.id.description
+        case let .researchKitTask(researchKitTaskContext):
+            return researchKitTaskContext.rawValue
         }
     }
     
@@ -27,6 +25,8 @@ public enum UtahTaskContext: Codable, Identifiable {
         switch self {
         case .questionnaire:
             return String(localized: "QUESTIONNAIRE_ACTION", bundle: .module)
+        case .researchKitTask:
+            return String(localized: "RESEARCHKIT_TASK_ACTION", bundle: .module)
         }
     }
 }

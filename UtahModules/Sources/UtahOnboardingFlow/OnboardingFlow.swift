@@ -19,6 +19,7 @@ public struct OnboardingFlow: View {
         case consent
         case conditionQuestion
         case healthKitPermissions
+        case taskScheduling
     }
     
     
@@ -42,7 +43,9 @@ public struct OnboardingFlow: View {
                     case .conditionQuestion:
                         ConditionQuestion(onboardingSteps: $onboardingSteps)
                     case .healthKitPermissions:
-                        HealthKitPermissions()
+                        HealthKitPermissions(onboardingSteps: $onboardingSteps)
+                    case .taskScheduling:
+                        TaskScheduling()
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)

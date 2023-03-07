@@ -33,6 +33,7 @@ let package = Package(
             name: "UtahOnboardingFlow",
             dependencies: [
                 .target(name: "UtahSharedContext"),
+                .target(name: "UtahSchedule"),
                 .product(name: "Account", package: "CardinalKit"),
                 .product(name: "FHIR", package: "CardinalKit"),
                 .product(name: "FirebaseAccount", package: "CardinalKit"),

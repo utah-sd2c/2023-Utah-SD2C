@@ -15,7 +15,7 @@ import UtahSharedContext
 
 struct HealthKitPermissions: View {
     @EnvironmentObject var healthKitDataSource: HealthKit<FHIR>
-    @AppStorage(StorageKeys.onboardingFlowComplete) var completedOnboardingFlow = false
+    @Binding private var onboardingSteps: [OnboardingFlow.Step]
     
     
     var body: some View {
@@ -44,17 +44,24 @@ struct HealthKitPermissions: View {
                         } catch {
                             print("Could not request HealthKit permissions.")
                         }
-                        completedOnboardingFlow = true
+                        onboardingSteps.append(.taskScheduling)
                     }
                 )
             }
         )
     }
+
+    init(onboardingSteps: Binding<[OnboardingFlow.Step]>) {
+        self._onboardingSteps = onboardingSteps
+    }
 }
 
 
 struct HealthKitPermissions_Previews: PreviewProvider {
+    @State private static var path: [OnboardingFlow.Step] = []
+
+    
     static var previews: some View {
-        HealthKitPermissions()
+        HealthKitPermissions(onboardingSteps: $path)
     }
 }

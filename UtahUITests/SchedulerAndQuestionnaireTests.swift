@@ -28,28 +28,32 @@ class SchedulerAndQuestionnaireTests: XCTestCase {
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.staticTexts["Monthly Questionnaire"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Please fill out this Questionnaire every month."].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Start Questionnaire"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Questionnaire"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Please complete this task once a month."].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Start Task"].waitForExistence(timeout: 2))
+        app.staticTexts["Start Task"].tap()
+
+        XCTAssertTrue(app.staticTexts["Patient Questionnaire"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 2))
+        app.buttons["Next"].tap()
+        XCTAssertTrue(app.staticTexts["Draw a clock"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Get Started"].waitForExistence(timeout: 2))
+        app.buttons["Get Started"].tap()
         
-        app.staticTexts["Start Questionnaire"].tap()
+        XCTAssertTrue(app.buttons["Skip"].waitForExistence(timeout: 2))
+        app.buttons["Skip"].tap()
         
         // Go through each question
-        let answers = ["0", "Good", "5-8", "Sometimes", "Yes", "No", "Yes", "No"]
+        let answers = ["0", "Good", "5-8", "Sometimes", "Yes", "No", "Yes", "No", "No"]
         for answer in answers {
             XCTAssertTrue(app.tables.staticTexts[answer].waitForExistence(timeout: 2))
             app.tables.staticTexts[answer].tap()
             XCTAssertTrue(app.tables.buttons["Next"].waitForExistence(timeout: 2))
             app.tables.buttons["Next"].tap()
         }
-         // Last Question
-        XCTAssertTrue(app.staticTexts["Do you have a problem with losing control of urine when you don’t want to?"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.tables.staticTexts["No"].waitForExistence(timeout: 2))
-        app.tables.staticTexts["No"].tap()
-        XCTAssertTrue(app.tables.buttons["Done"].waitForExistence(timeout: 2))
-        app.tables.buttons["Done"].tap()
-        
-        XCTAssertTrue(!app.staticTexts["Start Questionnaire"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.images["Selected"].waitForExistence(timeout: 2))
+    
+        XCTAssertTrue(app.staticTexts["Get Up and Go"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 2))
+        app.buttons["Next"].tap()
     }
 }

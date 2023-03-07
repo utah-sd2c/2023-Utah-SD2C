@@ -71,3 +71,8 @@
 "HEALTHKIT_PERMISSIONS_SUBTITLE" = "CardinalKit can access data from HealthKit using the HealthKitDataSource module.";
 "HEALTHKIT_PERMISSIONS_DESCRIPTION" = "This onboarding step allows you to customize the onboarding flow to explain how the application uses the HealhtKit data and allows a user to cusomize the selection.";
 "HEALTHKIT_PERMISSIONS_BUTTON" = "Grant Access";
+
+// MARK: Task Scheduling
+"RESEARCHKIT_TASK_TITLE" = "Edmonton Frail Scale";
+"RESEARCHKIT_TASK_DESCRIPTION" = "Please complete this task once a month.";
+"RESEARCHKIT_TASK_ACTION" = "Start Task";

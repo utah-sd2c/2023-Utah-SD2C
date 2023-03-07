@@ -28,6 +28,7 @@ struct EdmontonViewController: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> ORKTaskViewController {
         let edmontonSurveyTask: ORKOrderedTask = {
+            print("HERE")
             var steps = [ORKStep]()
             
             // Instruction step
