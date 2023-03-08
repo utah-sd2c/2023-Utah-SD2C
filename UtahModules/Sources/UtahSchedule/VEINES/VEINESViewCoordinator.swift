@@ -83,7 +83,7 @@ class VEINESViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
                 }
                 
                 // Upload Score + Data to user collection
-                let userQuestionnaireData = ["score": score, "type": "veines", "surveyId": identifier] as [String: Any]
+                let userQuestionnaireData = ["score": score, "type": "veines", "surveyId": identifier, "dateCompleted": Timestamp()] as [String: Any]
                 let userUID = user?.uid
                 if userUID != nil {
                     database.collection("users").document(userUID!).collection("QuestionnaireResponse").document(identifier).setData(userQuestionnaireData) { err in
