@@ -30,7 +30,11 @@ class OnboardingTests: XCTestCase {
     func testOnboardingFlow() throws {
         let app = XCUIApplication()
         try app.navigateOnboardingFlow(assertThatHealthKitConsentIsShown: true)
-        
+        addUIInterruptionMonitor(withDescription: "System Dialog") {alert -> Bool in
+            alert.buttons["Allow"].tap()
+            return true
+        }
+        app.tap()
         let tabBar = app.tabBars["Tab Bar"]
         XCTAssertTrue(tabBar.buttons["Questions"].waitForExistence(timeout: 2))
         XCTAssertTrue(tabBar.buttons["Trends"].waitForExistence(timeout: 2))
@@ -54,6 +58,7 @@ extension XCUIApplication {
             try navigateOnboardingConditionQuestion()
         }
         try navigateOnboardingFlowHealthKitAccess(assertThatHealthKitConsentIsShown: assertThatHealthKitConsentIsShown)
+        try navigateScheduling()
     }
     
     private func navigateOnboardingFlowWelcome() throws {
@@ -129,5 +134,11 @@ extension XCUIApplication {
         buttons["Grant Access"].tap()
         
         try handleHealthKitAuthorization()
+    }
+    
+    private func navigateScheduling() {
+        XCTAssertTrue(images["heart.text.square.fill"].waitForExistence(timeout: 2))
+        XCTAssertTrue(buttons["Continue"].waitForExistence(timeout: 2))
+        buttons["Continue"].tap()
     }
 }
