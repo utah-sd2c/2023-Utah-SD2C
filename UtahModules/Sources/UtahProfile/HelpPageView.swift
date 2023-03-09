@@ -22,7 +22,7 @@ struct HelpPage: View {
                     .padding(.vertical, 10)
             }
             Section(header: Text("WITHDRAW FROM STUDY")) {
-                Link("+1 (801) 581-8301", destination: URL(string: "tel:(+1(801)-581-8301)")!)
+                Link("+1 (801) 581-3495", destination: URL(string: "tel:(+1(801)-581-3495)")!)
                     .padding(.vertical, 10)
             }
         }

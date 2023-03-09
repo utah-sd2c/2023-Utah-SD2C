@@ -25,7 +25,7 @@ struct UserInformationView: View {
     var body: some View {
         VStack {
             InfoRow(field: "EMAIL", value: user?.email ?? "")
-            InfoRow(field: "CONDITION", value: firestoreManager.disease)
+            InfoRow(field: "DIAGNOSIS", value: firestoreManager.disease)
             Spacer()
             MenuButton(eventBool: $needHelp, buttonLabel: "Need help?", foregroundColor: Color.accentColor, backgroundColor: Color(.white))
                 .sheet(isPresented: $needHelp) {

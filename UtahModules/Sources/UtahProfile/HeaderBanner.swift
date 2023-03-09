@@ -14,7 +14,7 @@ struct Header: View {
             .resizable()
             .foregroundColor(Color.accentColor)
             .scaledToFit()
-            .frame(width: 150, height: 150)
+            .frame(width: 120, height: 120)
             .accessibility(label: Text("headshot"))
     }
 }

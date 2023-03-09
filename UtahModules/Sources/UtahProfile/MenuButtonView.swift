@@ -37,7 +37,6 @@ struct MenuButton: View {
                     .background(backgroundColor)
                     .foregroundColor(foregroundColor)
                     .cornerRadius(10)
-//                    .font(.system(size: 25))
             }
         }
         .padding(.bottom, 30)

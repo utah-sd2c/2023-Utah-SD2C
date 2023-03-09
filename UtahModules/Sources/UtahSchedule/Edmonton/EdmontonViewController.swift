@@ -170,7 +170,7 @@ struct EdmontonViewController: UIViewControllerRepresentable {
             We would like you to perform a walking test
             
             Instructions:
-            Sit in a chair with your back and arms resting, when you are ready, click the ‘Start’ button below. Please stand from your seated position and walk at a safe and comfortable pace approximately 3 meters away. Then, click the ‘STOP’ button on the phone.
+            Sit in a chair with your back and arms resting, when you are ready, click the ‘Next’ button below. Please stand from your seated position and walk at a safe and comfortable pace approximately 3 meters away. Then, click the ‘STOP’ button on the phone.
             
             If you are unable to perform this test safely please have someone help you or click the STOP button immediately.
             

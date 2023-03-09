@@ -101,7 +101,7 @@ struct VEINESViewController: UIViewControllerRepresentable {
                         ORKTextChoice(text: "About the same now as one year ago", value: "3" as NSSecureCoding & NSCopying & NSObjectProtocol),
                         ORKTextChoice(text: "Somewhat worse now than one year ago", value: "4" as NSSecureCoding & NSCopying & NSObjectProtocol),
                         ORKTextChoice(text: "Much worse now than one year ago", value: "5" as NSSecureCoding & NSCopying & NSObjectProtocol),
-                        ORKTextChoice(text: "I did not have any leg problem last year", value: "6" as NSSecureCoding & NSCopying & NSObjectProtocol)
+                        ORKTextChoice(text: "I did not have any leg problems last year", value: "6" as NSSecureCoding & NSCopying & NSObjectProtocol)
                     ]
                     
                     let q3AnswerFormat = ORKAnswerFormat.choiceAnswerFormat(with: .singleChoice, textChoices: q3Choices)
@@ -191,7 +191,7 @@ struct VEINESViewController: UIViewControllerRepresentable {
                         title: "",
                         text:
                             """
-                            During the past 4 weeks, have you has any of the following probloems with your work or other
+                            During the past 4 weeks, have you had any of the following probloems with your work or other
                             regular daily activities as a result of your leg problem?
                             """
                     )

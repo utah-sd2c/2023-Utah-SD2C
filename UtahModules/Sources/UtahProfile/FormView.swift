@@ -16,8 +16,8 @@ struct FormView: View {
     @Binding var isEditing: Bool
     var body: some View {
         Form {
-            Section(header: Text("Condition")) {
-                Picker("Change your condition", selection: $disease) {
+            Section(header: Text("Diagnosis")) {
+                Picker("Change your diagnosis", selection: $disease) {
                     ForEach(StorageKeys.conditions, id: \.self) { option in
                         Text(option)
                     }

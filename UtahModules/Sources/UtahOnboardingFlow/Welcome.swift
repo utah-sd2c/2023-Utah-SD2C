@@ -14,8 +14,13 @@ import UtahSharedContext
 struct Welcome: View {
     @Binding private var onboardingSteps: [OnboardingFlow.Step]
     
-    
     var body: some View {
+        utahLogo
+            .resizable()
+            .scaledToFill()
+            .accessibilityLabel(Text("University of Utah logo"))
+            .frame(width: 166, height: 44)
+            .padding(.top, 40)
         OnboardingView(
             title: "Welcome to U-STEP".moduleLocalized,
             subtitle: "A collaboration between University of Utah & Stanford University".moduleLocalized,
@@ -31,7 +36,7 @@ struct Welcome: View {
                     description: "Record your daily activity levels".moduleLocalized
                 ),
                 .init(
-                    icon: Image(systemName: "server.rack"),
+                    icon: Image(systemName: "chart.line.uptrend.xyaxis"),
                     title: "Monitor your progress".moduleLocalized,
                     description: "View your progression over time\n".moduleLocalized
                 )
@@ -44,7 +49,7 @@ struct Welcome: View {
                     onboardingSteps.append(.consent)
                 }
             }
-        )
+        ).padding(.top, -20)
     }
     
     

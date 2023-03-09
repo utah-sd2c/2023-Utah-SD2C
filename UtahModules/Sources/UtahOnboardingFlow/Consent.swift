@@ -9,7 +9,6 @@
 import Onboarding
 import SwiftUI
 
-
 struct Consent: View {
     @Binding private var onboardingSteps: [OnboardingFlow.Step]
     
@@ -26,16 +25,24 @@ struct Consent: View {
         ScrollViewReader { _ in
             OnboardingView(
                 contentView: {
-                    HTMLView(
-                        asyncHTML: {
-                            consentDocument
-                        }
-                    )
+                    VStack {
+                        utahLogo
+                            .resizable()
+                            .scaledToFill()
+                            .accessibilityLabel(Text("University of Utah logo"))
+                            .frame(width: 166, height: 44)
+                            .padding(.bottom, 20)
+                        HTMLView(
+                            asyncHTML: {
+                                consentDocument
+                            }
+                        )
+                    }
                 },
                 actionView: {
                     VStack {
                         OnboardingActionsView("I accept") {
-                            onboardingSteps.append(.conditionQuestion)
+                            onboardingSteps.append(.signUp)
                         }
                         Divider()
                     }

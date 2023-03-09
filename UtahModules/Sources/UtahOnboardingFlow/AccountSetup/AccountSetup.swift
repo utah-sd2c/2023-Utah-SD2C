@@ -120,7 +120,7 @@ struct AccountSetup: View {
                 primaryText: "ACCOUNT_SIGN_UP".moduleLocalized,
                 primaryAction: {
                     isSigningUp = true
-                    onboardingSteps.append(.signUp)
+                    onboardingSteps.append(.consent)
                 },
                 secondaryText: "ACCOUNT_LOGIN".moduleLocalized,
                 secondaryAction: {
@@ -139,12 +139,12 @@ struct AccountSetup: View {
     
     private func appendNextOnboardingStep() {
         if isSigningUp {
-            #if targetEnvironment(simulator) && (arch(i386) || arch(x86_64))
-            print("PKCanvas view-related views are currently skipped on Intel-based iOS simulators due to a metal bug on the simulator.")
+//            #if targetEnvironment(simulator) && (arch(i386) || arch(x86_64))
+//            print("PKCanvas view-related views are currently skipped on Intel-based iOS simulators due to a metal bug on the simulator.")
             onboardingSteps.append(.conditionQuestion)
-            #else
-            onboardingSteps.append(.consent)
-            #endif
+//            #else
+//            onboardingSteps.append(.consent)
+            // #endif
         } else {
             onboardingSteps.append(.healthKitPermissions)
         }
