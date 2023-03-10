@@ -25,7 +25,8 @@ import UtahSharedContext
                 Spacer()
                 DataCard(
                     icon: "shoeprints.fill",
-                    title: "Daily Step Count", unit: "steps",
+                    title: "Daily Step Count",
+                    unit: "steps",
                     color: Color.green
                 )
                 Spacer()

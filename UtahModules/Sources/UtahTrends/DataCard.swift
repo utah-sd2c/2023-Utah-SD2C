@@ -10,8 +10,8 @@
 
 import Charts
 import FHIR
-import SwiftUI
 import FirebaseFirestore
+import SwiftUI
 import UtahSharedContext
 
 

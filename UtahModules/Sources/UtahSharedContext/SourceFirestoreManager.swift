@@ -8,6 +8,8 @@
 
 // swiftlint:disable identifier_name
 // swiftlint:disable type_contents_order
+// swiftlint:disable legacy_objc_type
+// swiftlint:disable force_unwrapping
 
 import Account
 import Firebase
@@ -77,7 +79,7 @@ public class FirestoreManager: ObservableObject {
             } else {
                 continuation.resume()
             }
-       }
+        }
     
         /*_Concurrency.Task { @MainActor in
             

@@ -46,7 +46,12 @@ struct Welcome: View {
                 if !FeatureFlags.disableFirebase {
                     onboardingSteps.append(.accountSetup)
                 } else {
-                    onboardingSteps.append(.consent)
+                    #if targetEnvironment(simulator) && (arch(i386) || arch(x86_64))
+                    print("PKCanvas view-related views are currently skipped on Intel-based iOS simulators due to a metal bug on the simulator.")
+                    onboardingSteps.append(.accountSetup)
+                    #else
+                     onboardingSteps.append(.consent)
+                    #endif
                 }
             }
         ).padding(.top, -20)

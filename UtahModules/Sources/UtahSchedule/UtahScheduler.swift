@@ -27,7 +27,7 @@ extension UtahScheduler {
                         dateComponents: .init(hour: 10, minute: 00), // Every Day at 10:00 AM
                         end: .numberOfEvents(356)
                     ),
-                    context: UtahTaskContext.researchKitTask(.edmonton)
+                    context: UtahTaskContext.researchKitTask(.edmontonVEINES)
                 )
             ]
         )
