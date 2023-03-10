@@ -79,7 +79,10 @@ let package = Package(
             name: "UtahTrends",
             dependencies: [
                 .target(name: "UtahSharedContext"),
-                .product(name: "FHIR", package: "CardinalKit")
+                .product(name: "FHIR", package: "CardinalKit"),
+                .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk")
             ]
         )
     ]

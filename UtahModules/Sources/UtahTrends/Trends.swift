@@ -6,21 +6,31 @@
 // SPDX-License-Identifier: MIT
 //
 
-import FHIR
-import Foundation
+import Account
 import SwiftUI
+import class FHIR.FHIR
+import FirebaseAuth
+import FirebaseFirestore
+import UtahSharedContext
 
 
-public struct Trends: View {
+ public struct Trends: View {
+    @EnvironmentObject var firestoreManager: FirestoreManager
+     
     public var body: some View {
         NavigationStack {
             VStack(alignment: .center, spacing: 10) {
                 Charts()
                     .frame(minHeight: 250)
                 Spacer()
-                TrendWrapper(code: "55423-8", icon: "shoeprints.fill", title: "Daily Step Count", unit: "steps", color: Color.green)
+                DataCard(
+                    icon: "shoeprints.fill",
+                    title: "Daily Step Count", unit: "steps",
+                    color: Color.green
+                )
                 Spacer()
-                DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
+                // removed survey for now until we pull survey data from firestore
+                // DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
                 Spacer()
                 StyledGauge(userScore: 50.0, minScore: 50.0, maxScore: 170.0)
                     .padding()
@@ -30,7 +40,8 @@ public struct Trends: View {
         .padding()
         .navigationTitle("Trends")
     }
-    public init() {}
+    public init() {
+    }
 }
 
 // This just removes this section from being counted in our % "test coverage"

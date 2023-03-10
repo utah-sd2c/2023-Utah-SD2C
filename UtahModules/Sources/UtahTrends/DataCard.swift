@@ -11,15 +11,17 @@
 import Charts
 import FHIR
 import SwiftUI
+import FirebaseFirestore
+import UtahSharedContext
 
 
 struct DataCard: View {
+    @EnvironmentObject var firestoreManager: FirestoreManager
+    
     let icon: String
     let title: String
     let unit: String
     let color: Color
-    let observations: [Observation]
-    
     @State private var chartData: [(date: Date, value: Double)] = []
     @State private var maxValue: Double = 0.0
 
@@ -35,7 +37,7 @@ struct DataCard: View {
             .padding(.bottom, 2)
             // data
             HStack(alignment: .firstTextBaseline) {
-                Text(maxValue.description)
+                Text(round(maxValue).description)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(color)
@@ -44,7 +46,6 @@ struct DataCard: View {
                 Spacer()
             }
         }
-        // .frame(width: 380)
         .padding(30)
         .frame(width: 350, height: 110)
         .background {
@@ -53,13 +54,16 @@ struct DataCard: View {
                 .shadow(radius: 5)
         }
         .task {
-            recalculateChartData(basedOn: observations)
+            await firestoreManager.loadObservations(metricCode: "55423-8")
+            recalculateChartData(basedon: firestoreManager.observations)
         }
     }
     
-    // sums up all data points from current day
+    // sums up all data points from each day
     func group(_ data: [(date: Date, value: Double)]) -> [(date: Date, value: Double)] {
-            var latestDate: Date = Calendar.current.startOfDay(for: Date())
+            let calendar = Calendar.current
+            let startOfDay = calendar.startOfDay(for: Date())
+        var latestDate: Date = calendar.date(byAdding: .day, value: -6, to: startOfDay) ?? Date()
             var filteredData: [(Date, Double)] = []
             
             Calendar.current.enumerateDates(
@@ -93,23 +97,15 @@ struct DataCard: View {
         }
     
     // recalculates data when new observation is added
-    func recalculateChartData(basedOn newObservations: [Observation]) {
-            chartData = group(
-                observations
-                    .compactMap { observation in
-                        observation.chartData
-                    }
-                )
-            maxValue = chartData
-                .max {
-                    $0.value < $1.value
-                }?
-                .value ?? 0.0
-        }
+    func recalculateChartData(basedon newObservations: [(date: Date, value: Double)]) {
+        chartData = group(firestoreManager.observations)
+        maxValue = chartData.map { $0.value }.reduce(0, +) / 7
+    }
 }
 
-struct DataCard_Previews: PreviewProvider {
+/*struct DataCard_Previews: PreviewProvider {
     static var previews: some View {
         DataCard(icon: "shoeprints.fill", title: "Daily Step Count", unit: "steps", color: Color.green, observations: [])
     }
 }
+*/
