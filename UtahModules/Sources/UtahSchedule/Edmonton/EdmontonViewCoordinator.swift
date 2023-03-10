@@ -19,6 +19,8 @@ import FirebaseStorage
 import Foundation
 import ModelsR4
 import ResearchKit
+import SwiftUI
+import UtahSharedContext
 
 
 class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
@@ -92,7 +94,7 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
                     }
                 }
 
-        
+
                 // Upload Score + Data to user collection
                 let userQuestionnaireData = ["score": score, "type": "edmonton", "surveyId": identifier, "dateCompleted": Timestamp()] as [String: Any]
                 let userUID = user?.uid
@@ -141,8 +143,38 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             break
         }
 
-        // We're done, dismiss the survey
-        taskViewController.dismiss(animated: true, completion: nil)
-        taskViewController.dismiss(animated: true, completion: nil)
+        // We're done with the Edmonton survey, now we will launch
+        // a second survey depending on which type of disease the user
+        // reported having during onboarding.
+
+        let defaults = UserDefaults.standard
+        if let disease = defaults.string(forKey: "disease") {
+            var nextSurveyViewController: UIViewController?
+
+            switch disease {
+            case "Arterial Disease":
+                // Set the next survey
+                nextSurveyViewController = UIHostingController(rootView: WIQViewController())
+            case "Venous Disease":
+                nextSurveyViewController = UIHostingController(rootView: VEINESViewController())
+            default:
+                nextSurveyViewController = nil
+            }
+
+            // Close the current survey and open up the next survey
+            weak var presentingViewController = taskViewController.presentingViewController
+            taskViewController.dismiss(animated: true, completion: {
+                if let nextSurveyViewController {
+                    presentingViewController?.present(
+                        nextSurveyViewController,
+                        animated: true,
+                        completion: nil
+                    )
+                }
+            })
+        } else {
+            // If the disease lookup fails, end the survey
+            taskViewController.dismiss(animated: true, completion: nil)
+        }
     }
 }

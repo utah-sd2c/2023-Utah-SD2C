@@ -55,6 +55,11 @@ struct ConditionQuestion: View {
                 OnboardingActionsView(
                     "Next".moduleLocalized,
                     action: {
+                        // Store condition locally in UserDefaults
+                        let defaults = UserDefaults.standard
+                        defaults.set(selection, forKey: "disease")
+
+                        // Store condition in Firestore
                         if let user = Auth.auth().currentUser {
                             Firestore.firestore().collection("users").document(user.uid).updateData(["disease": selection]) { err in
                                 if let err = err {
