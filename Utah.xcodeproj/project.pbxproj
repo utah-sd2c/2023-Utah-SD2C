@@ -39,10 +39,7 @@
 		653A256228338800005D4D48 /* UtahTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256128338800005D4D48 /* UtahTests.swift */; };
 		653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */; };
 		935A314729AF2243002B9E27 /* HealthKitOnFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 935A314629AF2243002B9E27 /* HealthKitOnFHIR */; };
-		935A314929AF324E002B9E27 /* VEINESTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A314829AF324E002B9E27 /* VEINESTests.swift */; };
 		93CD053729A0430400CC9DFB /* ResearchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93CD053629A0430400CC9DFB /* ResearchKit */; };
-		93CD053929A0548B00CC9DFB /* EdmontonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD053829A0548B00CC9DFB /* EdmontonTests.swift */; };
-		93CD053B29A0595A00CC9DFB /* WIQTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD053A29A0595A00CC9DFB /* WIQTests.swift */; };
 		93E00344298DC9EB00D6E494 /* UtahProfile in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00343298DC9EB00D6E494 /* UtahProfile */; };
 		93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */ = {isa = PBXBuildFile; productRef = 93E00345298DCF6400D6E494 /* UtahTrends */; };
 		93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E00348298DFA8200D6E494 /* ProfileTests.swift */; };
@@ -86,9 +83,6 @@
 		653A256728338800005D4D48 /* UtahUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtahUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A256B28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulerAndQuestionnaireTests.swift; sourceTree = "<group>"; };
 		653A258928339462005D4D48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		935A314829AF324E002B9E27 /* VEINESTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VEINESTests.swift; sourceTree = "<group>"; };
-		93CD053829A0548B00CC9DFB /* EdmontonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdmontonTests.swift; sourceTree = "<group>"; };
-		93CD053A29A0595A00CC9DFB /* WIQTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIQTests.swift; sourceTree = "<group>"; };
 		93CD054929A9634D00CC9DFB /* UtahDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UtahDebug.entitlements; sourceTree = "<group>"; };
 		93E00348298DFA8200D6E494 /* ProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		93E0034A298DFAF200D6E494 /* TrendsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendsTests.swift; sourceTree = "<group>"; };
@@ -207,9 +201,6 @@
 				93E00348298DFA8200D6E494 /* ProfileTests.swift */,
 				93E0034A298DFAF200D6E494 /* TrendsTests.swift */,
 				23B0449A299DB70A008CD957 /* WalkTestTests.swift */,
-				93CD053829A0548B00CC9DFB /* EdmontonTests.swift */,
-				93CD053A29A0595A00CC9DFB /* WIQTests.swift */,
-				935A314829AF324E002B9E27 /* VEINESTests.swift */,
 			);
 			path = UtahUITests;
 			sourceTree = "<group>";
@@ -429,12 +420,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93CD053929A0548B00CC9DFB /* EdmontonTests.swift in Sources */,
-				935A314929AF324E002B9E27 /* VEINESTests.swift in Sources */,
 				93E0034B298DFAF200D6E494 /* TrendsTests.swift in Sources */,
 				23B0449B299DB70A008CD957 /* WalkTestTests.swift in Sources */,
 				2F4E237E2989A2FE0013F3D9 /* OnboardingTests.swift in Sources */,
-				93CD053B29A0595A00CC9DFB /* WIQTests.swift in Sources */,
 				93E00349298DFA8200D6E494 /* ProfileTests.swift in Sources */,
 				653A256C28338800005D4D48 /* SchedulerAndQuestionnaireTests.swift in Sources */,
 			);

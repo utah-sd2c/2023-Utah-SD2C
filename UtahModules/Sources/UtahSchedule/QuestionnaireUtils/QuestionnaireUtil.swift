@@ -453,15 +453,26 @@ public enum QuestionnaireUtil {
         We would like you to perform a walking test
 
         Instructions:
-        Sit in a chair with your back and arms resting, when you are ready, click the ‘Next’ button below. Please stand from your seated position and walk at a safe and comfortable pace approximately 3 meters away. Then, click the ‘STOP’ button on the phone.
+        Sit in a chair with your back and arms resting. Please stand from your seated position and walk at a safe and comfortable pace approximately 3 meters away. Then, click the ‘STOP’ button on the phone.
 
         If you are unable to perform this test safely please have someone help you or click the STOP button immediately.
 
 
-        When you're ready to start, click Next.
+        Click Next to see a demonstration.
         """
 
         steps += [getUpIntroStep]
+        
+        let videoStep = ORKVideoInstructionStep(identifier: "VideoInstructionStep")
+        videoStep.videoURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/cs342-2023-utah.appspot.com/o/video.mp4?alt=media&token=121045b0-f9d2-49eb-86c2-bf0425141d7e")
+        videoStep.title = "Demonstration Above"
+        videoStep.text = """
+        Click to Play
+        
+        When you're ready to start, click Next.
+        """
+
+        steps += [videoStep]
 
         let q11Step = TimedWalkStep(identifier: "Edmonton 11")
         q11Step.isOptional = false

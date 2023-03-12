@@ -34,6 +34,10 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             // Convert the responses into a FHIR object using ResearchKitOnFHIR
             let fhirResponse = taskViewController.result.fhirResponse
             
+            // remove instruction step from fhir
+            let instructionStepIndex = fhirResponse.item!.endIndex - 2
+            fhirResponse.item?.remove(at: instructionStepIndex)
+            
             let getUpGoResult = taskViewController.result.stepResult(forStepIdentifier: "Edmonton 11")
             let getUpResult: TimedWalkStepResult = getUpGoResult?.results?[0] as! TimedWalkStepResult
             

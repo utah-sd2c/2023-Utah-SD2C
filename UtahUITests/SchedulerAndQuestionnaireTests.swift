@@ -33,7 +33,7 @@ class SchedulerAndQuestionnaireTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Start Task"].firstMatch.waitForExistence(timeout: 2))
         app.staticTexts["Start Task"].firstMatch.tap()
 
-        // default questionnaire
+        // skips onboarding so will always show default questionnaire
         try app.navigateEdmontonQuestionnaire()
     }
 }
@@ -42,17 +42,6 @@ extension XCUIApplication {
     func navigateEdmontonQuestionnaire() throws {
         try navigateEdmonton()
     }
-    
-    /*
-    func navigateWIQQuestionnaire() throws {
-        try navigateEdmonton()
-        try navigateWIQ()
-    }
-
-    func navigateVenousQuestionnaire() throws {
-        try navigateEdmonton()
-        try navigateVeines()
-    }*/
     
     private func navigateEdmonton() throws {
         XCTAssertTrue(staticTexts["Patient Questionnaire"].waitForExistence(timeout: 2))
@@ -78,6 +67,10 @@ extension XCUIApplication {
         XCTAssertTrue(buttons["Next"].waitForExistence(timeout: 2))
         buttons["Next"].tap()
         
+        XCTAssertTrue(staticTexts["Demonstration Above"].waitForExistence(timeout: 2))
+        XCTAssertTrue(buttons["Next"].waitForExistence(timeout: 2))
+        buttons["Next"].tap()
+        
         XCTAssertTrue(buttons["STOP"].waitForExistence(timeout: 2))
         XCTAssertTrue(buttons["STOP"].waitForExistence(timeout: 2))
         buttons["STOP"].tap()
@@ -85,6 +78,17 @@ extension XCUIApplication {
         XCTAssertTrue(buttons["11-20 Seconds"].waitForExistence(timeout: 2))
         XCTAssertTrue(buttons["11-20 Seconds"].waitForExistence(timeout: 2))
         buttons["11-20 Seconds"].tap()
+    }
+    
+    /*
+    func navigateWIQQuestionnaire() throws {
+        try navigateEdmonton()
+        try navigateWIQ()
+    }
+
+    func navigateVenousQuestionnaire() throws {
+        try navigateEdmonton()
+        try navigateVeines()
     }
     
     private func navigateVeines() throws {
@@ -122,5 +126,5 @@ extension XCUIApplication {
         XCTAssertTrue(staticTexts["Thank you."].waitForExistence(timeout: 2))
         XCTAssertTrue(buttons["Done"].waitForExistence(timeout: 2))
         buttons["Done"].tap()
-    }
+    }*/
 }
