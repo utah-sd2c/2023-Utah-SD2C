@@ -28,20 +28,31 @@ class SchedulerAndQuestionnaireTests: XCTestCase {
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
 
-        XCTAssertTrue(app.staticTexts["Questionnaire"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Please complete this task once a month."].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Start Task"].waitForExistence(timeout: 2))
-        app.staticTexts["Start Task"].tap()
+        XCTAssertTrue(app.staticTexts["Questionnaire"].firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Please complete this task once a month."].firstMatch.waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Start Task"].firstMatch.waitForExistence(timeout: 2))
+        app.staticTexts["Start Task"].firstMatch.tap()
 
-        try app.navigateVenousQuestionnaire()
+        // default questionnaire
+        try app.navigateEdmontonQuestionnaire()
     }
 }
 
 extension XCUIApplication {
+    func navigateEdmontonQuestionnaire() throws {
+        try navigateEdmonton()
+    }
+    
+    /*
+    func navigateWIQQuestionnaire() throws {
+        try navigateEdmonton()
+        try navigateWIQ()
+    }
+
     func navigateVenousQuestionnaire() throws {
         try navigateEdmonton()
         try navigateVeines()
-    }
+    }*/
     
     private func navigateEdmonton() throws {
         XCTAssertTrue(staticTexts["Patient Questionnaire"].waitForExistence(timeout: 2))
@@ -87,6 +98,27 @@ extension XCUIApplication {
             buttons["Next"].tap()
         }
 
+        XCTAssertTrue(staticTexts["Thank you."].waitForExistence(timeout: 2))
+        XCTAssertTrue(buttons["Done"].waitForExistence(timeout: 2))
+        buttons["Done"].tap()
+    }
+    
+    private func navigateWIQ() throws {
+        let answers = [
+            "No Difficulty",
+            "Slight Difficulty",
+            "Some Difficulty",
+            "Much Difficulty",
+            "Unable to Do",
+            "Slight Difficulty",
+            "No Difficulty"
+        ]
+        for answer in answers {
+            XCTAssertTrue(tables.staticTexts[answer].waitForExistence(timeout: 2))
+            tables.staticTexts[answer].tap()
+            XCTAssertTrue(tables.buttons["Next"].waitForExistence(timeout: 2))
+            tables.buttons["Next"].tap()
+        }
         XCTAssertTrue(staticTexts["Thank you."].waitForExistence(timeout: 2))
         XCTAssertTrue(buttons["Done"].waitForExistence(timeout: 2))
         buttons["Done"].tap()

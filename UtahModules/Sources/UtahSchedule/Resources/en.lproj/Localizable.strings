@@ -16,6 +16,11 @@
 "RESEARCHKIT_TASK_DESCRIPTION" = "Please complete this task once a month.";
 "RESEARCHKIT_TASK_ACTION" = "Start Task";
 
+"QUESTIONNAIRE_TASK_TITLE" = "Questionnaire";
+"EDMONTON_TITLE" = "Questionnaire";
+"EDMONTON_VEINES_TITLE" = "Venous Questionnaire (VEINES)";
+"EDMONTON_WIQ_TITLE" = "Arterial Questionnaire (WIQ)";
+
 
 // MARK: - GetUpAndGo
 "GET_UP_GO_TITLE" = "Get Up and Go";

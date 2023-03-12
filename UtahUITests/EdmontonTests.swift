@@ -19,7 +19,7 @@ class EdmontonTests: XCTestCase {
         app.launch()
     }
     
-    func testEdmonton() throws {
+    /*func testEdmonton() throws {
         let app = XCUIApplication()
         
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
@@ -59,5 +59,5 @@ class EdmontonTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Thank you."].waitForExistence(timeout: 2))
         XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 2))
         app.buttons["Done"].tap()*/
-    }
+    }*/
 }

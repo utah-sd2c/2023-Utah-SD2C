@@ -23,7 +23,7 @@ import SwiftUI
 import UtahSharedContext
 
 
-class EdmontonVEINESViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
+class EdmontonWIQViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
     public func taskViewController(
         _ taskViewController: ORKTaskViewController,
         didFinishWith reason: ORKTaskViewControllerFinishReason,
@@ -33,12 +33,12 @@ class EdmontonVEINESViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
         case .completed:
             // Convert the responses into a FHIR object using ResearchKitOnFHIR
             let edmontonResponse = taskViewController.result.fhirResponse
-            let veinesResponse = taskViewController.result.fhirResponse
+            let wiqResponse = taskViewController.result.fhirResponse
             
             // Separate the Surveys for storage/scoring
             
             // Edmonton Upload
-            edmontonResponse.item?.removeLast(26)
+            edmontonResponse.item?.removeLast(7)
             let getUpGoResult = taskViewController.result.stepResult(forStepIdentifier: "Edmonton 11")
             let getUpResult: TimedWalkStepResult = getUpGoResult?.results?[0] as! TimedWalkStepResult
             
@@ -50,9 +50,9 @@ class EdmontonVEINESViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             edmontonResponse.item?.last?.answer?.append(getUp)
             QuestionnaireUtil.uploadQuestionnaire(fhirResponse: edmontonResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
             
-            // VEINES Upload
-            veinesResponse.item?.removeFirst(11)
-            QuestionnaireUtil.uploadQuestionnaire(fhirResponse: veinesResponse, firebaseCollection: "veinessurveys", surveyType: "veines")
+            // WIQ Upload
+            wiqResponse.item?.removeFirst(11)
+            QuestionnaireUtil.uploadQuestionnaire(fhirResponse: wiqResponse, firebaseCollection: "wiqsurveys", surveyType: "wiq")
         default:
             break
         }

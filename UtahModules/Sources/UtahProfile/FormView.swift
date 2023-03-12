@@ -9,6 +9,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI
+import UtahSchedule
 import UtahSharedContext
 
 struct FormView: View {
@@ -32,6 +33,8 @@ struct FormView: View {
                             print("Error updating document: \(err)")
                         }
                     }
+                    let defaults = UserDefaults.standard
+                    defaults.set(disease, forKey: "disease")
                }
             }) {
                 HStack {

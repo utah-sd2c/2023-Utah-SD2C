@@ -11,16 +11,16 @@ import ResearchKit
 
 // swiftlint:disable function_body_length line_length object_literal
 // swiftlint:disable type_body_length
-enum EdmontonVEINESTask {
-    static func createEdmontonVEINESTask(showSummary: Bool = false) -> ORKOrderedTask {
+enum EdmontonWIQTask {
+    static func createEdmontonWIQTask(showSummary: Bool = false) -> ORKOrderedTask {
         var steps = [ORKStep]()
 
         // EDMONTON
         QuestionnaireUtil.addEdmontonSteps(steps: &steps)
 
-        // VEINES
-        QuestionnaireUtil.addVEINESSteps(steps: &steps)
- 
+        // WIQ
+        QuestionnaireUtil.addWIQSteps(steps: &steps)
+        
         // summary
         let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
         summaryStep.title = "Thank you."
@@ -29,6 +29,6 @@ enum EdmontonVEINESTask {
         steps += [summaryStep]
 
 
-        return ORKOrderedTask(identifier: "edmontonVeines", steps: steps)
+        return ORKOrderedTask(identifier: "edmontonWiq", steps: steps)
     }
 }

@@ -94,7 +94,6 @@ public struct ScheduleView: View {
                 .sheet(item: $presentedContext) { presentedContext in
                     destination(withContext: presentedContext)
                 }
-                temporyButtons
             }
         }
     }
@@ -118,6 +117,8 @@ public struct ScheduleView: View {
                     EdmontonViewController()
                 } else if researchKitTaskContext == .edmontonVEINES {
                     EdmontonVEINESViewController()
+                } else if researchKitTaskContext == .edmontonWIQ {
+                    EdmontonWIQViewController()
                 }
             }
         }

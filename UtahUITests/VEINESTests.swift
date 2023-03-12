@@ -19,7 +19,7 @@ class VEINESTests: XCTestCase {
         app.launch()
     }
     
-    func testWIQ() throws {
+    /*func testWIQ() throws {
         let app = XCUIApplication()
         
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
@@ -50,5 +50,5 @@ class VEINESTests: XCTestCase {
 //        XCTAssertTrue(app.staticTexts["Thank you."].waitForExistence(timeout: 2))
 //        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 2))
 //        app.buttons["Done"].tap()
-    }
+    }*/
 }

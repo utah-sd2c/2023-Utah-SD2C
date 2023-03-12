@@ -11,4 +11,5 @@ import Foundation
 public enum ResearchKitTaskContext: String, Codable {
     case edmonton
     case edmontonVEINES
+    case edmontonWIQ
 }

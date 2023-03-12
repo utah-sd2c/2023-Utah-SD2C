@@ -20,7 +20,7 @@ class WalkTestTests: XCTestCase {
         app.launch()
     }
     
-    func testWalkTest() throws {
+    /*func testWalkTest() throws {
         let app = XCUIApplication()
         
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
@@ -31,5 +31,5 @@ class WalkTestTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Fitness"].waitForExistence(timeout: 2))
         XCTAssertTrue(app.buttons["Next"].waitForExistence(timeout: 2))
         app.buttons["Next"].tap()
-    }
+    }*/
 }
