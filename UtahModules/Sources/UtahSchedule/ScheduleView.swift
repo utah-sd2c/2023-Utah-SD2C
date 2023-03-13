@@ -65,10 +65,6 @@ public struct ScheduleView: View {
             case let .researchKitTask(researchKitTaskContext):
                 if researchKitTaskContext == .edmonton {
                     EdmontonViewController()
-                } else if researchKitTaskContext == .edmontonVEINES {
-                    EdmontonVEINESViewController()
-                } else if researchKitTaskContext == .edmontonWIQ {
-                    EdmontonWIQViewController()
                 }
             }
         }

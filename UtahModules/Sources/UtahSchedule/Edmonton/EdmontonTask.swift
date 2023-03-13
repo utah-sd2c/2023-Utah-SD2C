@@ -8,6 +8,7 @@
 
 import Foundation
 import ResearchKit
+import UtahSharedContext
 
 // swiftlint:disable function_body_length line_length object_literal
 enum EdmontonTask {
@@ -15,6 +16,23 @@ enum EdmontonTask {
         var steps = [ORKStep]()
 
         QuestionnaireUtil.addEdmontonSteps(steps: &steps)
+        
+        // determining what additional questionnaire to add
+        // based on patients disease
+        var identifier = "edmonton"
+        let defaults = UserDefaults.standard
+        if let disease = defaults.string(forKey: "disease") {
+            switch disease {
+            case StorageKeys.conditions[0]:
+                QuestionnaireUtil.addWIQSteps(steps: &steps)
+                identifier += "Wiq"
+            case StorageKeys.conditions[1]:
+                QuestionnaireUtil.addVEINESSteps(steps: &steps)
+                identifier += "Veines"
+            default:
+                break
+            }
+        }
         
         if showSummary {
             let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
@@ -24,6 +42,6 @@ enum EdmontonTask {
             steps += [summaryStep]
         }
 
-        return ORKOrderedTask(identifier: "edmonton", steps: steps)
+        return ORKOrderedTask(identifier: identifier, steps: steps)
     }
 }

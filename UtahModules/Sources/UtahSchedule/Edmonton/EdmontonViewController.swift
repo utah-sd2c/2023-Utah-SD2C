@@ -16,12 +16,24 @@ import Foundation
 import ResearchKit
 import SwiftUI
 import UIKit
+import UtahSharedContext
 
 struct EdmontonViewController: UIViewControllerRepresentable {
     typealias UIViewControllerType = ORKTaskViewController
     
-    func makeCoordinator() -> EdmontonViewCoordinator {
-        EdmontonViewCoordinator()
+    func makeCoordinator() -> ORKTaskViewControllerDelegate {
+        let defaults = UserDefaults.standard
+        if let disease = defaults.string(forKey: "disease") {
+            switch disease {
+            case StorageKeys.conditions[0]:
+                return EdmontonWIQViewCoordinator()
+            case StorageKeys.conditions[1]:
+                return EdmontonVEINESViewCoordinator()
+            default:
+                return EdmontonViewCoordinator()
+            }
+        }
+        return EdmontonViewCoordinator()
     }
     
     func updateUIViewController(_ taskViewController: ORKTaskViewController, context: Context) {}

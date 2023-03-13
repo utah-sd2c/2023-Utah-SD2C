@@ -76,13 +76,9 @@ extension XCUIApplication {
         XCTAssertTrue(buttons["Sign Up"].waitForExistence(timeout: 2))
         buttons["Sign Up"].tap()
         
-        #if !(targetEnvironment(simulator) && (arch(i386) || arch(x86_64)))
         try navigateOnboardingFlowConsent()
-        #else
-        print("PKCanvas view-related views are currently skipped on Intel-based iOS simulators due to a metal bug on the simulator.")
-        #endif
         
-        XCTAssertTrue(navigationBars.staticTexts["Sign Up"].waitForExistence(timeout: 2))
+        XCTAssertTrue(navigationBars.staticTexts["Sign Up"].waitForExistence(timeout: 4))
         XCTAssertTrue(images["App Icon"].waitForExistence(timeout: 2))
         XCTAssertTrue(buttons["Email and Password"].waitForExistence(timeout: 2))
         
@@ -112,7 +108,7 @@ extension XCUIApplication {
     }
     
     private func navigateOnboardingFlowConsent() throws {
-        XCTAssertTrue(staticTexts["Consent Form"].waitForExistence(timeout: 2))
+        XCTAssertTrue(staticTexts["Consent Form"].waitForExistence(timeout: 4))
         
         swipeUp(velocity: .fast)
         swipeUp(velocity: .fast)

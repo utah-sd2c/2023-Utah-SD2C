@@ -18,20 +18,6 @@ public typealias UtahScheduler = Scheduler<FHIR, UtahTaskContext>
 extension UtahScheduler {
     /// Creates a default instance of the ``UtahScheduler`` by scheduling the tasks listed below.
     public convenience init() {
-        var task: ResearchKitTaskContext
-        let defaults = UserDefaults.standard
-        if let disease = defaults.string(forKey: "disease") {
-            switch disease {
-            case StorageKeys.conditions[0]:
-                task = ResearchKitTaskContext.edmontonWIQ
-            case StorageKeys.conditions[1]:
-                task = ResearchKitTaskContext.edmontonVEINES
-            default:
-                task = ResearchKitTaskContext.edmonton
-            }
-        } else {
-            task = ResearchKitTaskContext.edmonton
-        }
         self.init(
             tasks: [
                 Task(
@@ -42,7 +28,7 @@ extension UtahScheduler {
                         dateComponents: .init(hour: 10, minute: 00), // Every Day at 10:00 AM
                         end: .numberOfEvents(356)
                     ),
-                    context: UtahTaskContext.researchKitTask(task)
+                    context: UtahTaskContext.researchKitTask(ResearchKitTaskContext.edmonton)
                 )
             ]
         )
