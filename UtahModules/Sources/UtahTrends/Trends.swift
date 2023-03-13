@@ -32,10 +32,6 @@ import UtahSharedContext
                 Spacer()
                 // removed survey for now until we pull survey data from firestore
                 // DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
-                Spacer()
-                StyledGauge(userScore: 50.0, minScore: 50.0, maxScore: 170.0)
-                    .padding()
-                    .frame(minWidth: 150)
             }
         }
         .padding()

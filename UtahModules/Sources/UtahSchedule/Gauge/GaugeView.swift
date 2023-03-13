@@ -44,7 +44,7 @@ struct NeedleView: View {
         
         GeometryReader { geometry in
             ZStack {
-                let rectWidth = geometry.size.width / 7
+                let rectWidth = geometry.size.width / 4
                 let rectHeight = geometry.size.width / 23
                 
                 Rectangle()

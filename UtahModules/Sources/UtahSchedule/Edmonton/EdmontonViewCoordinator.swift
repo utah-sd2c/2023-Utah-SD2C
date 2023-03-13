@@ -47,44 +47,40 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             fhirResponse.item?.last?.answer?.removeAll()
             fhirResponse.item?.last?.answer?.append(getUp)
             
-            QuestionnaireUtil.uploadQuestionnaire(fhirResponse: fhirResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
+            let edmontonScore = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: fhirResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
+        
+            // We're done with the Edmonton survey, now we will launch
+            // the summary page with the score
+            if edmontonScore != nil {
+                let healthCategories = ["Healthy", "Vulnerable", "Frail"]
+                var category = healthCategories[0]
+                if edmontonScore! > 10 {
+                    category = healthCategories[2]
+                } else if edmontonScore! > 5 {
+                    category = healthCategories[1]
+                }
+                
+                var summaryViewController: UIViewController?
+                let delegate = SheetDismisserProtocol()
+                let questionnaireSummaryView = QuestionnaireSummary( delegate: delegate, userScore: Double(edmontonScore!), minScore: 0, maxScore: 15, healthCategory: category)
+                summaryViewController = UIHostingController(rootView: AnyView(questionnaireSummaryView))
+                delegate.host = (summaryViewController as! UIHostingController<AnyView>)
+                
+                // Close the current survey and open up the next survey
+                weak var presentingViewController = taskViewController.presentingViewController
+                taskViewController.dismiss(animated: false, completion: {
+                    if let summaryViewController {
+                        presentingViewController?.present(
+                            summaryViewController,
+                            animated: true,
+                            completion: nil
+                        )
+                    }
+                })
+            }
         default:
             break
         }
         taskViewController.dismiss(animated: true, completion: nil)
-        // We're done with the Edmonton survey, now we will launch
-        // a second survey depending on which type of disease the user
-        // reported having during onboarding.
-        /*
-        let defaults = UserDefaults.standard
-        if let disease = defaults.string(forKey: "disease") {
-            var nextSurveyViewController: UIViewController?
-
-            switch disease {
-            case "Arterial Disease":
-                // Set the next survey
-                nextSurveyViewController = UIHostingController(rootView: WIQViewController())
-            case "Venous Disease":
-                nextSurveyViewController = UIHostingController(rootView: VEINESViewController())
-            default:
-                nextSurveyViewController = nil
-            }
-
-            // Close the current survey and open up the next survey
-            weak var presentingViewController = taskViewController.presentingViewController
-            taskViewController.dismiss(animated: true, completion: {
-                if let nextSurveyViewController {
-                    presentingViewController?.present(
-                        nextSurveyViewController,
-                        animated: true,
-                        completion: nil
-                    )
-                }
-            })
-        } else {
-            // If the disease lookup fails, end the survey
-            taskViewController.dismiss(animated: true, completion: nil)
-        }
-         */
     }
 }

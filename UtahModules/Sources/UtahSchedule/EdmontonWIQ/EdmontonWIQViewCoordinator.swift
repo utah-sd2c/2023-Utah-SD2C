@@ -52,11 +52,42 @@ class EdmontonWIQViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             getUp.value = .string(strScore.asFHIRStringPrimitive())
             edmontonResponse.item?.last?.answer?.removeAll()
             edmontonResponse.item?.last?.answer?.append(getUp)
-            QuestionnaireUtil.uploadQuestionnaire(fhirResponse: edmontonResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
+            let edmontonScore = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: edmontonResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
             
             // WIQ Upload
             wiqResponse.item?.removeFirst(12)
-            QuestionnaireUtil.uploadQuestionnaire(fhirResponse: wiqResponse, firebaseCollection: "wiqsurveys", surveyType: "wiq")
+            _ = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: wiqResponse, firebaseCollection: "wiqsurveys", surveyType: "wiq")
+
+
+            // We're done with the Edmonton survey, now we will launch
+            // the summary page with the score
+            if edmontonScore != nil {
+                let healthCategories = ["Healthy", "Vulnerable", "Frail"]
+                var category = healthCategories[0]
+                if edmontonScore! > 10 {
+                    category = healthCategories[2]
+                } else if edmontonScore! > 5 {
+                    category = healthCategories[1]
+                }
+                
+                var summaryViewController: UIViewController?
+                let delegate = SheetDismisserProtocol()
+                let questionnaireSummaryView = QuestionnaireSummary( delegate: delegate, userScore: Double(edmontonScore!), minScore: 0, maxScore: 15, healthCategory: category)
+                summaryViewController = UIHostingController(rootView: AnyView(questionnaireSummaryView))
+                delegate.host = (summaryViewController as! UIHostingController<AnyView>)
+                
+                // Close the current survey and open up the next survey
+                weak var presentingViewController = taskViewController.presentingViewController
+                taskViewController.dismiss(animated: false, completion: {
+                    if let summaryViewController {
+                        presentingViewController?.present(
+                            summaryViewController,
+                            animated: true,
+                            completion: nil
+                        )
+                    }
+                })
+            }
         default:
             break
         }

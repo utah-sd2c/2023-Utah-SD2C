@@ -484,7 +484,7 @@ public enum QuestionnaireUtil {
         fhirResponse: QuestionnaireResponse,
         firebaseCollection: String,
         surveyType: String
-    ) {
+    ) -> Int? {
         var score = 0
         // calculating score
         if let responseItems = fhirResponse.item {
@@ -504,30 +504,30 @@ public enum QuestionnaireUtil {
                 }
             }
         }
-
+        
         let user = Auth.auth().currentUser
         // Add a patient identifier to the response so we know who did this survey
         fhirResponse.subject = Reference(reference: FHIRPrimitive(FHIRString("Patient/" + (user?.uid ?? "PATIENT_ID"))))
         fhirResponse.questionnaire = surveyType.asFHIRCanonicalPrimitive()
-
+        
         do {
             // Parse the FHIR object into JSON
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
             let data = try encoder.encode(fhirResponse)
-
+            
             // Print out the JSON for debugging
             let json = String(decoding: data, as: UTF8.self)
             print(json)
-
+            
             // Convert the FHIR object to a dictionary and upload to Firebase
             let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             let identifier = fhirResponse.id?.value?.string ?? UUID().uuidString
-
+            
             guard let jsonDict else {
-                return
+                return nil
             }
-
+            
             let database = Firestore.firestore()
             database.collection(firebaseCollection).document(identifier).setData(jsonDict) { err in
                 if let err {
@@ -536,8 +536,8 @@ public enum QuestionnaireUtil {
                     print("Document successfully written.")
                 }
             }
-
-
+            
+            
             // Upload Score + Data to user collection
             let userQuestionnaireData = ["score": score, "type": surveyType, "surveyId": identifier, "dateCompleted": Timestamp()] as [String: Any]
             let userUID = user?.uid
@@ -585,5 +585,6 @@ public enum QuestionnaireUtil {
             // Something didn't work!
             print(error.localizedDescription)
         }
+        return surveyType == "edmonton" ? score : nil
     }
 }

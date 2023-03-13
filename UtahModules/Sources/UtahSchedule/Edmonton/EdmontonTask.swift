@@ -33,14 +33,6 @@ enum EdmontonTask {
                 break
             }
         }
-        
-        if showSummary {
-            let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
-            summaryStep.title = "Thank you."
-            summaryStep.text = "You can view your progress in the trends tab."
-
-            steps += [summaryStep]
-        }
 
         return ORKOrderedTask(identifier: identifier, steps: steps)
     }
