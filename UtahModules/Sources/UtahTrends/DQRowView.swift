@@ -5,6 +5,8 @@
 //
 // SPDX-License-Identifier: MIT
 //
+//
+// swiftlint:disable multiline_literal_brackets
 import Account
 import FHIR
 import Firebase
@@ -21,9 +23,12 @@ struct DQRowView: View {
     
     // turn this into dictionary: q1:"Drawing Clock Test"
     @EnvironmentObject var firestoreManager: FirestoreManager
-    var questionList = ["q1": "Drawing Clock Test",
-                        "q2": "Times admitted to a hospital the past year",
-                        "q3": "Description of overall health"]
+    var questionList =
+    [
+        "q1": "Drawing Clock Test",
+        "q2": "Times admitted to a hospital the past year",
+        "q3": "Description of overall health"
+    ]
     let surveyType: String
     let score: Int
     var answerList: [QuestionListItem] {
@@ -44,7 +49,8 @@ struct DQRowView: View {
             ForEach(answerList, id: \.self) { item in
                 Text(item.questionDescription)
                     .padding(.all, 10)
-                    .background(Rectangle()
+                    .background(
+                        Rectangle()
                         .fill(Color.accentColor)
                         .shadow(radius: 3)
                         .cornerRadius(15)
