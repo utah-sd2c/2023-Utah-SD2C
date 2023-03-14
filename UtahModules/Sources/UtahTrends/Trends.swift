@@ -19,19 +19,23 @@ import UtahSharedContext
      
     public var body: some View {
         NavigationStack {
-            VStack(alignment: .center, spacing: 10) {
-                Charts()
-                    .frame(minHeight: 250)
-                Spacer()
-                DataCard(
-                    icon: "shoeprints.fill",
-                    title: "Daily Step Count",
-                    unit: "steps",
-                    color: Color.green
-                )
-                Spacer()
-                // removed survey for now until we pull survey data from firestore
-                // DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
+            ScrollView {
+                VStack(alignment: .center, spacing: 10) {
+                    Charts()
+                        .frame(minHeight: 250)
+                    Spacer()
+                    DataCard(
+                        icon: "shoeprints.fill",
+                        title: "Daily Step Count",
+                        unit: "steps",
+                        color: Color.green
+                    )
+                    Spacer()
+                    // removed survey for now until we pull survey data from firestore
+                    // DataCard(icon: "list.clipboard.fill", title: "Last EFS Survey Score", unit: "points", color: Color.blue, observations: [])
+                    Spacer()
+                    SurveyHistoryList()
+                }
             }
         }
         .padding()
