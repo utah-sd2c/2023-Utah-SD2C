@@ -11,6 +11,8 @@
 // swiftlint:disable legacy_objc_type
 // swiftlint:disable force_unwrapping
 // swiftlint:disable large_tuple
+// swiftlint:disable closure_body_length
+// swiftlint:disable function_body_length
 
 import Account
 import Firebase
@@ -121,24 +123,43 @@ public class FirestoreManager: ObservableObject {
         await withCheckedContinuation { continuation in
             var observations = [] as [(date: Date, value: Double)]
             if let user = Auth.auth().currentUser {
-                Firestore.firestore().collection("users/\(user.uid)/Observation").getDocuments {documents, err in
-                    if err != nil {
+                Firestore.firestore().collection("users/\(user.uid)/Observation").getDocuments {snapshot, err in
+                    if err != nil || snapshot == nil || snapshot?.isEmpty == true {
                         return
                     } else {
-                        for document in documents!.documents {
+                        for document in snapshot!.documents {
                             // pulls data from firestore and tries to match code correct metric
                             let data = document.data() as [String: Any]
-                            let codeObject = data["code"] as? [String: Any]
-                            let coding = codeObject?["coding"] as? [Any]
-                            let code = coding?[0] as? [String: Any]
-                            let filterCode = code?["code"] as? String
+                            guard let codeObject = data["code"] as? [String: Any] else {
+                                print("ERROR: code object values nil")
+                                continue
+                            }
+                            guard let coding = codeObject["coding"] as? [Any] else {
+                                print("ERROR: coding object values nil")
+                                continue
+                            }
+                            guard let code = coding[0] as? [String: Any] else {
+                                print("ERROR: code values nil")
+                                continue
+                            }
+                            guard let filterCode = code["code"] as? String else {
+                                print("ERROR: filterCode values nil")
+                                continue
+                            }
                             
                             if filterCode == metricCode {
                                 // properly formats date
-                                let dateString = data["effectiveDateTime"] as? String
-                                let formatter = ISO8601DateFormatter()
+                                guard let issuedDate = data["issued"] as? String else {
+                                    print("ERROR: issuedDate values nil")
+                                    continue
+                                }
+                                let array = issuedDate.components(separatedBy: ".")
+                                let shortenedDate = array[0] + array[1].suffix(6)
+
+                                let formatter = DateFormatter()
                                 formatter.timeZone = NSTimeZone.local
-                                let date = formatter.date(from: dateString!)
+                                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                                let date = formatter.date(from: shortenedDate)
                                 
                                 let valueQuantity = data["valueQuantity"] as? [String: Any]
                                 let value = valueQuantity?["value"] as? Double ?? 0.0

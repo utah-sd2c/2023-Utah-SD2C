@@ -8,6 +8,7 @@
 // swiftlint:disable force_unwrapping
 
 import SwiftUI
+import UtahSharedContext
 
 struct QuestionnaireSummary: View {
     @ObservedObject var delegate: SheetDismisserProtocol
@@ -24,7 +25,7 @@ struct QuestionnaireSummary: View {
                 .padding(.top, 80)
                 .padding(.horizontal, 30)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("It looks like...")
+            Text(StorageKeys.surveyResult[healthCategory] ?? "It looks like...")
                 .padding(.vertical, 10)
                 .padding(.horizontal, 30)
                 .frame(maxWidth: .infinity, alignment: .leading)
