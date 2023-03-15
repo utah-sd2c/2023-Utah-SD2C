@@ -8,6 +8,9 @@
 // Group and recalculateChartData function pulled from CardinalKit FHIRChart module
 
 
+// swiftlint:disable large_tuple
+// swiftlint:disable sorted_first_last
+
 import Charts
 import FHIR
 import FirebaseFirestore
@@ -37,6 +40,7 @@ struct DataCard: View {
             .padding(.bottom, 2)
             // data
             HStack(alignment: .firstTextBaseline) {
+                Spacer()
                 Text(round(maxValue).description)
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -54,9 +58,26 @@ struct DataCard: View {
                 .shadow(radius: 5)
         }
         .task {
-            await firestoreManager.loadObservations(metricCode: "55423-8")
-            recalculateChartData(basedon: firestoreManager.observations)
+            if title == "Daily Step Count" {
+                await firestoreManager.loadObservations(metricCode: "55423-8")
+                recalculateChartData(basedon: firestoreManager.observations)
+            } else if title == "Edmonton Frail Scale" {
+                await firestoreManager.loadSurveys()
+                getSurveyData(surveyType: "edmonton")
+            } else if title == "Veines Survey Score" {
+                await firestoreManager.loadSurveys()
+                getSurveyData(surveyType: "veines")
+            }
         }
+    }
+    
+    func getSurveyData(surveyType: String) {
+        let data = firestoreManager.surveys[surveyType]
+        // get the most reason data
+        let mostRecentSurvey: (dateCompleted: Date, score: Int, surveyId: String)? = data?.sorted(by: { $0.dateCompleted > $1.dateCompleted }).first
+        let score = mostRecentSurvey?.score ?? 0
+        self.maxValue = Double(score)
+        print("my print statement:", self.maxValue)
     }
     
     // sums up all data points from each day

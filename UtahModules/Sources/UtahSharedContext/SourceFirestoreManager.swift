@@ -62,7 +62,7 @@ public class FirestoreManager: ObservableObject {
                         self.surveys = [:]
                         for document in documents!.documents {
                             let data = document.data() as [String: Any]
-                            print(data)
+                            // print(data)
                             guard let score = data["score"] as? Int else {
                                 print("ERROR: score values nil")
                                 continue
