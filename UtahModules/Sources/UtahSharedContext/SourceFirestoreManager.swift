@@ -117,7 +117,6 @@ public class FirestoreManager: ObservableObject {
 //            }
 //        }
 //    }
-    
         
     public func loadObservations(metricCode: String) async {
         await withCheckedContinuation { continuation in
