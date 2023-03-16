@@ -36,12 +36,12 @@ class TrendsTests: XCTestCase {
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Questions"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Questions"].tap()
         try navigateToTrends()
-        XCTAssert(app.staticTexts[String(newVal)].waitForExistence(timeout: 2))
-        XCTAssert(app.staticTexts[String(6.0)].waitForExistence(timeout: 2))
-        app.staticTexts["Daily Step Count"].tap()
+        XCTAssert(app.staticTexts[String(Int(newVal))].waitForExistence(timeout: 2))
+        XCTAssert(app.staticTexts[String(6)].waitForExistence(timeout: 2))
+        app.staticTexts["Average Step Count"].tap()
         XCTAssert(app.staticTexts["Step Count"].waitForExistence(timeout: 2))
         app.swipeDown(velocity: XCUIGestureVelocity.fast)
-        app.staticTexts["Edmonton Frail Scale"].tap()
+        app.staticTexts["Latest EFS Score"].tap()
         XCTAssert(app.staticTexts["Edmonton Frail Scale"].waitForExistence(timeout: 2))
     }
     
@@ -49,7 +49,7 @@ class TrendsTests: XCTestCase {
         let app = XCUIApplication()
         XCTAssertTrue(app.tabBars["Tab Bar"].buttons["Trends"].waitForExistence(timeout: 2))
         app.tabBars["Tab Bar"].buttons["Trends"].tap()
-        XCTAssertTrue(app.staticTexts["Daily Step Count"].waitForExistence(timeout: 2))
-        XCTAssertTrue(app.staticTexts["Edmonton Frail Scale"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Average Step Count"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.staticTexts["Latest EFS Score"].waitForExistence(timeout: 2))
     }
 }

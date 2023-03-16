@@ -8,6 +8,8 @@
 
 // swiftlint:disable identifier_name
 // swiftlint:disable closure_body_length
+// swiftlint:disable large_tuple
+
 
 import Account
 import SwiftUI
@@ -29,14 +31,11 @@ public struct Trends: View {
     public var body: some View {
         NavigationStack {
             VStack {
-                ForEach(Array(firestoreManager.surveys.keys), id: \.self) { survey in
-                    if survey == "wiq" {
-                        Text("No WIQ for now")
-                            .padding(.vertical, 10)
-                    } else if survey == "edmonton"{
+                ForEach(getKeys(dict: firestoreManager.surveys), id: \.self) { survey in
+                    if survey == "edmonton"{
                         DataCard(
                             icon: "figure.run",
-                            title: "Edmonton Frail Scale",
+                            title: "Latest EFS Score",
                             unit: "points",
                             color: Color.blue
                         )
@@ -54,27 +53,34 @@ public struct Trends: View {
                 }
                 DataCard(
                     icon: "shoeprints.fill",
-                    title: "Daily Step Count",
+                    title: "Average Step Count",
                     unit: "steps",
                     color: Color.green
                 )
-                .padding(.vertical, 20)
+                .padding(.vertical, 10)
                 .onTapGesture {
                     self.showStepCount.toggle()
                 }
                 .sheet(isPresented: $showStepCount) {
                     StepCountChart()
                 }
+                Spacer()
             }
             // temporary fix
-            .padding(.top, -200)
             .navigationBarTitle("Trends")
         }
     }
+
+    
     public init() {
     }
 }
 
+func getKeys(dict: [String: [(dateCompleted: Date, score: Int, surveyId: String)]]) -> [String] {
+    let sortedDict = dict.sorted(by: { $0.0 < $1.0 })
+    let keys = sortedDict.map { $0.0 }
+    return keys
+}
 // This just removes this section from being counted in our % "test coverage"
 #if !TESTING
 
