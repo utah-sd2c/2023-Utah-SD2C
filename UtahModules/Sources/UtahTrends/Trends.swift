@@ -23,6 +23,7 @@ public struct Trends: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
     @State private var showStepCount = false
     @State private var showEdmonton = false
+    @State private var showVeines = false
     // we will check whether we have these surveys in the db
     @State private var edmonton_db = false
     @State private var veins_db = false
@@ -44,11 +45,17 @@ public struct Trends: View {
                             self.showEdmonton.toggle()
                         }
                         .sheet(isPresented: $showEdmonton) {
-                            EdmontonChart()
+                            SurveyChart(title: "Edmonton Frail Scale")
                         }
                     } else if survey == "veines" {
                         DataCard(icon: "list.clipboard.fill", title: "Veines Survey Score", unit: "points", color: Color.purple)
                             .padding(.vertical, 10)
+                            .onTapGesture {
+                                self.showVeines.toggle()
+                            }
+                            .sheet(isPresented: $showVeines) {
+                                SurveyChart(title: "Veines Survey")
+                            }
                     }
                 }
                 DataCard(

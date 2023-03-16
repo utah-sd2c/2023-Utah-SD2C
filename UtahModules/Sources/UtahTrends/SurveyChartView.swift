@@ -27,18 +27,19 @@ let efsDummyData: [EFS] = [
     .init(date: "May", score: 9)
 ]
 
-struct EdmontonChart: View {
+struct SurveyChart: View {
+    let title: String
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .center) {
-                Text("Edmonton Frail Scale")
+                Text(title)
                     .font(.headline)
                     .padding(.top)
                 Chart {
                     ForEach(efsDummyData) { datum in
                         BarMark(
                             x: .value("Date", datum.date),
-                            y: .value("Edmonton Frail Scale Score", datum.score)
+                            y: .value("\(title) Score", datum.score)
                         )
                     }
                 }
@@ -55,6 +56,6 @@ struct EdmontonChart: View {
 
 struct EdmontonChart_Previews: PreviewProvider {
     static var previews: some View {
-        EdmontonChart()
+        SurveyChart(title: "Edmonton Frail Scale")
     }
 }
