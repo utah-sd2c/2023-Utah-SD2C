@@ -68,6 +68,9 @@ struct DataCard: View {
             } else if title == "Veines Survey Score" {
                 await firestoreManager.loadSurveys()
                 getSurveyData(surveyType: "veines")
+            } else if title == "WIQ Survey Score" {
+                await firestoreManager.loadSurveys()
+                getSurveyData(surveyType: "wiq")
             }
         }
     }
@@ -78,7 +81,6 @@ struct DataCard: View {
         let mostRecentSurvey: (dateCompleted: Date, score: Int, surveyId: String)? = data?.sorted(by: { $0.dateCompleted > $1.dateCompleted }).first
         let score = mostRecentSurvey?.score ?? 0
         self.maxValue = Double(score)
-        print("my print statement:", self.maxValue)
     }
     
     // sums up all data points from each day

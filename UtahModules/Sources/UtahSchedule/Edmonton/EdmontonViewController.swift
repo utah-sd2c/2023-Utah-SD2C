@@ -20,20 +20,21 @@ import UtahSharedContext
 
 struct EdmontonViewController: UIViewControllerRepresentable {
     typealias UIViewControllerType = ORKTaskViewController
+    @EnvironmentObject var firestoreManager: FirestoreManager
     
     func makeCoordinator() -> ORKTaskViewControllerDelegate {
         let defaults = UserDefaults.standard
         if let disease = defaults.string(forKey: "disease") {
             switch disease {
             case StorageKeys.conditions[0]:
-                return EdmontonWIQViewCoordinator()
+                return EdmontonWIQViewCoordinator(firestoreManager: firestoreManager)
             case StorageKeys.conditions[1]:
-                return EdmontonVEINESViewCoordinator()
+                return EdmontonVEINESViewCoordinator(firestoreManager: firestoreManager)
             default:
-                return EdmontonViewCoordinator()
+                return EdmontonViewCoordinator(firestoreManager: firestoreManager)
             }
         }
-        return EdmontonViewCoordinator()
+        return EdmontonViewCoordinator(firestoreManager: firestoreManager)
     }
     
     func updateUIViewController(_ taskViewController: ORKTaskViewController, context: Context) {}

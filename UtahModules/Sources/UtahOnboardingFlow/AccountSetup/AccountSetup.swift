@@ -56,7 +56,7 @@ struct AccountSetup: View {
                              }
                         }
                     } else {
-                        firestoreManager.fetchData()
+                        firestoreManager.fetchAll()
                     }
                     appendNextOnboardingStep()
                     // Unfortunately, SwiftUI currently animates changes in the navigation path that do not change

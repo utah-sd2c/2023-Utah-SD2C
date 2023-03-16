@@ -23,19 +23,19 @@ struct StepCount: Identifiable {
 func date_formatter(date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US")
-    dateFormatter.dateFormat = "M/dd"
+    dateFormatter.dateFormat = "MM/dd"
     let formatted = dateFormatter.string(from: date)
     return formatted
 }
 
 var stepDummyData: [StepCount] = [
-    .init(date: "MON", count: 5000),
-    .init(date: "TUES", count: 6000),
-    .init(date: "WED", count: 3809),
-    .init(date: "THURS", count: 4072),
-    .init(date: "FRI", count: 12000),
-    .init(date: "SAT", count: 220),
-    .init(date: "SUN", count: 2000)
+    .init(date: "03/11", count: 2301),
+    .init(date: "03/12", count: 4332),
+    .init(date: "03/13", count: 3809),
+    .init(date: "03/14", count: 1072),
+    .init(date: "03/15", count: 1290),
+    .init(date: "03/16", count: 2212),
+    .init(date: "03/17", count: 3010)
 ]
 
 
@@ -55,6 +55,10 @@ struct StepCountChart: View {
                             y: .value("Step Count", datum.count)
                         )
                     }
+                }
+                .chartYAxisLabel(position: .leading) {
+                    Text("Total Daily Step Count")
+                        .font(.subheadline)
                 }
             }
         }
@@ -104,7 +108,6 @@ struct StepCountChart: View {
         self.chartData = filteredData.map { .init(date: date_formatter(date: $0.0), count: Int($0.1)) } as [StepCount]
         }
 }
-
 
 struct StepCountChart_Previews: PreviewProvider {
     static var previews: some View {

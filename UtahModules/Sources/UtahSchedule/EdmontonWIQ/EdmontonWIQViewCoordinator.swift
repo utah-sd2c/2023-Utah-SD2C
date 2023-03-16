@@ -24,6 +24,12 @@ import UtahSharedContext
 
 
 class EdmontonWIQViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
+    let firestoreManager: FirestoreManager
+    
+    init(firestoreManager: FirestoreManager) {
+        self.firestoreManager = firestoreManager
+    }
+    
     public func taskViewController(
         _ taskViewController: ORKTaskViewController,
         didFinishWith reason: ORKTaskViewControllerFinishReason,
@@ -58,7 +64,8 @@ class EdmontonWIQViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             wiqResponse.item?.removeFirst(12)
             _ = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: wiqResponse, firebaseCollection: "wiqsurveys", surveyType: "wiq")
 
-
+            // updates trends tab
+            firestoreManager.fetchAll()
             // We're done with the Edmonton survey, now we will launch
             // the summary page with the score
             if edmontonScore != nil {

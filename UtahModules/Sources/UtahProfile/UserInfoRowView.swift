@@ -27,6 +27,6 @@ struct InfoRow: View {
             Spacer()
         }
         Divider()
-            .padding(.bottom, 20)
+            .padding(.bottom, 10)
     }
 }

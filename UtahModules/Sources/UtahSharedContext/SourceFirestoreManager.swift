@@ -37,6 +37,14 @@ public class FirestoreManager: ObservableObject {
        refresh.toggle()
     }
     
+    public func fetchAll() {
+        fetchData()
+        _Concurrency.Task {
+            await loadSurveys()
+            await loadObservations(metricCode: "55423-8")
+        }
+    }
+    
     public func fetchData() {
         if let user = Auth.auth().currentUser {
             Firestore.firestore().collection("users").document(user.uid).getDocument {document, err in

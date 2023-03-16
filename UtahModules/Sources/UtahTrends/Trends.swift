@@ -24,6 +24,7 @@ public struct Trends: View {
     @State private var showStepCount = false
     @State private var showEdmonton = false
     @State private var showVeines = false
+    @State private var showWIQ = false
     // we will check whether we have these surveys in the db
     @State private var edmonton_db = false
     @State private var veins_db = false
@@ -45,7 +46,7 @@ public struct Trends: View {
                             self.showEdmonton.toggle()
                         }
                         .sheet(isPresented: $showEdmonton) {
-                            SurveyChart(title: "Edmonton Frail Scale")
+                            SurveyChart(title: "Edmonton Frail Scale", surveyType: "edmonton")
                         }
                     } else if survey == "veines" {
                         DataCard(icon: "list.clipboard.fill", title: "Veines Survey Score", unit: "points", color: Color.purple)
@@ -54,7 +55,16 @@ public struct Trends: View {
                                 self.showVeines.toggle()
                             }
                             .sheet(isPresented: $showVeines) {
-                                SurveyChart(title: "Veines Survey")
+                                SurveyChart(title: "Veines Survey", surveyType: "veines")
+                            }
+                    } else if survey == "wiq" {
+                        DataCard(icon: "figure.walk", title: "WIQ Survey Score", unit: "points", color: Color.red)
+                            .padding(.vertical, 10)
+                            .onTapGesture {
+                                self.showWIQ.toggle()
+                            }
+                            .sheet(isPresented: $showWIQ) {
+                                SurveyChart(title: "WIQ Survey", surveyType: "wiq")
                             }
                     }
                 }

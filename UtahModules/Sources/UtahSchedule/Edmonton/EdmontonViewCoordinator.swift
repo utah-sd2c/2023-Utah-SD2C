@@ -24,6 +24,11 @@ import UtahSharedContext
 
 
 class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
+    let firestoreManager: FirestoreManager
+    init(firestoreManager: FirestoreManager) {
+        self.firestoreManager = firestoreManager
+    }
+    
     public func taskViewController(
         _ taskViewController: ORKTaskViewController,
         didFinishWith reason: ORKTaskViewControllerFinishReason,
@@ -49,6 +54,8 @@ class EdmontonViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             
             let edmontonScore = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: fhirResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
         
+            // updates trends tab
+            firestoreManager.fetchAll()
             // We're done with the Edmonton survey, now we will launch
             // the summary page with the score
             if edmontonScore != nil {

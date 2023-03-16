@@ -65,7 +65,7 @@ struct ConditionQuestion: View {
                                 if let err = err {
                                     print("Error updating document: \(err)")
                                 } else {
-                                    firestoreManager.fetchData()
+                                    firestoreManager.fetchAll()
                                     onboardingSteps.append(.healthKitPermissions)
                                 }
                             }
