@@ -8,6 +8,6 @@
 import Foundation
 
 struct QuestionListItem: Hashable, Codable {
-    var questionDescription: String
+    var questionDescription: String?
     var answer: String
 }

@@ -5,7 +5,6 @@
 //
 // SPDX-License-Identifier: MIT
 //
-
 import Account
 import SwiftUI
 import class FHIR.FHIR
@@ -20,6 +19,7 @@ struct UserInformationView: View {
     var refesh = false
     @State private var needHelp = false
     @State private var logOut = false
+    @State private var surveyHistory = false
     @EnvironmentObject var firestoreManager: FirestoreManager
     
     var body: some View {
@@ -27,6 +27,11 @@ struct UserInformationView: View {
             InfoRow(field: "EMAIL", value: user?.email ?? "")
             InfoRow(field: "DIAGNOSIS", value: firestoreManager.disease)
             Spacer()
+            MenuButton(eventBool: $surveyHistory, buttonLabel: "Survey History", foregroundColor: Color.accentColor, backgroundColor: Color(.white))
+                .sheet(isPresented: $surveyHistory) {
+                    SurveyHistoryList()
+                }
+                .padding(.bottom, -15)
             MenuButton(eventBool: $needHelp, buttonLabel: "Need help?", foregroundColor: Color.accentColor, backgroundColor: Color(.white))
                 .sheet(isPresented: $needHelp) {
                     HelpPage()

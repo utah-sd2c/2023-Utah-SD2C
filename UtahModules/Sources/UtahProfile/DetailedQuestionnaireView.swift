@@ -5,8 +5,8 @@
 //
 // SPDX-License-Identifier: MIT
 //
-
 // swiftlint:disable identifier_name
+
 
 import Account
 import FHIR
@@ -19,20 +19,21 @@ import Foundation
 import SwiftUI
 import UtahSharedContext
 
+
 struct DetailedQuestionnaireView: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
     @State var survey: QuestionnaireResponse?
     var surveyId: String
     var type: String
     var score: Int
+    var date: Date
     
     var body: some View {
         NavigationStack {
             Spacer()
             if let survey {
                 DQRowView(surveyType: type, score: score, questionnaireResponse: survey)
-                    .navigationBarTitle("Previous Response")
-                    .navigationTitle("[date], [type of survey]")
+                    .navigationBarTitle(Text(date, format: .dateTime), displayMode: .inline)
             } else {
                 ProgressView()
             }
@@ -46,7 +47,7 @@ struct DetailedQuestionnaireView: View {
         func querySurveys(type: String, surveyId: String) async -> QuestionnaireResponse? {
             await withCheckedContinuation { continuation in
                 let db = Firestore.firestore()
-                var surveyName = "veinesssurveys"
+                var surveyName = "veinessurveys"
                 if type == "edmonton" {
                     surveyName = "edmontonsurveys"
                 } else if type == "wiq" {
@@ -67,8 +68,8 @@ struct DetailedQuestionnaireView: View {
         }
 }
 
-struct DetailedQuestionnaireView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailedQuestionnaireView(surveyId: "", type: "", score: 0)
-    }
-}
+// struct DetailedQuestionnaireView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailedQuestionnaireView(firestoreManager: firestoreManager, surveyId: "TEST", type: "type1", score: 0, date: Date())
+//    }
+// }

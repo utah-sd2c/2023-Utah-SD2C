@@ -35,6 +35,11 @@ class ProfileTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["DIAGNOSIS"].waitForExistence(timeout: 2))
         XCTAssertTrue(app.staticTexts["Change your diagnosis"].waitForExistence(timeout: 2))
         app.buttons["Save"].tap()
+        XCTAssertTrue(app.buttons["Survey History"].waitForExistence(timeout: 2))
+        app.buttons["Survey History"].tap()
+        XCTAssertTrue(app.staticTexts["Survey History"].waitForExistence(timeout: 2))
+        
+        app.swipeDown(velocity: XCUIGestureVelocity.fast)
         
         XCTAssertTrue(app.buttons["Need help?"].waitForExistence(timeout: 2))
         app.buttons["Need help?"].tap()
