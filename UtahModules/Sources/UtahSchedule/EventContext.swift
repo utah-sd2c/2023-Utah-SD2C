@@ -5,7 +5,9 @@
 //
 // SPDX-License-Identifier: MIT
 //
-import Scheduler
+
+
+import SpeziScheduler
 
 
 struct EventContext: Comparable, Identifiable {

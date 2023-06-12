@@ -14,13 +14,13 @@
 // swiftlint:disable closure_body_length
 // swiftlint:disable function_body_length
 
-import Account
 import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
+import SpeziAccount
 import SwiftUI
 
 public class FirestoreManager: ObservableObject {

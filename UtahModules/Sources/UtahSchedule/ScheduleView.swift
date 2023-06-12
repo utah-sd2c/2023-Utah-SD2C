@@ -5,9 +5,10 @@
 //
 // SPDX-License-Identifier: MIT
 //
+
 // swiftlint:disable closure_body_length
-import Questionnaires
-import Scheduler
+import SpeziQuestionnaire
+import SpeziScheduler
 import SwiftUI
 
 public struct ScheduleView: View {

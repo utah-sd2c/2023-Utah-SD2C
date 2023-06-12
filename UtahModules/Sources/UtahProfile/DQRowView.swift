@@ -8,14 +8,13 @@
 // swiftlint:disable vertical_whitespace_closing_braces
 // swiftlint:disable multiline_arguments_brackets
 
-import Account
-import FHIR
 import Firebase
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
+import SpeziFHIR
 import SwiftUI
 import UtahSharedContext
 

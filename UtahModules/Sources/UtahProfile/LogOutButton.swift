@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import Account
 import FirebaseAuth
+import SpeziAccount
 import SwiftUI
 import UtahOnboardingFlow
 import UtahSharedContext

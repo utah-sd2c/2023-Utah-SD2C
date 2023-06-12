@@ -5,8 +5,9 @@
 //
 // SPDX-License-Identifier: MIT
 //
-import FHIR
-import Foundation
+
+
+import SpeziFHIR
 import SwiftUI
 import UtahSharedContext
 

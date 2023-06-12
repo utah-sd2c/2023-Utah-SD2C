@@ -5,7 +5,7 @@
 //
 // SPDX-License-Identifier: MIT
 //
-// swiftlint:disable force_unwrapping
+// swiftlint:disable force_unwrapping weak_delegate
 
 import SwiftUI
 import UtahSharedContext

@@ -11,9 +11,9 @@
 // swiftlint:disable large_tuple
 
 
-import Account
+import SpeziAccount
 import SwiftUI
-import class FHIR.FHIR
+import class SpeziFHIR.FHIR
 import FirebaseAuth
 import FirebaseFirestore
 import UtahSharedContext

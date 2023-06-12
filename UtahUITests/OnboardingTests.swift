@@ -7,10 +7,8 @@
 //
 
 import XCTest
-import XCTHealthKit
-
-
 import XCTestExtensions
+import XCTHealthKit
 
 
 class OnboardingTests: XCTestCase {
@@ -108,7 +106,7 @@ extension XCUIApplication {
     }
     
     private func navigateOnboardingFlowConsent() throws {
-        XCTAssertTrue(staticTexts["Consent Form"].waitForExistence(timeout: 4))
+        XCTAssertTrue(staticTexts["Consent Form"].waitForExistence(timeout: 10))
         
         swipeUp(velocity: .fast)
         swipeUp(velocity: .fast)

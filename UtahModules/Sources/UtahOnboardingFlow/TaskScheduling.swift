@@ -6,8 +6,8 @@
 // SPDX-License-Identifier: MIT
 //
 
-import Onboarding
-import Scheduler
+import SpeziOnboarding
+import SpeziScheduler
 import SwiftUI
 import UserNotifications
 import UtahSchedule

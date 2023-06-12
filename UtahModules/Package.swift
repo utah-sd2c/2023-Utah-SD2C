@@ -25,21 +25,18 @@ let package = Package(
         .library(name: "UtahTrends", targets: ["UtahTrends"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordBDHG/CardinalKit.git", .upToNextMinor(from: "0.3.3")),
-        .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.5.0")
+        .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.10.0"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziFHIR.git", from: "0.3.0"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziQuestionnaire.git", from: "0.3.0"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziAccount.git", from: "0.3.0"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziScheduler.git", from: "0.4.1")
     ],
     targets: [
         .target(
             name: "UtahOnboardingFlow",
             dependencies: [
                 .target(name: "UtahSharedContext"),
-                .target(name: "UtahSchedule"),
-                .product(name: "Account", package: "CardinalKit"),
-                .product(name: "FHIR", package: "CardinalKit"),
-                .product(name: "FirebaseAccount", package: "CardinalKit"),
-                .product(name: "HealthKitDataSource", package: "CardinalKit"),
-                .product(name: "Onboarding", package: "CardinalKit"),
-                .product(name: "Views", package: "CardinalKit")
+                .target(name: "UtahSchedule")
             ],
             resources: [
                 .process("Resources")
@@ -59,9 +56,9 @@ let package = Package(
             name: "UtahSchedule",
             dependencies: [
                 .target(name: "UtahSharedContext"),
-                .product(name: "FHIR", package: "CardinalKit"),
-                .product(name: "Questionnaires", package: "CardinalKit"),
-                .product(name: "Scheduler", package: "CardinalKit"),
+                .product(name: "SpeziFHIR", package: "SpeziFHIR"),
+                .product(name: "SpeziQuestionnaire", package: "SpeziQuestionnaire"),
+                .product(name: "SpeziScheduler", package: "SpeziScheduler"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk")
@@ -72,17 +69,18 @@ let package = Package(
             dependencies: [
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
-                .product(name: "Account", package: "CardinalKit")
+                .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
+                .product(name: "SpeziAccount", package: "SpeziAccount")
             ]
         ),
         .target(
             name: "UtahTrends",
             dependencies: [
                 .target(name: "UtahSharedContext"),
-                .product(name: "FHIR", package: "CardinalKit"),
                 .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
                 .product(name: "FirebaseStorage", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseAuth", package: "firebase-ios-sdk")
+                .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
+                .product(name: "SpeziFHIR", package: "SpeziFHIR")
             ]
         )
     ]

@@ -6,11 +6,11 @@
 // SPDX-License-Identifier: MIT
 //
 
-import FHIR
 import FirebaseAuth
 import FirebaseFirestore
-import HealthKitDataSource
-import Onboarding
+import SpeziFHIR
+import SpeziHealthKit
+import SpeziOnboarding
 import SwiftUI
 import UtahSharedContext
 

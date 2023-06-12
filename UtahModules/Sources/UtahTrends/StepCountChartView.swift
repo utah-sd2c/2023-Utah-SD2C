@@ -8,8 +8,8 @@
 
 
 import Charts
-import FHIR
 import FirebaseFirestore
+import SpeziFHIR
 import SwiftUI
 import UtahSharedContext
 

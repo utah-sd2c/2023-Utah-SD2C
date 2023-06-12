@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-import CardinalKit
+import Spezi
 import SwiftUI
 import UtahOnboardingFlow
 import UtahSharedContext
@@ -26,7 +26,7 @@ struct Utah: App {
                 }
                 .setup()
                 .testingSetup()
-                .cardinalKit(appDelegate)
+                .spezi(appDelegate)
                 .environmentObject(firestoreManager)
         }
     }

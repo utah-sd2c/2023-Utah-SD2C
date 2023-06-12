@@ -5,7 +5,8 @@
 //
 // SPDX-License-Identifier: MIT
 //
-import FHIR
+
+import SpeziFHIR
 /// The context attached to each task in the CS342 2023 Utah Team Application.
 public enum UtahTaskContext: Codable, Identifiable {
     case questionnaire(Questionnaire)

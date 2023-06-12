@@ -5,9 +5,10 @@
 //
 // SPDX-License-Identifier: MIT
 //
-import FHIR
+
 import Foundation
-import Scheduler
+import SpeziFHIR
+import SpeziScheduler
 import UtahSharedContext
 
 
@@ -25,7 +26,7 @@ extension UtahScheduler {
                     description: String(localized: "RESEARCHKIT_TASK_DESCRIPTION", bundle: .module),
                     schedule: Schedule(
                         start: Calendar.current.startOfDay(for: Date()),
-                        dateComponents: .init(hour: 10, minute: 00), // Every Day at 10:00 AM
+                        repetition: .matching(.init(hour: 10, minute: 0)), // Every day at 10:00AM
                         end: .numberOfEvents(356)
                     ),
                     context: UtahTaskContext.researchKitTask(ResearchKitTaskContext.edmonton)

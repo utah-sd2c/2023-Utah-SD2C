@@ -8,19 +8,19 @@ SPDX-License-Identifier: MIT
 
 -->
 
-# CS342 2023 Utah Team Application
+# U-STEP
 
-This repository contains the CS342 2023 Utah Team Application.
+This repository contains the U-STEP application build by the [CS342](https://cs342.stanford.edu) 2023 Utah Team.
 
-It demonstrates using the [CardinalKit](https://github.com/StanfordBDHG/CardinalKit) framework template and builds on top of the [StanfordBDHG Template Application](https://github.com/StanfordBDHG/Utah) and [StanfordBDHG CardinalKit Template Application](https://github.com/StanfordBDHG/CardinalKitUtah).
+It demonstrates using the [Spezi](https://github.com/StanfordSpezi/Spezi) framework template and builds on top of the [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication).
 
 
 ## Application Structure
 
 The application uses a modularized structure enabled by using the Swift Package Manager.
 
-The application uses the CardinalKit `FHIR` standard to provide a shared repository for data exchanged between different modules using the `FHIR` standard.
-You can learn more about the CardinalKit standards-based software architecture in the [CardinalKit documentation](https://github.com/StanfordBDHG/CardinalKit).
+The application uses the Spezi `FHIR` standard to provide a shared repository for data exchanged between different modules using the `FHIR` standard.
+You can learn more about the Spezi standards-based software architecture in the [Spezi documentation](https://github.com/StanfordSpezi/Spezi).
 
 ## Build and Run the Application
 
@@ -45,20 +45,21 @@ The application includes the following feature flags that can be configured in t
 - ``--useFirebaseEmulator``: Defines if the application should connect to the local firebase emulator. Always set to true when using the iOS simulator.
 
 
-## Continous Delivery Workflows
+## Continuous Delivery Workflows
 
 The application includes continuous integration (CI) and continuous delivery (CD) setup.
 - Automatically build and test the application on every pull request before deploying it.
 - An automated setup to deploy the application to TestFlight every time there is a new commit on the repository's main branch.
 - Ensure a coherent code style by checking the conformance to the SwiftLint rules defined in `.swiftlint.yml` on every pull request and commit.
-- Ensure conformance to the [REUSE Spacification]() to property license the application and all related code.
+- Ensure conformance to the [REUSE Specification](https://reuse.software/spec/) to property license the application and all related code.
 
-Please refer to the [StanfordBDHG Template Application](https://github.com/StanfordBDHG/Utah) and the [ContinousDelivery Example by Paul Schmiedmayer](https://github.com/PSchmiedmayer/ContinousDelivery) for more background about the CI and CD setup for the CardinalKit Template Application.
+Please refer to the [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) and the [ContinousDelivery Example by Paul Schmiedmayer](https://github.com/PSchmiedmayer/ContinousDelivery) for more background about the CI and CD setup for the Spezi Template Application.
 
 
 ## Contributors & License
 
-This project is based on [ContinousDelivery Example by Paul Schmiedmayer](https://github.com/PSchmiedmayer/ContinousDelivery), [StanfordBDHG Template Application](https://github.com/StanfordBDHG/Utah), and the [StanfordBDHG CardinalKit Template Application](https://github.com/StanfordBDHG/CardinalKitUtah) provided using the MIT license.
-You can find a list of contributors in the `CONTRIBUTORS.md` file.
+This project is based on [ContinousDelivery Example by Paul Schmiedmayer](https://github.com/PSchmiedmayer/ContinousDelivery), and [Spezi Template Application](https://github.com/StanfordSpezi/SpeziTemplateApplication) provided using the MIT license.
 
-The CS342 2023 Utah Team Application is licensed under the MIT license.
+You can find a list of contributors in the [CONTRIBUTORS.md](https://github.com/CS342/2023-Utah/blob/main/CONTRIBUTORS.md) file.
+
+The U-STEP application is licensed under the [MIT license](https://github.com/CS342/2023-Utah/blob/main/LICENSES/MIT.txt).

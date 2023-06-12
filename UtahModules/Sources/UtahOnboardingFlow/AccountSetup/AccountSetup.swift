@@ -7,12 +7,12 @@
 //
 
 // swiftlint:disable line_length
-import Account
-import class FHIR.FHIR
-import FirebaseAccount
 import FirebaseAuth
 import FirebaseFirestore
-import Onboarding
+import SpeziAccount
+import SpeziFirebaseAccount
+import class SpeziFHIR.FHIR
+import SpeziOnboarding
 import SwiftUI
 import UtahSharedContext
 
