@@ -67,6 +67,9 @@ public struct ScheduleView: View {
                 if researchKitTaskContext == .edmonton {
                     EdmontonViewController()
                 }
+                else {
+                    TimedWalkViewController()
+                }
             }
         }
         return destination
