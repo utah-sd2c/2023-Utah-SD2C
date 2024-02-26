@@ -29,6 +29,14 @@ struct TimedWalkViewController: UIViewControllerRepresentable {
                 restDuration: 30,
                 options: .excludeConclusion
             )
+//            ORKOrderedTask.sixMinuteWalk( // TODO: This one is specificly a 6 minute walk test. Should we be using it instead?
+//                withIdentifier: "6 minute walk test",
+//                intendedUseDescription: "6 minute walk test",
+//                //walkDuration: 360,
+//                //restDuration: 30,
+//                options: .excludeConclusion
+//            )
+//
 //            ORKOrderedTask.timedWalk(
 //                withIdentifier: "Get up and Go Task",
 //                intendedUseDescription: nil,
@@ -48,6 +56,9 @@ struct TimedWalkViewController: UIViewControllerRepresentable {
         }()
         let taskViewController = ORKTaskViewController(task: timedWalkTask, taskRun: nil)
         taskViewController.delegate = context.coordinator
+        taskViewController.outputDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        
         
         // & present the VC!
         return taskViewController
