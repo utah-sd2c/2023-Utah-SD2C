@@ -27,24 +27,42 @@ import UtahSharedContext
 public enum SixMinuteWalkTestUtil {
     public static func addInstructionSteps(steps: inout [ORKStep]) {
         // Instruction steps
-        let instructionStep = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep1")
-        instructionStep.title = "Patient Questionnaire"
-        instructionStep.text = """
-        This information will help your doctors keep track of how you feel and how well you are able to do your usual activities. If you are unsure about how to answer a question, please give the best answer you can.
+        let instructionStep1 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep1")
+        instructionStep1.title = "6-Minute Walk Test"
+        instructionStep1.text = """
+        (ICON) This test will take 6-minutes.
 
-        You will be asked to complete this questionnaire at regular intervals to track your progress over time. You will be able to view your progress in the trends tab.
+        (ICON) Ensure you have 6-minutes of uninterrupted time before starting.
+
+        (ICON) Wear comfortable clothes and properly fitting shoes. If you normally use a walking aid, you can use it while completing this test.
+
+        (ICON) If you are unable to walk outdoors, consider completing this test at a local shopping mall or location that you can walk back and forth such as a long hallway in your home.
         """
 
-        steps += [instructionStep]
+        steps += [instructionStep1]
+        
+        let instructionStep2 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep2")
+        instructionStep2.title = "Getting Started"
+        instructionStep2.text = """
+        1) Find a strait walking path at least 30 meters in length.
+
+        2) Walk as far as you can at a safe pace for six minutes.
+
+        3) Stop and rest as necessary and begin again as soon as you are able. The timer will continue counting down. Press the “Rest” button on the next page every time you stop to rest.
+
+        4) When you are ready to begin, press “Get Started” below
+        """
+
+        steps += [instructionStep2]
         
     }
     
     public static func addActiveStep(steps: inout [ORKStep]) {
         
-        let q11Step = SixMinuteWalkStep(identifier: "SixMinuteWalkActiveStep")
-        q11Step.isOptional = false
+        let activeStep = SixMinuteWalkStep(identifier: "SixMinuteWalkActiveStep")
+        activeStep.isOptional = false
 
-        steps += [q11Step]
+        steps += [activeStep]
     }
     
     
