@@ -68,7 +68,8 @@ public struct ScheduleView: View {
                     EdmontonViewController()
                 }
                 else {
-                    TimedWalkViewController()
+                    //TimedWalkViewController()
+                    SixMinuteWalkViewController()
                 }
             }
         }
