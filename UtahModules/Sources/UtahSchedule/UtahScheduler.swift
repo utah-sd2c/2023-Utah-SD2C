@@ -36,7 +36,7 @@ extension UtahScheduler {
                     description: String(localized: "6MWT_TASK_DESCRIPTION", bundle: .module),
                     schedule: Schedule(
                         start: Calendar.current.startOfDay(for: Date()),
-                        repetition: .matching(.init(hour: 10, minute: 0)), // Every day at 11:00AM
+                        repetition: .matching(.init(hour: 8, minute: 0)), // Every day at 11:00AM
                         end: .numberOfEvents(356)
                     ),
                     context: UtahTaskContext.researchKitTask(ResearchKitTaskContext.SixMWT)
