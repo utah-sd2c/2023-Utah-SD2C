@@ -2,33 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>515655571673-lb80ks5ts4uuok8h6bedjm1lcs2phr2v.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.515655571673-lb80ks5ts4uuok8h6bedjm1lcs2phr2v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDTCzr0dv4FrJ-sGHEmgXSVygWHKxvCzzA</string>
+	<string>AIzaSyDmO_kNtPFP7QxVPmUCuC58-ebiG12jzIo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>515655571673</string>
+	<string>992170652090</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>edu.stanford.cs342.2023.utah</string>
+	<string>edu.utah.ustep</string>
 	<key>PROJECT_ID</key>
-	<string>cs342-2023-utah</string>
+	<string>u-step-61f11</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cs342-2023-utah.appspot.com</string>
+	<string>u-step-61f11.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:515655571673:ios:e7be75d831177550f206c8</string>
+	<string>1:992170652090:ios:5f7887977d3fd0c35c6d83</string>
 </dict>
 </plist>
