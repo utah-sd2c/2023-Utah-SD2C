@@ -11,6 +11,7 @@ import SpeziHealthKit
 import SpeziOnboarding
 import SwiftUI
 import UtahSharedContext
+import HealthKit
 
 
 struct HealthKitPermissions: View {
@@ -40,7 +41,11 @@ struct HealthKitPermissions: View {
                     "HEALTHKIT_PERMISSIONS_BUTTON".moduleLocalized,
                     action: {
                         do {
-                            try await healthKitDataSource.askForAuthorization()
+                            if HKHealthStore.isHealthDataAvailable() {
+                                try await healthKitDataSource.askForAuthorization()
+                            } else {
+                                print("Device does not support HealthKit data.")
+                            }
                         } catch {
                             print("Could not request HealthKit permissions.")
                         }
