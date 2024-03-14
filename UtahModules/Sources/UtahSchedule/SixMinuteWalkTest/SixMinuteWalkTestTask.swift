@@ -17,6 +17,7 @@ enum SixMinuteWalkTestTask {
 
         SixMinuteWalkTestUtil.addInstructionSteps(steps: &steps)
         SixMinuteWalkTestUtil.addActiveStep(steps: &steps)
+        SixMinuteWalkTestUtil.addCompletionStep(steps: &steps)
         
 
         return ORKOrderedTask(identifier: "SixMinuteWalkTestTask", steps: steps)

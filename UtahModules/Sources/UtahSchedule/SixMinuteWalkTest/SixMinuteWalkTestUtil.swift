@@ -65,5 +65,14 @@ public enum SixMinuteWalkTestUtil {
         steps += [activeStep]
     }
     
+    public static func addCompletionStep(steps: inout [ORKStep]) {
+        
+        let completionStep = ORKCompletionStep(identifier: "SixMinuteWalkCompletionStep")
+        completionStep.isOptional = false
+        completionStep.title = "6-Minute Walk Test Complete"
+        completionStep.text = "Thank you for completing the 6-Minute Walk Test. Please click Done below."
+        
+        steps += [completionStep]
+    }
     
 }
