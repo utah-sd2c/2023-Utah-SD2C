@@ -30,13 +30,13 @@ public enum SixMinuteWalkTestUtil {
         let instructionStep1 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep1")
         instructionStep1.title = "6-Minute Walk Test"
         instructionStep1.text = """
-        (ICON) This test will take 6-minutes.
-
-        (ICON) Ensure you have 6-minutes of uninterrupted time before starting.
-
-        (ICON) Wear comfortable clothes and properly fitting shoes. If you normally use a walking aid, you can use it while completing this test.
-
-        (ICON) If you are unable to walk outdoors, consider completing this test at a local shopping mall or location that you can walk back and forth such as a long hallway in your home.
+        ⏱️ This test will take 6-minutes.
+                
+        ⌛ Ensure you have 6-minutes of uninterrupted time before starting.
+         
+         👟 Wear comfortable clothes and properly fitting shoes. If you normally use a walking aid, you can use it while completing this test.
+         
+         🏠 If you are unable to walk outdoors, consider completing this test at a local shopping mall or location that you can walk back and forth such as a long hallway in your home.
         """
 
         steps += [instructionStep1]
@@ -44,7 +44,7 @@ public enum SixMinuteWalkTestUtil {
         let instructionStep2 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep2")
         instructionStep2.title = "Getting Started"
         instructionStep2.text = """
-        1) Find a strait walking path at least 30 meters in length.
+        1) Find a straight walking path at least 30 meters in length.
 
         2) Walk as far as you can at a safe pace for six minutes.
 
