@@ -35,7 +35,7 @@ public class SixMinuteWalkStep: ORKActiveStep { // Or do we want ORKFitnessStep?
     
     override public func validateParameters() {
         super.validateParameters()
-        assert(stepDuration == TimeInterval(360), "duration must be 6 minutes (360 seconds)")
+        //assert(stepDuration == TimeInterval(360), "duration must be 6 minutes (360 seconds)")
         //assert(distance >= minimumDist, "distance should be greater or equal to \(minimumDist)")
         //assert(distance <= maxDist, "distance should be less than or equal to \(maxDist)")
     }
@@ -60,7 +60,8 @@ public class SixMinuteWalkStep: ORKActiveStep { // Or do we want ORKFitnessStep?
         self.title = "Test in Progress"
         self.text = "Walk as far as you can for 6 minutes. If you need to rest for any reason, press the “Rest” button. Resume as soon as you feel able to safely continue."
         self.spokenInstruction = self.text
-        //self.recorderConfigurations = [self makeRecorderConfigurationsWithOptions:options];
+        //let pedometerConfig = ORKPedometerRecorderConfiguration(identifier: "Pedometer")
+        //self.recorderConfigurations = [pedometerConfig]; // Note: This has been moved to the step view controller to avoid a crash
         self.shouldContinueOnFinish = true
         self.isOptional = false
         self.shouldStartTimerAutomatically = true
@@ -68,6 +69,7 @@ public class SixMinuteWalkStep: ORKActiveStep { // Or do we want ORKFitnessStep?
         self.shouldVibrateOnFinish = true
         self.shouldPlaySoundOnStart = true
         self.shouldPlaySoundOnFinish = true
+        self.shouldShowDefaultTimer = true
         self.shouldSpeakRemainingTimeAtHalfway = true
         self.shouldSpeakCountDown = true
         

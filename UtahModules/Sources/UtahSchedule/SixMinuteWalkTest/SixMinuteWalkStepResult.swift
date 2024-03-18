@@ -10,10 +10,16 @@
 import ResearchKit.Private
 
 public class SixMinuteWalkStepResult: ORKResult {
-    public var score: Int?
+    public var steps: Int?
+    public var distance: Int?
+    public var relativeTime: TimeInterval?
+    public var absoluteTime: String?
     
     enum Keys: String {
-        case score
+        case steps
+        case distance
+        case relativeTime
+        case absoluteTime
     }
     
     override public init(identifier: String) {
@@ -22,12 +28,18 @@ public class SixMinuteWalkStepResult: ORKResult {
     
     override public func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
-        aCoder.encode(score, forKey: Keys.score.rawValue)
+        aCoder.encode(steps, forKey: Keys.steps.rawValue)
+        aCoder.encode(distance, forKey: Keys.distance.rawValue)
+        aCoder.encode(relativeTime, forKey: Keys.relativeTime.rawValue)
+        aCoder.encode(absoluteTime, forKey: Keys.absoluteTime.rawValue)
     }
     
     public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        score = aDecoder.decodeObject(forKey: Keys.score.rawValue) as? Int
+        steps = aDecoder.decodeObject(forKey: Keys.steps.rawValue) as? Int
+        distance = aDecoder.decodeObject(forKey: Keys.distance.rawValue) as? Int
+        relativeTime = aDecoder.decodeObject(forKey: Keys.relativeTime.rawValue) as? TimeInterval
+        absoluteTime = aDecoder.decodeObject(forKey: Keys.absoluteTime.rawValue) as? String
     }
     
     public class func supportsSecureCoding() -> Bool {
@@ -39,14 +51,21 @@ public class SixMinuteWalkStepResult: ORKResult {
         
         if let castObject = object as? SixMinuteWalkStepResult {
             return (isParentSame &&
-                    (score == castObject.score))
+                    (steps == castObject.steps) &&
+                    (distance == castObject.distance) &&
+                    (relativeTime == castObject.relativeTime) &&
+                    (absoluteTime == castObject.absoluteTime)
+            )
         }
         return true
     }
     
     override public func copy(with zone: NSZone? = nil) -> Any {
         if let result = super.copy(with: zone) as? SixMinuteWalkStepResult {
-            result.score = score
+            result.steps = steps
+            result.distance = distance
+            result.relativeTime = relativeTime
+            result.absoluteTime = absoluteTime
             return result
         } else {
             return super.copy(with: zone)

@@ -20,10 +20,14 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private var endTime: TimeInterval?
     private var results: NSMutableArray?
     private let visionStepView = SixMinuteWalkStepUIView()
+    private var restClicks: Int = 0
+    private var pedometerRecorder: ORKPedometerRecorder?
     
     override public init(step: ORKStep?) {
         super.init(step: step)
         suspendIfInactive = true
+        restClicks = 0
+        pedometerRecorder = ORKPedometerRecorder(identifier: "Pedometer", step: step, outputDirectory: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
     }
     
     @available(*, unavailable)
@@ -38,6 +42,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     override public func stepDidFinish() {
         super.stepDidFinish()
+        createResult(id: "Complete_")
         goForward()
     }
     
@@ -45,6 +50,8 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     public func symptomButtonHit() {
         // TODO: Implement the symptomButtonHit function here
         visionStepView.symptomButtonPressedLabel.isHidden = false
+        restClicks += 1
+        createResult(id: "RestClick" + String(restClicks) + "_")
     }
     
     private func sixMinuteWalkStep() -> SixMinuteWalkStep {
@@ -75,9 +82,16 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
         return stepResult!
     }
     
-    private func createResult(score: Int) {
-        let walkResult = SixMinuteWalkStepResult(identifier: (step!.identifier))
-        walkResult.score = score
+    private func createResult(id: String) {
+        let walkResult = SixMinuteWalkStepResult(identifier: (id + step!.identifier))
+        walkResult.steps = pedometerRecorder?.totalNumberOfSteps
+        walkResult.distance = pedometerRecorder?.totalDistance
+        walkResult.relativeTime = self.runtime
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
+        walkResult.absoluteTime = dateFormatter.string(from: date)
         results?.add(walkResult)
     }
 }
