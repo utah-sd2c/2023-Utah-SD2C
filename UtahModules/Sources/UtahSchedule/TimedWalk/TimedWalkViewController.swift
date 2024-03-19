@@ -29,7 +29,7 @@ struct TimedWalkViewController: UIViewControllerRepresentable {
                 restDuration: 30,
                 options: .excludeConclusion
             )
-//            ORKOrderedTask.sixMinuteWalk( // TODO: This one is specificly a 6 minute walk test. Should we be using it instead?
+//            ORKOrderedTask.sixMinuteWalk( 
 //                withIdentifier: "6 minute walk test",
 //                intendedUseDescription: "6 minute walk test",
 //                //walkDuration: 360,

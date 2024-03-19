@@ -14,6 +14,7 @@ import Foundation
 import ResearchKit
 import SwiftUI
 import UIKit
+import CoreMotion
 
 public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // Or do we want ORKFitnessStepViewController 
     private var startTime: TimeInterval?
@@ -21,13 +22,19 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private var results: NSMutableArray?
     private let visionStepView = SixMinuteWalkStepUIView()
     private var restClicks: Int = 0
-    private var pedometerRecorder: ORKPedometerRecorder?
+    private let activityManager = CMMotionActivityManager()
+    private let pedometerRecorder = CMPedometer()
+    private var stepCount: Int?
+    private var distance: Int?
+    // private let pedometerRecorder: ORKPedometerRecorder
     
     override public init(step: ORKStep?) {
         super.init(step: step)
         suspendIfInactive = true
         restClicks = 0
-        pedometerRecorder = ORKPedometerRecorder(identifier: "Pedometer", step: step, outputDirectory: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+        //pedometerRecorder = ORKPedometerRecorder(identifier: "Pedometer", step: step, outputDirectory: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
+        stepCount = 0
+        distance = 0
     }
     
     @available(*, unavailable)
@@ -38,20 +45,45 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     override public func start() {
         super.start()
         startTime = ProcessInfo.processInfo.systemUptime
+        //pedometerRecorder?.start()
+        if CMPedometer.isStepCountingAvailable() {
+            pedometerRecorder.startUpdates(from: Date()) { pedometerData, error in
+                guard let pedometerData = pedometerData, error == nil else {return}
+                DispatchQueue.main.async {
+                    //print("Step count: \(pedometerData.numberOfSteps.intValue)")
+                    self.stepCount = pedometerData.numberOfSteps.intValue
+                    self.distance = pedometerData.distance?.intValue
+                }
+            }
+        } else {
+            stepCount = -1
+            distance = -1
+        }
     }
     
     override public func stepDidFinish() {
         super.stepDidFinish()
+        //pedometerRecorder?.stop()
+        pedometerRecorder.stopUpdates()
         createResult(id: "Complete_")
         goForward()
     }
     
     @objc
     public func symptomButtonHit() {
-        // TODO: Implement the symptomButtonHit function here
-        visionStepView.symptomButtonPressedLabel.isHidden = false
-        restClicks += 1
-        createResult(id: "RestClick" + String(restClicks) + "_")
+        if(visionStepView.symptomButtonPressedLabel.isHidden == true)
+        {
+            visionStepView.symptomButtonPressedLabel.isHidden = false
+            restClicks += 1
+            createResult(id: "RestClick" + String(restClicks) + "_")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+                self.hideRestingText()
+            })
+        }
+    }
+    
+    private func hideRestingText() {
+        visionStepView.symptomButtonPressedLabel.isHidden = true
     }
     
     private func sixMinuteWalkStep() -> SixMinuteWalkStep {
@@ -84,8 +116,8 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     private func createResult(id: String) {
         let walkResult = SixMinuteWalkStepResult(identifier: (id + step!.identifier))
-        walkResult.steps = pedometerRecorder?.totalNumberOfSteps
-        walkResult.distance = pedometerRecorder?.totalDistance
+        walkResult.steps = stepCount //pedometerRecorder?.totalNumberOfSteps
+        walkResult.distance = distance //pedometerRecorder?.totalDistance
         walkResult.relativeTime = self.runtime
         let date = Date()
         //let dateFormatter = DateFormatter()

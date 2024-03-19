@@ -28,7 +28,7 @@ public class SixMinuteWalkCompletionView: ORKCompletionStepViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: If we want this, we need to create and add this step in SixMinuteWalkTestCoordinator
+        // If we want this, we need to create and add this step in SixMinuteWalkTestCoordinator
         //if let activeStepResult = taskViewController?.result.stepResult(forStepIdentifier: SixMinuteWalkTestUtil.activeStepIdentifier) {
         //    step!.text! += "\nDebugData:\n"
         //    let results = activeStepResult.results as? [SixMinuteWalkStepResult]
