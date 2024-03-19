@@ -25,6 +25,9 @@ import SwiftUI
 import UtahSharedContext
 
 public enum SixMinuteWalkTestUtil {
+    
+    public static var activeStepIdentifier = "SixMinuteWalkActiveStep"
+    
     public static func addInstructionSteps(steps: inout [ORKStep]) {
         // Instruction steps
         let instructionStep1 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep1")
@@ -59,7 +62,7 @@ public enum SixMinuteWalkTestUtil {
     
     public static func addActiveStep(steps: inout [ORKStep]) {
         
-        let activeStep = SixMinuteWalkStep(identifier: "SixMinuteWalkActiveStep")
+        let activeStep = SixMinuteWalkStep(identifier: activeStepIdentifier)
         activeStep.isOptional = false
 
         steps += [activeStep]
@@ -67,7 +70,7 @@ public enum SixMinuteWalkTestUtil {
     
     public static func addCompletionStep(steps: inout [ORKStep]) {
         
-        let completionStep = ORKCompletionStep(identifier: "SixMinuteWalkCompletionStep")
+        let completionStep = SixMinuteWalkCompletionStep(identifier: "SixMinuteWalkCompletionStep")
         completionStep.isOptional = false
         completionStep.title = "6-Minute Walk Test Complete"
         completionStep.text = "Thank you for completing the 6-Minute Walk Test. Please click Done below."

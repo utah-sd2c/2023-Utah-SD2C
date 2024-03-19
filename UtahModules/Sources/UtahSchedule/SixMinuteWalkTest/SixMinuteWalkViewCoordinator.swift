@@ -44,7 +44,7 @@ class SixMinuteWalkViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             //let instructionStepIndex = fhirResponse.item!.endIndex - 2
             //fhirResponse.item?.remove(at: instructionStepIndex)
             
-            let sixMinuteWalkTestResult = taskViewController.result.stepResult(forStepIdentifier: "SixMinuteWalkActiveStep")
+            let sixMinuteWalkTestResult = taskViewController.result.stepResult(forStepIdentifier: SixMinuteWalkTestUtil.activeStepIdentifier)
             
             // TODO: Do we need similar code for the 6MWT?
             //let firstSixMinuteWalkTestResult: SixMinuteWalkStepResult = sixMinuteWalkTestResult?.results?[0] as! SixMinuteWalkStepResult
@@ -56,6 +56,7 @@ class SixMinuteWalkViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             //fhirResponse.item?.last?.answer?.append(getUp)
             
             // TODO: We will need something similar to this to store in Firebase
+            // TODO: This is the only thing we need to implement/uncomment here
             //let edmontonScore = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: fhirResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
         
             // TODO: We probably want a results screen as well for 6MWT
