@@ -78,4 +78,51 @@ public enum SixMinuteWalkTestUtil {
         steps += [completionStep]
     }
     
+    static func uploadSixMinuteWalkTest(sixMinuteWalkStepResults: [SixMinuteWalkStepResult]) -> Void {
+        var identifier = ""
+        var resultDict = [String: [String: Any]]()
+        for i in 0..<sixMinuteWalkStepResults.count {
+            let entry = sixMinuteWalkStepResults[i]
+            // If this is the last result it is the end of step result
+            var entryName = "FinalResult"
+            // Otherwise it's a Rest button press
+            if(i != sixMinuteWalkStepResults.count-1){
+                entryName = "RestButtonPressNumber" + String(i+1)
+            } else {
+                // Set the identifier to be the UTC time of completion
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
+                identifier = dateFormatter.string(from: entry.absoluteTime!)
+            }
+            resultDict[entryName] = ["Steps": entry.steps!, "Distance": entry.distance!, "TimeSinceTestBegan": entry.relativeTime!, "UTCTimeOfSubmission": entry.absoluteTime!]
+        }
+        
+        let user = Auth.auth().currentUser
+        do {
+            print(resultDict)
+            
+            //let identifier = UUID().uuidString
+            //let identifier = resultDict["FinalResult"]!["UTCTimeOfSubmission"]
+            let database = Firestore.firestore()
+            
+            // Upload results to user collection
+            let userUID = user?.uid
+            if userUID != nil {
+                for entry in resultDict{
+                    database.collection("users").document(userUID!).collection("SixMinuteWalkTestResult").document(identifier).collection("RestsAndFinish").document(entry.key).setData(resultDict[entry.key]!) { err in
+                        if let err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written.")
+                        }
+                    }
+                }
+            }
+        } catch {
+            // Something didn't work!
+            print(error.localizedDescription)
+        }
+    }
+    
 }

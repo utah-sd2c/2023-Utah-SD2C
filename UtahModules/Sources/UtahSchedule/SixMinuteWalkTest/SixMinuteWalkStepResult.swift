@@ -13,7 +13,7 @@ public class SixMinuteWalkStepResult: ORKResult {
     public var steps: Int?
     public var distance: Int?
     public var relativeTime: TimeInterval?
-    public var absoluteTime: String?
+    public var absoluteTime: Date?
     
     enum Keys: String {
         case steps
@@ -39,7 +39,7 @@ public class SixMinuteWalkStepResult: ORKResult {
         steps = aDecoder.decodeObject(forKey: Keys.steps.rawValue) as? Int
         distance = aDecoder.decodeObject(forKey: Keys.distance.rawValue) as? Int
         relativeTime = aDecoder.decodeObject(forKey: Keys.relativeTime.rawValue) as? TimeInterval
-        absoluteTime = aDecoder.decodeObject(forKey: Keys.absoluteTime.rawValue) as? String
+        absoluteTime = aDecoder.decodeObject(forKey: Keys.absoluteTime.rawValue) as? Date
     }
     
     public class func supportsSecureCoding() -> Bool {

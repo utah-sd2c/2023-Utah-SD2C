@@ -36,30 +36,13 @@ class SixMinuteWalkViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
     ) {
         switch reason {
         case .completed:
-            // Convert the responses into a FHIR object using ResearchKitOnFHIR
-            let fhirResponse = taskViewController.result.fhirResponse
-            
-            // remove instruction step from fhir
-            // TODO: Remove all the instruction steps for the 6MWT?
-            //let instructionStepIndex = fhirResponse.item!.endIndex - 2
-            //fhirResponse.item?.remove(at: instructionStepIndex)
-            
+            // Collect data from the ActiveStep
             let sixMinuteWalkTestResult = taskViewController.result.stepResult(forStepIdentifier: SixMinuteWalkTestUtil.activeStepIdentifier)
-            
-            // TODO: Do we need similar code for the 6MWT?
-            //let firstSixMinuteWalkTestResult: SixMinuteWalkStepResult = sixMinuteWalkTestResult?.results?[0] as! SixMinuteWalkStepResult
-            
-            //let strScore = String(firstSixMinuteWalkTestResult.score!)
-            //let getUp = QuestionnaireResponseItemAnswer()
-            //getUp.value = .string(strScore.asFHIRStringPrimitive())
-            //fhirResponse.item?.last?.answer?.removeAll()
-            //fhirResponse.item?.last?.answer?.append(getUp)
-            
-            // TODO: We will need something similar to this to store in Firebase
-            // TODO: This is the only thing we need to implement/uncomment here
-            //let edmontonScore = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: fhirResponse, firebaseCollection: "edmontonsurveys", surveyType: "edmonton")
+            let sixMWTResults = sixMinuteWalkTestResult!.results as? [SixMinuteWalkStepResult]
+            // And upload it to Firebase
+            SixMinuteWalkTestUtil.uploadSixMinuteWalkTest(sixMinuteWalkStepResults: sixMWTResults!)
         
-            // TODO: We probably want a results screen as well for 6MWT
+            // If we want a screen to display the result data, we can modify this (copied from QuestionnaireUtil)
             // updates trends tab
             //firestoreManager.fetchAll()
             // We're done with the Edmonton survey, now we will launch

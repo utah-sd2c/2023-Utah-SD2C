@@ -45,7 +45,7 @@ public class SixMinuteWalkStep: ORKActiveStep { // Or do we want ORKFitnessStep?
     }
     
     override public var allowsBackNavigation: Bool {
-        true
+        false
     }
     
     override public func copy(with zone: NSZone? = nil) -> Any {

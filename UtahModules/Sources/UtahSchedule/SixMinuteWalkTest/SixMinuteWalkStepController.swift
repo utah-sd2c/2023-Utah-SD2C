@@ -88,10 +88,11 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
         walkResult.distance = pedometerRecorder?.totalDistance
         walkResult.relativeTime = self.runtime
         let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
-        walkResult.absoluteTime = dateFormatter.string(from: date)
+        //let dateFormatter = DateFormatter()
+        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        //dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
+        //walkResult.absoluteTime = dateFormatter.string(from: date)
+        walkResult.absoluteTime = date
         results?.add(walkResult)
     }
 }

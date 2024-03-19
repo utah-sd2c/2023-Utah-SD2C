@@ -28,17 +28,17 @@ public class SixMinuteWalkCompletionView: ORKCompletionStepViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: Putting this here doesn't work, since you can't edit step from here; find somewhere to put it that can update text...
-        if let activeStepResult = taskViewController?.result.stepResult(forStepIdentifier: SixMinuteWalkTestUtil.activeStepIdentifier) {
-            step!.text! += "\nDebugData:\n"
-            let results = activeStepResult.results as? [SixMinuteWalkStepResult]
-            for entry in results! {
-                step!.text! += "\tSteps: " + String(describing: entry.steps)
-                step!.text! += " Distance: " + String(describing: entry.distance)
-                step!.text! += " RelativeTime: " + String(describing: entry.relativeTime)
-                step!.text! += " AbsoluteTime: " + String(describing: entry.absoluteTime)
-            }
-        }
+        // TODO: If we want this, we need to create and add this step in SixMinuteWalkTestCoordinator
+        //if let activeStepResult = taskViewController?.result.stepResult(forStepIdentifier: SixMinuteWalkTestUtil.activeStepIdentifier) {
+        //    step!.text! += "\nDebugData:\n"
+        //    let results = activeStepResult.results as? [SixMinuteWalkStepResult]
+        //    for entry in results! {
+        //        step!.text! += "\tSteps: " + String(describing: entry.steps)
+        //        step!.text! += " Distance: " + String(describing: entry.distance)
+        //        step!.text! += " RelativeTime: " + String(describing: entry.relativeTime)
+        //        step!.text! += " AbsoluteTime: " + String(describing: entry.absoluteTime)
+        //    }
+        //}
     }
     
     override public func viewDidAppear(_ animated: Bool) {
