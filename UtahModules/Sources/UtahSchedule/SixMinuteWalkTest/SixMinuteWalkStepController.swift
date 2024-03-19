@@ -24,8 +24,8 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private var restClicks: Int = 0
     private let activityManager = CMMotionActivityManager()
     private let pedometerRecorder = CMPedometer()
-    private var stepCount: Int?
-    private var distance: Int?
+    private var stepCount: Int? = 0
+    private var distance: Int? = 0
     // private let pedometerRecorder: ORKPedometerRecorder
     
     override public init(step: ORKStep?) {
