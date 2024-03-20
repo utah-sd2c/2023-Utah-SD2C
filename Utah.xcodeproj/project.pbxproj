@@ -41,6 +41,8 @@
 		2F5E32BD297E05EA003432F8 /* UtahAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5E32BC297E05EA003432F8 /* UtahAppDelegate.swift */; };
 		2FC9759F2978E39600BA99FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2FC9759E2978E39600BA99FE /* Localizable.strings */; };
 		2FC975A82978F11A00BA99FE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC975A72978F11A00BA99FE /* Home.swift */; };
+		4DB139682BAB74F700E919B8 /* FHIRQuestionnaires in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB139672BAB74F700E919B8 /* FHIRQuestionnaires */; };
+		4DB1396A2BAB74F700E919B8 /* ResearchKitOnFHIR in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB139692BAB74F700E919B8 /* ResearchKitOnFHIR */; };
 		653A2551283387FE005D4D48 /* Utah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A2550283387FE005D4D48 /* Utah.swift */; };
 		653A255528338800005D4D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653A255428338800005D4D48 /* Assets.xcassets */; };
 		653A256228338800005D4D48 /* UtahTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653A256128338800005D4D48 /* UtahTests.swift */; };
@@ -116,6 +118,7 @@
 				277B0AD92A310C77001312BC /* SpeziAccount in Frameworks */,
 				277B0ABF2A310AA5001312BC /* SpeziFHIRMockDataStorageProvider in Frameworks */,
 				93E00346298DCF6400D6E494 /* UtahTrends in Frameworks */,
+				4DB139682BAB74F700E919B8 /* FHIRQuestionnaires in Frameworks */,
 				277B0ABD2A310AA5001312BC /* SpeziFHIR in Frameworks */,
 				277B0ACB2A310AE9001312BC /* SpeziOnboarding in Frameworks */,
 				277B0AAF2A3109E5001312BC /* Spezi in Frameworks */,
@@ -124,6 +127,7 @@
 				2F59B943298C628800C5107F /* UtahSchedule in Frameworks */,
 				277B0AC62A310AC8001312BC /* SpeziFirestore in Frameworks */,
 				277B0ACE2A310B00001312BC /* SpeziLocalStorage in Frameworks */,
+				4DB1396A2BAB74F700E919B8 /* ResearchKitOnFHIR in Frameworks */,
 				27BC3A412A31F2D3009495C3 /* FirebaseFirestore in Frameworks */,
 				277B0AD32A310B25001312BC /* SpeziViews in Frameworks */,
 			);
@@ -269,6 +273,8 @@
 				27BC3A402A31F2D3009495C3 /* FirebaseFirestore */,
 				27BC3A422A31F2D3009495C3 /* FirebaseFirestoreSwift */,
 				27BC3A442A31F2D3009495C3 /* FirebaseStorage */,
+				4DB139672BAB74F700E919B8 /* FHIRQuestionnaires */,
+				4DB139692BAB74F700E919B8 /* ResearchKitOnFHIR */,
 			);
 			productName = UtahApplication;
 			productReference = 653A254D283387FE005D4D48 /* U-STEP.app */;
@@ -363,6 +369,7 @@
 				27A40B942A31F16E00B9DA45 /* XCRemoteSwiftPackageReference "XCTestExtensions" */,
 				27A40B972A31F17B00B9DA45 /* XCRemoteSwiftPackageReference "XCTHealthKit" */,
 				27BC3A3D2A31F2D3009495C3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4DB139662BAB74F700E919B8 /* XCRemoteSwiftPackageReference "ResearchKitOnFHIR" */,
 			);
 			productRefGroup = 653A254E283387FE005D4D48 /* Products */;
 			projectDirPath = "";
@@ -1088,6 +1095,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		4DB139662BAB74F700E919B8 /* XCRemoteSwiftPackageReference "ResearchKitOnFHIR" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StanfordBDHG/ResearchKitOnFHIR.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		93CD053529A0430400CC9DFB /* XCRemoteSwiftPackageReference "ResearchKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/StanfordBDHG/ResearchKit";
@@ -1225,6 +1240,16 @@
 		2F59B944298C628800C5107F /* UtahSharedContext */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UtahSharedContext;
+		};
+		4DB139672BAB74F700E919B8 /* FHIRQuestionnaires */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DB139662BAB74F700E919B8 /* XCRemoteSwiftPackageReference "ResearchKitOnFHIR" */;
+			productName = FHIRQuestionnaires;
+		};
+		4DB139692BAB74F700E919B8 /* ResearchKitOnFHIR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DB139662BAB74F700E919B8 /* XCRemoteSwiftPackageReference "ResearchKitOnFHIR" */;
+			productName = ResearchKitOnFHIR;
 		};
 		93CD053629A0430400CC9DFB /* ResearchKit */ = {
 			isa = XCSwiftPackageProductDependency;
