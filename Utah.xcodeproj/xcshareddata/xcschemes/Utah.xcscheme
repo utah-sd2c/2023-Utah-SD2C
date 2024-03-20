@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "653A254C283387FE005D4D48"
-               BuildableName = "Utah.app"
-               BlueprintName = "Utah"
+               BuildableName = "U-STEP.app"
+               BlueprintName = "U-STEP"
                ReferencedContainer = "container:Utah.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -71,14 +71,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "653A254C283387FE005D4D48"
-            BuildableName = "Utah.app"
-            BlueprintName = "Utah"
+            BuildableName = "U-STEP.app"
+            BlueprintName = "U-STEP"
             ReferencedContainer = "container:Utah.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "--useFirebaseEmulator"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--skipOnboarding"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -94,8 +98,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "653A254C283387FE005D4D48"
-            BuildableName = "Utah.app"
-            BlueprintName = "Utah"
+            BuildableName = "U-STEP.app"
+            BlueprintName = "U-STEP"
             ReferencedContainer = "container:Utah.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -81,7 +81,7 @@
 		2FC94CD4298B0A1D009C8209 /* Utah.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Utah.xctestplan; sourceTree = "<group>"; };
 		2FC9759E2978E39600BA99FE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		2FC975A72978F11A00BA99FE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		653A254D283387FE005D4D48 /* Utah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Utah.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		653A254D283387FE005D4D48 /* U-STEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "U-STEP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		653A2550283387FE005D4D48 /* Utah.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utah.swift; sourceTree = "<group>"; };
 		653A255428338800005D4D48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		653A255D28338800005D4D48 /* UtahTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UtahTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,7 +176,7 @@
 		653A254E283387FE005D4D48 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				653A254D283387FE005D4D48 /* Utah.app */,
+				653A254D283387FE005D4D48 /* U-STEP.app */,
 				653A255D28338800005D4D48 /* UtahTests.xctest */,
 				653A256728338800005D4D48 /* UtahUITests.xctest */,
 			);
@@ -227,9 +227,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		653A254C283387FE005D4D48 /* Utah */ = {
+		653A254C283387FE005D4D48 /* U-STEP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 653A257128338800005D4D48 /* Build configuration list for PBXNativeTarget "Utah" */;
+			buildConfigurationList = 653A257128338800005D4D48 /* Build configuration list for PBXNativeTarget "U-STEP" */;
 			buildPhases = (
 				653A2549283387FE005D4D48 /* Sources */,
 				653A254A283387FE005D4D48 /* Frameworks */,
@@ -240,7 +240,7 @@
 			);
 			dependencies = (
 			);
-			name = Utah;
+			name = "U-STEP";
 			packageProductDependencies = (
 				2F59B940298C628800C5107F /* UtahOnboardingFlow */,
 				2F59B942298C628800C5107F /* UtahSchedule */,
@@ -271,7 +271,7 @@
 				27BC3A442A31F2D3009495C3 /* FirebaseStorage */,
 			);
 			productName = UtahApplication;
-			productReference = 653A254D283387FE005D4D48 /* Utah.app */;
+			productReference = 653A254D283387FE005D4D48 /* U-STEP.app */;
 			productType = "com.apple.product-type.application";
 		};
 		653A255C28338800005D4D48 /* UtahTests */ = {
@@ -368,7 +368,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				653A254C283387FE005D4D48 /* Utah */,
+				653A254C283387FE005D4D48 /* U-STEP */,
 				653A255C28338800005D4D48 /* UtahTests */,
 				653A256628338800005D4D48 /* UtahUITests */,
 			);
@@ -461,12 +461,12 @@
 /* Begin PBXTargetDependency section */
 		653A255F28338800005D4D48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 653A254C283387FE005D4D48 /* Utah */;
+			target = 653A254C283387FE005D4D48 /* U-STEP */;
 			targetProxy = 653A255E28338800005D4D48 /* PBXContainerItemProxy */;
 		};
 		653A256928338800005D4D48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 653A254C283387FE005D4D48 /* Utah */;
+			target = 653A254C283387FE005D4D48 /* U-STEP */;
 			targetProxy = 653A256828338800005D4D48 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -646,6 +646,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Utah/Supporting Files/Utah.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -934,7 +935,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		653A257128338800005D4D48 /* Build configuration list for PBXNativeTarget "Utah" */ = {
+		653A257128338800005D4D48 /* Build configuration list for PBXNativeTarget "U-STEP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				653A257228338800005D4D48 /* Debug */,
