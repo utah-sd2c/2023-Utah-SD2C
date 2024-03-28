@@ -566,8 +566,15 @@ public enum QuestionnaireUtil {
                             
                             // Create a reference for the new file
                             // and put it in the "edmonton" file on Cloud Storage
-                            let fileName = fileURL.lastPathComponent
-                            let fileRef = storageRef.child("edmonton/" + fileName)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                            dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
+                            let fileName = dateFormatter.string(from: Date()) //fileURL.lastPathComponent
+                            var storagePath = "edmonton/" + fileName
+                            if (userUID != nil) {
+                                storagePath = "users/" + userUID! + "/edmonton/" + fileName
+                            }
+                            let fileRef = storageRef.child(storagePath)
                             
                             // Upload the file to Cloud Storage using the reference
                             fileRef.putFile(from: fileURL, metadata: nil) { _, error in
