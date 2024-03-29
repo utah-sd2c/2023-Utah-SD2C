@@ -15,6 +15,7 @@ import ResearchKit
 import SwiftUI
 import UIKit
 import CoreMotion
+import CoreHaptics
 
 public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // Or do we want ORKFitnessStepViewController 
     private var startTime: TimeInterval?
@@ -26,6 +27,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private let pedometerRecorder = CMPedometer()
     private var stepCount: Int? = 0
     private var distance: Int? = 0
+    private var engine: CHHapticEngine?
     // private let pedometerRecorder: ORKPedometerRecorder
     
     override public init(step: ORKStep?) {
@@ -59,6 +61,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
             stepCount = -1
             distance = -1
         }
+        initializeHaptics()
     }
     
     override public func stepDidFinish() {
@@ -73,10 +76,11 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     public func symptomButtonHit() {
         if(visionStepView.symptomButtonPressedLabel.isHidden == true)
         {
+            generateHaptics()
             visionStepView.symptomButtonPressedLabel.isHidden = false
             restClicks += 1
             createResult(id: "RestClick" + String(restClicks) + "_")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0, execute: {
                 self.hideRestingText()
             })
         }
@@ -84,6 +88,33 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     private func hideRestingText() {
         visionStepView.symptomButtonPressedLabel.isHidden = true
+    }
+    
+    private func initializeHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return}
+        
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("Error creating haptics engine: \(error.localizedDescription)")
+        }
+    }
+    
+    private func generateHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {return}
+
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0, duration:0.5)
+
+        do {
+            let pattern = try CHHapticPattern(events: [event], parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
     }
     
     private func sixMinuteWalkStep() -> SixMinuteWalkStep {
