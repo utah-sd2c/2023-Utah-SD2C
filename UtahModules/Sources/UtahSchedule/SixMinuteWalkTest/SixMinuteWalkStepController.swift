@@ -32,7 +32,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     override public init(step: ORKStep?) {
         super.init(step: step)
-        suspendIfInactive = true
+        suspendIfInactive = false
         restClicks = 0
         //pedometerRecorder = ORKPedometerRecorder(identifier: "Pedometer", step: step, outputDirectory: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
         stepCount = 0
@@ -84,6 +84,16 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
                 self.hideRestingText()
             })
         }
+    }
+    
+    override public func suspend() {
+        super.suspend()
+        
+    }
+    
+    override public func resume() {
+        super.resume()
+        self.hideRestingText()
     }
     
     private func hideRestingText() {
