@@ -28,13 +28,12 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private var stepCount: Int? = 0
     private var distance: Int? = 0
     private var engine: CHHapticEngine?
-    // private let pedometerRecorder: ORKPedometerRecorder
     
     override public init(step: ORKStep?) {
         super.init(step: step)
         suspendIfInactive = false
+        UIApplication.shared.isIdleTimerDisabled = true
         restClicks = 0
-        //pedometerRecorder = ORKPedometerRecorder(identifier: "Pedometer", step: step, outputDirectory: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!)
         stepCount = 0
         distance = 0
     }
@@ -47,7 +46,6 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     override public func start() {
         super.start()
         startTime = ProcessInfo.processInfo.systemUptime
-        //pedometerRecorder?.start()
         if CMPedometer.isStepCountingAvailable() {
             pedometerRecorder.startUpdates(from: Date()) { pedometerData, error in
                 guard let pedometerData = pedometerData, error == nil else {return}
@@ -66,7 +64,6 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     override public func stepDidFinish() {
         super.stepDidFinish()
-        //pedometerRecorder?.stop()
         pedometerRecorder.stopUpdates()
         createResult(id: "Complete_")
         goForward()
@@ -88,7 +85,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     override public func suspend() {
         super.suspend()
-        
+        // This function isn't getting called for some reason
     }
     
     override public func resume() {
@@ -157,14 +154,10 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     
     private func createResult(id: String) {
         let walkResult = SixMinuteWalkStepResult(identifier: (id + step!.identifier))
-        walkResult.steps = stepCount //pedometerRecorder?.totalNumberOfSteps
-        walkResult.distance = distance //pedometerRecorder?.totalDistance
+        walkResult.steps = stepCount
+        walkResult.distance = distance
         walkResult.relativeTime = self.runtime
         let date = Date()
-        //let dateFormatter = DateFormatter()
-        //dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        //dateFormatter.dateFormat = "y, MMM d, HH:mm:ss"
-        //walkResult.absoluteTime = dateFormatter.string(from: date)
         walkResult.absoluteTime = date
         results?.add(walkResult)
     }

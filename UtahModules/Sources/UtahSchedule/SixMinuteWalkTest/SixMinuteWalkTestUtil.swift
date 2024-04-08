@@ -33,6 +33,8 @@ public enum SixMinuteWalkTestUtil {
         let instructionStep1 = ORKInstructionStep(identifier: "SixMinuteWalkInstructionStep1")
         instructionStep1.title = "6-Minute Walk Test"
         instructionStep1.text = """
+        ⚠️ PLEASE DO NOT LOCK YOUR PHONE UNTIL THIS TEST IS COMPLETE
+        
         ⏱️ This test will take 6-minutes.
                 
         ⌛ Ensure you have 6-minutes of uninterrupted time before starting.
