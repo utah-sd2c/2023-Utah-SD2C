@@ -18,7 +18,6 @@ struct TaskScheduling: View {
     @AppStorage(StorageKeys.onboardingFlowComplete) var completedOnboardingFlow = false
     @EnvironmentObject var scheduler: UtahScheduler
 
-
     var body: some View {
         OnboardingView(
             contentView: {
@@ -71,36 +70,58 @@ struct TaskScheduling: View {
                         scheduler.schedule(task: task)
                          */
 
+                        // Check if there is already a repeating reminder notification
+                        let priorRequests = await UNUserNotificationCenter.current().pendingNotificationRequests()
+                        var notificationExists = false
+                        for priorRequest in priorRequests {
+                            if (priorRequest.identifier == "edu.utah.ustep.remindernotification")
+                            {
+                                notificationExists = true
+                                break
+                            }
+                        }
                         // Request permission to show local notifications
-                        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { [notificationExists] success, error in
                             if success {
-                                // Configure notification content
-                                let content = UNMutableNotificationContent()
-                                content.title = "Complete your survey"
-                                content.subtitle = "Take the Edmonton survey today!"
-                                content.sound = UNNotificationSound.default
+                                // Only create the reminder notification the first time the user gives permissions, unless it is deleted somehow
+                                if (notificationExists == false)
+                                {
+                                    // Configure notification content
+                                    let content = UNMutableNotificationContent()
+                                    content.title = "Complete your surveys"
+                                    content.subtitle = "Take your Assessment Bundle and 6 Minute Walk Test today!"
+                                    content.sound = UNNotificationSound.default
 
-                                // Configuring a recurring date for the notification
-                                var dateComponents = DateComponents()
-                                dateComponents.day = Calendar.current.component(.day, from: Date())
-                                dateComponents.hour = 10
-                                dateComponents.minute = 0
-
-                                // Set up notification schedule
-                                let trigger = UNCalendarNotificationTrigger(
-                                    dateMatching: dateComponents,
-                                    repeats: true
-                                )
-
-                                // Create the notification request
-                                let request = UNNotificationRequest(
-                                    identifier: UUID().uuidString,
-                                    content: content,
-                                    trigger: trigger
-                                )
-
-                                // Add the notification request to the notification center
-                                UNUserNotificationCenter.current().add(request)
+                                    // Configuring a recurring date for the notification
+                                    //var dateComponents = DateComponents()
+                                    //var day = Calendar.current.component(.day, from: Date())
+                                    //// Don't try to schedule a notification on a day that some months don't have
+                                    //if (day > 28) {
+                                    //    day = 28
+                                    //}
+                                    //dateComponents.day = day
+                                    //dateComponents.hour = 10
+                                    //dateComponents.minute = 0
+//
+                                    //// Set up notification schedule
+                                    //let trigger = UNCalendarNotificationTrigger(
+                                    //    dateMatching: dateComponents,
+                                    //    repeats: true
+                                    //)
+                                    
+                                    let secondsIn30Days = 60.0*60*24*30
+                                    let intervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsIn30Days, repeats: true)
+                                    
+                                    
+                                    // Create the notification request
+                                    let request = UNNotificationRequest(
+                                        identifier: "edu.utah.ustep.remindernotification",
+                                        content: content,
+                                        trigger: intervalTrigger
+                                    )
+                                    // Add the notification request to the notification center
+                                    UNUserNotificationCenter.current().add(request)
+                                }
                             } else if let error = error {
                                 print("Couldn't get permission for notifications: \(error.localizedDescription)")
                             }
