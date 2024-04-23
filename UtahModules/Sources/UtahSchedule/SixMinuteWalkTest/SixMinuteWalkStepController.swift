@@ -28,6 +28,7 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     private var stepCount: Int? = 0
     private var distance: Int? = 0
     private var engine: CHHapticEngine?
+    private var hasAlreadyStarted: Bool = false
     
     override public init(step: ORKStep?) {
         super.init(step: step)
@@ -44,6 +45,13 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     }
     
     override public func start() {
+        if(hasAlreadyStarted)
+        {
+            // If this task has already started, this is likely being called after a partial swipe down
+            // In that case, return before setting any new variables/restarting the timer/etc
+            return
+        }
+        hasAlreadyStarted = true
         super.start()
         startTime = ProcessInfo.processInfo.systemUptime
         if CMPedometer.isStepCountingAvailable() {
@@ -84,13 +92,16 @@ public class SixMinuteWalkStepViewController: ORKActiveStepViewController { // O
     }
     
     override public func suspend() {
-        super.suspend()
-        // This function isn't getting called for some reason
+        // This function is only called when partially swiping the step card
+        // Therefore, we don't want it to suspend so we don't call super.suspend()
+        //super.suspend()
     }
     
     override public func resume() {
-        super.resume()
-        self.hideRestingText()
+        // This is called on initial launch and after each partial swipe down
+        // Therefore, we don't want it to execute the super.resume() function
+        //super.resume()
+        //self.hideRestingText()
     }
     
     private func hideRestingText() {
