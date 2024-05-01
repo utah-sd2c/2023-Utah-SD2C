@@ -56,6 +56,8 @@ public class FirestoreManager: ObservableObject {
                     let data = document.data()
                     if let data = data {
                         self.disease = data["disease"] as? String ?? ""
+                        let defaults = UserDefaults.standard
+                        defaults.set(self.disease, forKey: "disease")
                     }
                 }
             }

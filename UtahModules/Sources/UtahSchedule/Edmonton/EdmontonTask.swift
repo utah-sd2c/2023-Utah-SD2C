@@ -29,6 +29,11 @@ enum EdmontonTask {
             case StorageKeys.conditions[1]:
                 QuestionnaireUtil.addVEINESSteps(steps: &steps)
                 identifier += "Veines"
+            case StorageKeys.conditions[2]:
+                // For "I don't know" patients, give all questions
+                QuestionnaireUtil.addWIQSteps(steps: &steps)
+                QuestionnaireUtil.addVEINESSteps(steps: &steps)
+                identifier += "WiqVeines"
             default:
                 break
             }
