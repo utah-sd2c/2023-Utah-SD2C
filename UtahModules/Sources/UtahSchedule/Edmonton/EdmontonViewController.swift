@@ -30,6 +30,8 @@ struct EdmontonViewController: UIViewControllerRepresentable {
                 return EdmontonWIQViewCoordinator(firestoreManager: firestoreManager)
             case StorageKeys.conditions[1]:
                 return EdmontonVEINESViewCoordinator(firestoreManager: firestoreManager)
+            case StorageKeys.conditions[2]:
+                return EdmontonWIQAndVEINESViewCoordinator(firestoreManager: firestoreManager)
             default:
                 return EdmontonViewCoordinator(firestoreManager: firestoreManager)
             }
