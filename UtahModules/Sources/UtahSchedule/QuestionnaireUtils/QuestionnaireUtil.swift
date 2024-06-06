@@ -44,13 +44,13 @@ public enum QuestionnaireUtil {
             "Walk 600 feet? 2 blocks?",
             "Walk 900 feet? 3 blocks?",
             "Walk 1500 feet? 5 blocks?",
-            "Walking 1 block slowly?",
-            "Walking 1 block at an average speed?",
-            "Walking 1 block quickly?",
-            "Running or jogging 1 block?",
-            "Climbing 1 flight of stairs?",
-            "Climbing 2 flights of stairs?",
-            "Climbing 3 flights of stairs?"
+            "Walk 1 block slowly?",
+            "Walk 1 block at an average speed?",
+            "Walk 1 block quickly?",
+            "Run or jog 1 block?",
+            "Climb 1 flight of stairs?",
+            "Climb 2 flights of stairs?",
+            "Climb 3 flights of stairs?"
         ]
         for (idx, question) in questionsWIQ.enumerated() {
             let wiq = ORKQuestionStep(
