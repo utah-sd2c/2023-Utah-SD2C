@@ -47,7 +47,7 @@ public enum QuestionnaireUtil {
             "Walk 1 block slowly?",
             "Walk 1 block at an average speed?",
             "Walk 1 block quickly?",
-            "Runn or jogging 1 block?",
+            "Run or jog 1 block?",
             "Climb 1 flight of stairs?",
             "Climb 2 flights of stairs?",
             "Climb 3 flights of stairs?"
