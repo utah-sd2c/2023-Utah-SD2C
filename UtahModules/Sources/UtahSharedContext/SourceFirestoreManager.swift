@@ -156,24 +156,47 @@ public class FirestoreManager: ObservableObject {
                                 continue
                             }
                             
+//                            if filterCode == metricCode {
+//                                // properly formats date
+//                                guard let issuedDate = data["issued"] as? String else {
+//                                    print("ERROR: issuedDate values nil")
+//                                    continue
+//                                }
+//                                let array = issuedDate.components(separatedBy: ".")
+//                                let shortenedDate = array[0] + array[1].suffix(6)
+//
+//                                let formatter = DateFormatter()
+//                                formatter.timeZone = NSTimeZone.local
+//                                formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+//                                let date = formatter.date(from: shortenedDate)
+//                                
+//                                let valueQuantity = data["valueQuantity"] as? [String: Any]
+//                                let value = valueQuantity?["value"] as? Double ?? 0.0
+//                                observations.append((date: date!, value: value))
                             if filterCode == metricCode {
-                                // properly formats date
-                                guard let issuedDate = data["issued"] as? String else {
-                                    print("ERROR: issuedDate values nil")
+                                // properly formats date based on the efective period
+                                guard let effectivePeriod = data["effectivePeriod"] as? [String: Any] else {
+                                    print("ERROR: effectivePeriod values nil")
                                     continue
                                 }
-                                let array = issuedDate.components(separatedBy: ".")
-                                let shortenedDate = array[0] + array[1].suffix(6)
+                                guard let startDateString = effectivePeriod["start"] as? String else {
+                                    print("ERROR: startDate values nil")
+                                    continue
+                                }
+                                let startDateArray = startDateString.components(separatedBy: ".")
+                                let shortenedStartDate = startDateArray[0] + startDateArray[1].suffix(6)
 
                                 let formatter = DateFormatter()
                                 formatter.timeZone = NSTimeZone.local
                                 formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-                                let date = formatter.date(from: shortenedDate)
-                                
+                                let startDate = formatter.date(from: shortenedStartDate)
+
                                 let valueQuantity = data["valueQuantity"] as? [String: Any]
                                 let value = valueQuantity?["value"] as? Double ?? 0.0
-                                observations.append((date: date!, value: value))
+                                observations.append((date: startDate!, value: value))
+
                             }
+                        
                         }
                         self.observations = observations
                     }
