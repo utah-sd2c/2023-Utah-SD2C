@@ -174,7 +174,7 @@ public class FirestoreManager: ObservableObject {
 //                                let value = valueQuantity?["value"] as? Double ?? 0.0
 //                                observations.append((date: date!, value: value))
                             if filterCode == metricCode {
-                                // properly formats date based on the efective period
+                                // properly formats date based on the effective period
                                 guard let effectivePeriod = data["effectivePeriod"] as? [String: Any] else {
                                     print("ERROR: effectivePeriod values nil")
                                     continue
