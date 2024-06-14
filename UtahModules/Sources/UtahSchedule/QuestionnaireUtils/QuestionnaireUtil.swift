@@ -336,7 +336,7 @@ public enum QuestionnaireUtil {
         let clockTestInstructionStep = ORKInstructionStep(identifier: "ClockStep")
         clockTestInstructionStep.title = "Draw a clock"
         clockTestInstructionStep.text = """
-        First, we would like you to get out a piece of paper and something to write with.
+        First, we would like you to get out a piece of white paper and something to write with, preferably a thin-tipped black marker or pen. No pencil!
 
         Now, we want you to draw a clock.
          (1) Draw a circle
