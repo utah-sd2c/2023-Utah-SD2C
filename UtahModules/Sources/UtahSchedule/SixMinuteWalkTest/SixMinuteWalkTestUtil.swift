@@ -112,13 +112,20 @@ public enum SixMinuteWalkTestUtil {
             let userUID = user?.uid
             if userUID != nil {
                 for entry in resultDict{
-                    database.collection("users").document(userUID!).collection("SixMinuteWalkTestResult").document(identifier).collection("RestsAndFinish").document(entry.key).setData(resultDict[entry.key]!) { err in
+                    database.collection("users").document(userUID!).collection("SixMinuteWalkTestResult").document(identifier).setData(["Type": "6MWT"]) { err in
                         if let err {
-                            print("Error writing document: \(err)")
+                            print("Error writing document parent: \(err)")
                         } else {
-                            print("Document successfully written.")
+                            database.collection("users").document(userUID!).collection("SixMinuteWalkTestResult").document(identifier).collection("RestsAndFinish").document(entry.key).setData(resultDict[entry.key]!) { err2 in
+                                if let err2 {
+                                    print("Error writing document: \(err2)")
+                                } else {
+                                    print("Document successfully written.")
+                                }
+                            }
                         }
                     }
+                    
                 }
             }
         } catch {
