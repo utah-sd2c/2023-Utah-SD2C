@@ -69,7 +69,10 @@ class UtahAppDelegate: SpeziAppDelegate {
                 HKQuantityType(.stepCount),
                 deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
             )
-        } adapter: {
+            CollectSample(
+                HKQuantityType(.distanceWalkingRunning),
+                deliverySetting: .anchorQuery(.afterAuthorizationAndApplicationWillLaunch)
+                        )        } adapter: {
             HealthKitToFHIRAdapter()
         }
     }

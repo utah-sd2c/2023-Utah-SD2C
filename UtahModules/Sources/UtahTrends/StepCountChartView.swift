@@ -51,6 +51,11 @@ struct StepCountChart: View {
                             x: .value("Date", datum.date),
                             y: .value("Step Count", datum.count)
                         )
+                        .annotation(position: .top) {
+                                                    Text("\(datum.count)")
+                                                        .font(.caption)
+                                                        .foregroundColor(.black)
+                                                }
                     }
                 }
                 .chartYAxisLabel(position: .leading) {
@@ -75,7 +80,7 @@ struct StepCountChart: View {
 //               let startOfDay = calendar.startOfDay(for: Date())
 //           var latestDate: Date = calendar.date(byAdding: .day, value: -6, to: startOfDay) ?? Date()
 //               var filteredData: [(Date, Double)] = []
-//               
+//
 //               Calendar.current.enumerateDates(
 //                   startingAfter: latestDate,
 //                   matching: DateComponents(hour: 0),
@@ -85,7 +90,7 @@ struct StepCountChart: View {
 //                       stop = true
 //                       return
 //                   }
-//                   
+//
 //                   let summedUpData = data
 //                       .filter { element in
 //                           latestDate < element.date && element.date < result
@@ -95,9 +100,9 @@ struct StepCountChart: View {
 //                       }
 //                       .reduce(0.0, +)
 //                   filteredData.append((result, summedUpData))
-//                   
+//
 //                   latestDate = result
-//                   
+//
 //                   if result > Date() {
 //                       stop = true
 //                   }

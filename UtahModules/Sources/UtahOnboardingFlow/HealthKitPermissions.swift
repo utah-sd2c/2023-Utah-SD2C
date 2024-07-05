@@ -18,7 +18,6 @@ struct HealthKitPermissions: View {
     @EnvironmentObject var healthKitDataSource: HealthKit<FHIR>
     @Binding private var onboardingSteps: [OnboardingFlow.Step]
     
-    
     var body: some View {
         OnboardingView(
             contentView: {
@@ -70,3 +69,4 @@ struct HealthKitPermissions_Previews: PreviewProvider {
         HealthKitPermissions(onboardingSteps: $path)
     }
 }
+
