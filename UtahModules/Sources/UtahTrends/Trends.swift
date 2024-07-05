@@ -147,8 +147,8 @@ public struct Trends: View {
                                             .environmentObject(firestoreManager)
                                     }
                                 }
-                            } .padding(.horizontal) // Add horizontal padding to avoid cutting off sides
-                                .padding(.bottom) // Add bottom padding to avoid cutting off the last card
+                            } .padding(.horizontal) 
+                                .padding(.bottom) 
                         }
                         .scrollIndicators(.never)
                     }
