@@ -57,7 +57,8 @@ struct DistanceTraveledChart: View {
             fetchAndSetDistanceData()
         }
     }
-    
+
+    // Function to get the distance data asap
     func fetchAndSetDistanceData() {
         Task {
             await healthKitManager.fetchDistanceData()
