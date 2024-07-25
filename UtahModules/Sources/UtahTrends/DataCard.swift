@@ -142,6 +142,7 @@ struct DataCard: View {
             }
             else if title == "Average Distance Traveled" {
                 await getAverageDistanceData()
+            }
         }
     }
     
