@@ -415,7 +415,6 @@ public class HealthKitManager: ObservableObject {
                   let latestDate = latestDocument.get("date") as? String ?? ""
 
                   if latestDate == todayDateString {
-                      // Here we update today's document
                       self.uploadDistanceData(distanceData: distanceData, date: todayDateString, completion: completion)
                   } else {
                       // if it's not the latest dates data, we update previous day's document, then upload missing days and today's data
