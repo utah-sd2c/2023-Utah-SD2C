@@ -23,11 +23,11 @@ struct SixMinuteWalkViewController: UIViewControllerRepresentable {
     @EnvironmentObject var firestoreManager: FirestoreManager
     
     func makeCoordinator() -> ORKTaskViewControllerDelegate {
-        let defaults = UserDefaults.standard
+        _ = UserDefaults.standard
+//        let defaults = UserDefaults.standard
         
         return SixMinuteWalkViewCoordinator(firestoreManager: firestoreManager)
     }
-    
     func updateUIViewController(_ taskViewController: ORKTaskViewController, context: Context) {}
     
     func makeUIViewController(context: Context) -> ORKTaskViewController {

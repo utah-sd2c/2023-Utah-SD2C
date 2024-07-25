@@ -31,6 +31,7 @@ struct DataCard: View {
     @State private var steps: Int = 0
     @State private var restCount: Int = 0
     @State private var averageDistance: Double = 0.0
+    @State private var averageSteps: Double = 0.0
     
     
     var body: some View {
@@ -103,6 +104,24 @@ struct DataCard: View {
                     }
                 }
         }
+            else if title == "Average Step Count" {
+                HStack(alignment: .firstTextBaseline) {
+                    Spacer()
+                    Text(String(format: "%.0f", averageSteps))
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(color)
+                        .accessibility(identifier: "\(unit)_val")
+                    Text("steps")
+                    Spacer()
+                    Image(systemName: "chevron.up")
+                }
+                .onAppear {
+                    Task {
+                        await getAverageStepData()
+                    }
+                }
+            }
                 else {
                 HStack(alignment: .firstTextBaseline) {
                     Spacer()
@@ -126,9 +145,11 @@ struct DataCard: View {
         }
         .task {
             if title == "Average Step Count" {
-                await firestoreManager.loadObservations(metricCode: "55423-8")
-                recalculateChartData(basedon: firestoreManager.observations)
-            } else if title == "Latest EFS Score" {
+//                await firestoreManager.loadObservations(metricCode: "55423-8")
+//                recalculateChartData(basedon: firestoreManager.observations)
+                await getAverageStepData()
+            }
+            else if title == "Latest EFS Score" {
                 await firestoreManager.loadSurveys()
                 getSurveyData(surveyType: "edmonton")
             } else if title == "Veines Survey Score" {
@@ -143,7 +164,6 @@ struct DataCard: View {
             else if title == "Average Distance Traveled" {
                 await getAverageDistanceData()
             }
-        }
     }
     
     private func convertToMiles(meters: Double) -> Double {
@@ -157,13 +177,21 @@ struct DataCard: View {
         self.maxValue = Double(score)
     }
     
-    // Gets the Average distance data from the healthkitmanager file
+    // Gets the Average Distance data from the healthkitmanager file
     func getAverageDistanceData() async {
           await healthKitManager.fetchDistanceData()
           DispatchQueue.main.async {
               self.averageDistance = healthKitManager.averageDistance
           }
       }
+    
+    // Gets the Average Step data from the healthkitmanager file
+    func getAverageStepData() async {
+            await healthKitManager.fetchStepData()
+            DispatchQueue.main.async {
+                self.averageSteps = healthKitManager.averageSteps
+            }
+        }
 
     // Gets the latest 6MWT session
     func getSixMinuteWalkTestData() async {

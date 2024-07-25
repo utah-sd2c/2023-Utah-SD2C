@@ -20,14 +20,6 @@ struct StepCount: Identifiable {
 }
 
 // Date converter to string
-//func date_formatter(date: Date) -> String {
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.locale = Locale(identifier: "en_US")
-//    dateFormatter.dateFormat = "MM/dd"
-//    return dateFormatter.string(from: date)
-//}
-
-// Date converter to string
 func date_formatter(date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US")
@@ -117,11 +109,13 @@ struct StepCountChart: View {
         
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: Date())
-        let latestDate: Date = startOfDay
+//        let latestDate: Date = startOfDay
+        let latestDate: Date = Date()
         var endDate: Date = calendar.date(byAdding: .day, value: -7, to: startOfDay)!
         var filteredData: [(String, Double)] = []
         
-        while endDate < latestDate {
+//        while endDate < latestDate {
+        while endDate <= latestDate {
             let startDate = calendar.startOfDay(for: endDate)
             let nextDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
             print("Processing day from \(startDate) to \(nextDate)")
