@@ -222,7 +222,11 @@ public struct Trends: View {
                                     }
                                 }
                             } .padding(.horizontal) 
+<<<<<<< HEAD
                                 .padding(.bottom)
+=======
+                                .padding(.bottom) 
+>>>>>>> origin/Jash/dev
                         }
                         .scrollIndicators(.never)
                     }
