@@ -20,14 +20,6 @@ struct StepCount: Identifiable {
 }
 
 // Date converter to string
-//func date_formatter(date: Date) -> String {
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.locale = Locale(identifier: "en_US")
-//    dateFormatter.dateFormat = "MM/dd"
-//    return dateFormatter.string(from: date)
-//}
-
-// Date converter to string
 func date_formatter(date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale(identifier: "en_US")
