@@ -5,33 +5,35 @@
 //
 // SPDX-License-Identifier: MIT
 //
+
 import SwiftUI
 import Charts
 
-struct DistanceTraveledChart: View {
+struct StepCountChartnew: View {
     @EnvironmentObject var healthKitManager: HealthKitManager
-    @State var chartData: [DistanceData] = []
-    
+    @State var chartData: [StepData] = []
+    @State private var timer: Timer?
+
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .center) {
-                Text("Distance Traveled")
+                Text("Step Count")
                     .font(.headline)
                 Chart {
                     ForEach(chartData) { datum in
                         BarMark(
                             x: .value("Date", formatDate(datum.date)),
-                            y: .value("Distance Traveled (mi)", datum.distance)
+                            y: .value("Steps", datum.steps)
                         )
                         .annotation(position: .top) {
-                            Text("\(datum.distance, specifier: "%.2f")")
+                            Text("\(datum.steps)")
                                 .font(.caption)
                                 .foregroundColor(.black)
                         }
                     }
                 }
                 .chartYAxisLabel(position: .leading) {
-                    Text("Total Daily Distance Traveled (mi)")
+                    Text("Total Daily Steps")
                         .font(.subheadline)
                 }
                 .chartXAxis {
@@ -54,37 +56,51 @@ struct DistanceTraveledChart: View {
                 .shadow(radius: 5)
         }
         .onAppear {
-            fetchAndSetDistanceData()
+            fetchAndSetStepData()
+            startTimer()
         }
+        .onDisappear {
+                   stopTimer()
+               }
     }
-    
-    func fetchAndSetDistanceData() {
-        Task {
-            await healthKitManager.fetchDistanceData()
-            DispatchQueue.main.async {
-                self.chartData = self.healthKitManager.distanceData.suffix(7)
-            }
+
+    func fetchAndSetStepData() {
+           Task {
+               await healthKitManager.fetchStepData()
+               DispatchQueue.main.async {
+                   self.chartData = Array(self.healthKitManager.stepData.suffix(7))
+               }
+           }
+       }
+    func startTimer() {
+           timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { _ in
+               fetchAndSetStepData()
+           }
+       }
+
+       func stopTimer() {
+           timer?.invalidate()
+           timer = nil
+       }
+
+    func formatDate(_ date: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "MM/dd"
+
+        if let date = inputFormatter.date(from: date) {
+            return outputFormatter.string(from: date)
+        } else {
+            return date 
         }
     }
 }
-    
-func formatDate(_ date: String) -> String {
-    let inputFormatter = DateFormatter()
-    inputFormatter.dateFormat = "yyyy-MM-dd"
 
-    let outputFormatter = DateFormatter()
-    outputFormatter.dateFormat = "MM/dd"
-
-    if let date = inputFormatter.date(from: date) {
-        return outputFormatter.string(from: date)
-    } else {
-        return date 
-    }
-}
-
-struct DistanceTraveledChart_Previews: PreviewProvider {
+struct StepCountChartnew_Previews: PreviewProvider {
     static var previews: some View {
-        DistanceTraveledChart()
+        StepCountChartnew()
             .environmentObject(HealthKitManager())
     }
 }

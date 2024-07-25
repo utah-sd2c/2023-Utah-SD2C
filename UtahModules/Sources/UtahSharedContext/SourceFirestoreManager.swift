@@ -45,8 +45,6 @@ public class FirestoreManager: ObservableObject {
         _Concurrency.Task {
             await loadSurveys()
             await loadObservations(metricCode: "55423-8")
-            
-            
         }
     }
     public func fetchAllIncludingWalkTest(userUID: String) async {
@@ -63,9 +61,11 @@ public class FirestoreManager: ObservableObject {
                 if let document = document, document.exists {
                     let data = document.data()
                     if let data = data {
-                        self.disease = data["disease"] as? String ?? ""
-                        let defaults = UserDefaults.standard
-                        defaults.set(self.disease, forKey: "disease")
+                        DispatchQueue.main.async {
+                            self.disease = data["disease"] as? String ?? ""
+                            let defaults = UserDefaults.standard
+                            defaults.set(self.disease, forKey: "disease")
+                        }
                     }
                 }
             }
@@ -112,74 +112,145 @@ public class FirestoreManager: ObservableObject {
         }
     }
     
-    // 6MWT function to get data
+//    // 6MWT function to get data
+//    public func getSixMinuteWalkTestResults(userUID: String) async {
+//           let collectionRef = db.collection("users").document(userUID).collection("SixMinuteWalkTestResult")
+//           print("Querying collection path: \(collectionRef.path)")
+//
+//           do {
+//               let snapshot = try await collectionRef.getDocuments()
+//               let documents = snapshot.documents
+//
+//               if documents.isEmpty {
+////                   print("No documents found")
+//                   self.sixMinuteWalkTestResults = []
+//                   return
+//               }
+//
+////               print("Found \(documents.count) documents in SixMinuteWalkTestResult collection")
+//
+//               var results: [(date: Date, distance: Double, steps: Int, restCount: Int, restData: [String: [String: Any]])] = []
+//
+//               for document in documents {
+//                   let documentID = document.documentID
+////                   print("Querying document ID: \(documentID)")
+//
+//                   let restsAndFinishRef = self.db.collection("users").document(userUID).collection("SixMinuteWalkTestResult").document(documentID).collection("RestsAndFinish")
+//
+//                   let restSnapshot = try await restsAndFinishRef.getDocuments()
+//
+//                   var restCount = 0
+//                   var distance = 0.0
+//                   var steps = 0
+//                   var date = Date()
+//                   var restData: [String: [String: Any]] = [:]
+//                   var finalResult: (Double, Int)? = nil
+//
+//                   for restDocument in restSnapshot.documents {
+//                       let data = restDocument.data()
+//                       restData[restDocument.documentID] = data
+//                       if restDocument.documentID.contains("RestButtonPressNumber") {
+//                           restCount += 1
+//                       }
+//                       if let dist = data["Distance"] as? Double, let stps = data["Steps"] as? Int {
+//                           if restDocument.documentID == "FinalResult" {
+//                               finalResult = (dist, stps)
+//                           }
+//                       }
+//                       if let timestamp = data["UTCTimeOfSubmission"] as? Timestamp {
+//                           date = timestamp.dateValue()
+//                       }
+//                   }
+//
+//                   if let finalResult = finalResult {
+//                       distance = finalResult.0
+//                       steps = finalResult.1
+//                   }
+//
+//                   results.append((date, distance, steps, restCount, restData))
+//               }
+//
+//               DispatchQueue.main.async {
+//                   self.sixMinuteWalkTestResults = results.sorted(by: { $0.date > $1.date })
+//                   self.latestSixMinuteWalkTestResult = self.sixMinuteWalkTestResults.first ?? (Date(), 0.0, 0, 0, [:])
+//               }
+//           } catch {
+//               DispatchQueue.main.async {
+//                   self.sixMinuteWalkTestResults = []
+//               }
+//           }
+//       }
     public func getSixMinuteWalkTestResults(userUID: String) async {
-           let collectionRef = db.collection("users").document(userUID).collection("SixMinuteWalkTestResult")
-           print("Querying collection path: \(collectionRef.path)")
+        let collectionRef = db.collection("users").document(userUID).collection("SixMinuteWalkTestResult")
+        print("Querying collection path: \(collectionRef.path)")
 
-           do {
-               let snapshot = try await collectionRef.getDocuments()
-               let documents = snapshot.documents
+        do {
+            let snapshot = try await collectionRef.getDocuments()
+            let documents = snapshot.documents
 
-               if documents.isEmpty {
-//                   print("No documents found")
-                   self.sixMinuteWalkTestResults = []
-                   return
-               }
+            if documents.isEmpty {
+                DispatchQueue.main.async {
+                    self.sixMinuteWalkTestResults = []
+                }
+                return
+            }
 
-//               print("Found \(documents.count) documents in SixMinuteWalkTestResult collection")
+            var tempResults: [(date: Date, distance: Double, steps: Int, restCount: Int, restData: [String: [String: Any]])] = []
 
-               var results: [(date: Date, distance: Double, steps: Int, restCount: Int, restData: [String: [String: Any]])] = []
+            for document in documents {
+                let documentID = document.documentID
+                let restsAndFinishRef = self.db.collection("users").document(userUID).collection("SixMinuteWalkTestResult").document(documentID).collection("RestsAndFinish")
 
-               for document in documents {
-                   let documentID = document.documentID
-//                   print("Querying document ID: \(documentID)")
+                let restSnapshot = try await restsAndFinishRef.getDocuments()
 
-                   let restsAndFinishRef = self.db.collection("users").document(userUID).collection("SixMinuteWalkTestResult").document(documentID).collection("RestsAndFinish")
+                var restCount = 0
+                var distance = 0.0
+                var steps = 0
+                var date = Date()
+                var restData: [String: [String: Any]] = [:]
+                var finalResult: (Double, Int)? = nil
 
-                   let restSnapshot = try await restsAndFinishRef.getDocuments()
+                for restDocument in restSnapshot.documents {
+                    let data = restDocument.data()
+                    restData[restDocument.documentID] = data
+                    if restDocument.documentID.contains("RestButtonPressNumber") {
+                        restCount += 1
+                    }
+                    if let dist = data["Distance"] as? Double, let stps = data["Steps"] as? Int {
+                        if restDocument.documentID == "FinalResult" {
+                            finalResult = (dist, stps)
+                        }
+                    }
+                    if let timestamp = data["UTCTimeOfSubmission"] as? Timestamp {
+                        date = timestamp.dateValue()
+                    }
+                }
 
-                   var restCount = 0
-                   var distance = 0.0
-                   var steps = 0
-                   var date = Date()
-                   var restData: [String: [String: Any]] = [:]
-                   var finalResult: (Double, Int)? = nil
+                if let finalResult = finalResult {
+                    distance = finalResult.0
+                    steps = finalResult.1
+                }
 
-                   for restDocument in restSnapshot.documents {
-                       let data = restDocument.data()
-                       restData[restDocument.documentID] = data
-                       if restDocument.documentID.contains("RestButtonPressNumber") {
-                           restCount += 1
-                       }
-                       if let dist = data["Distance"] as? Double, let stps = data["Steps"] as? Int {
-                           if restDocument.documentID == "FinalResult" {
-                               finalResult = (dist, stps)
-                           }
-                       }
-                       if let timestamp = data["UTCTimeOfSubmission"] as? Timestamp {
-                           date = timestamp.dateValue()
-                       }
-                   }
+                tempResults.append((date, distance, steps, restCount, restData))
+            }
 
-                   if let finalResult = finalResult {
-                       distance = finalResult.0
-                       steps = finalResult.1
-                   }
+            // Use an escaping closure to update the state variables on the main thread
+            updateSixMinuteWalkTestResults(tempResults: tempResults)
 
-                   results.append((date, distance, steps, restCount, restData))
-               }
+        } catch {
+            DispatchQueue.main.async {
+                self.sixMinuteWalkTestResults = []
+            }
+        }
+    }
 
-               DispatchQueue.main.async {
-                   self.sixMinuteWalkTestResults = results.sorted(by: { $0.date > $1.date })
-                   self.latestSixMinuteWalkTestResult = self.sixMinuteWalkTestResults.first ?? (Date(), 0.0, 0, 0, [:])
-               }
-           } catch {
-               DispatchQueue.main.async {
-                   self.sixMinuteWalkTestResults = []
-               }
-           }
-       }
+    private func updateSixMinuteWalkTestResults(tempResults: [(date: Date, distance: Double, steps: Int, restCount: Int, restData: [String: [String: Any]])]) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.sixMinuteWalkTestResults = tempResults.sorted(by: { $0.date > $1.date })
+            self.latestSixMinuteWalkTestResult = self.sixMinuteWalkTestResults.first ?? (Date(), 0.0, 0, 0, [:])
+        }
+    }
  
     
     //    func querySurveys(type: String, surveyId: String) async {

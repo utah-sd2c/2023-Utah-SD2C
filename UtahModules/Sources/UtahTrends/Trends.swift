@@ -17,12 +17,14 @@ import class SpeziFHIR.FHIR
 import FirebaseAuth
 import FirebaseFirestore
 import UtahSharedContext
-
+import FirebaseAuth
 
 public struct Trends: View {
     @EnvironmentObject var firestoreManager: FirestoreManager
-    @StateObject private var healthKitManager = HealthKitManager()
+    @EnvironmentObject var healthKitManager: HealthKitManager
+//    @StateObject private var healthKitManager = HealthKitManager()
     @State private var showStepCount = false
+    @State private var showStepCountnew = false
     @State private var showsixminutewalktestContentView = false
     @State private var showWalkTestChart = false
     @State private var showEdmonton = false
@@ -34,7 +36,12 @@ public struct Trends: View {
     @State private var wiq_db = false
     @State private var showDistanceTraveled = false
     @State private var averageDistance: Double = 0.0
-    
+    @State private var buttonEnabled = true
+    @State private var showAlert = false
+        @State private var alertMessage = ""
+        @State private var alertTitle = ""
+
+
     
     
     public var body: some View {
@@ -48,26 +55,68 @@ public struct Trends: View {
                         .padding(.bottom, 10)
                     
                     VStack  {
-                            Text("Activity")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(.top, 10)
-                                .padding(.bottom, 10)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            DataCard(
-                                icon: "shoeprints.fill",
-                                title: "Average Step Count",
-                                unit: "steps",
-                                color: Color.green
-                            )
-                            .padding(.vertical, 10)
-                            .onTapGesture {
-                                self.showStepCount.toggle()
-                            }
-                            .sheet(isPresented: $showStepCount) {
-                                StepCountChart()
-                            }
+                        Text("Activity")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        // commented out the stepdata firebase datacard
+                        //                            DataCard(
+                        //                                icon: "shoeprints.fill",
+                        //                                title: "Average Step Count",
+                        //                                unit: "steps",
+                        //                                color: Color.green
+                        //                            )
+                        //                            .padding(.vertical, 10)
+                        //                            .onTapGesture {
+                        //                                self.showStepCount.toggle()
+                        //                            }
+                        //                            .sheet(isPresented: $showStepCount) {
+                        //                                StepCountChart()
+                        //                            }
+                        
+                            // Gets data from healthkit manager file
+                        DataCard(
+                            icon: "shoeprints.fill",
+                            title: "Average Step Count",
+                            unit: "steps",
+                            color: Color.green
+                        )
+                        .padding(.vertical, 10)
+                        .onTapGesture {
+                            self.showStepCountnew.toggle()
                         }
+                        .sheet(isPresented: $showStepCountnew) {
+                            StepCountChartnew()
+                            
+                            
+                        }
+                        // button to sync data
+                        Button(action: {
+                            healthKitManager.StepCountCollectionExistsAndUpload(stepData: healthKitManager.stepData) { success in
+                                if success {
+                                    alertTitle = "Success"
+                                    alertMessage = "Step data synced successfully."
+                                } else {
+                                    alertTitle = "Error"
+                                    alertMessage = "Failed to sync Step data."
+                                }
+                                showAlert = true
+                            }
+                        }) {
+                            Text("Sync Step Data")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        }
+                        // gets distance data from healtkit manager file
                         DataCard(
                             icon: "figure.walk",
                             title: "Average Distance Traveled",
@@ -83,6 +132,31 @@ public struct Trends: View {
                             DistanceTraveledChart()
                                 .environmentObject(healthKitManager)
                         }
+                        // sync button
+                        Button(action: {
+                            healthKitManager.DistanceDataCollectionExistsAndUpload(distanceData: healthKitManager.distanceData) { success in
+                                if success {
+                                    alertTitle = "Success"
+                                    alertMessage = "Distance data synced successfully."
+                                } else {
+                                    alertTitle = "Error"
+                                    alertMessage = "Failed to sync distance data."
+                                }
+                                showAlert = true
+                            }
+                        }) {
+                            Text("Sync Distance Data")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(10)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        }
+                    }
+                  
                             Text("Questionnaires")
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -147,12 +221,13 @@ public struct Trends: View {
                                             .environmentObject(firestoreManager)
                                     }
                                 }
-                            } .padding(.horizontal) // Add horizontal padding to avoid cutting off sides
-                                .padding(.bottom) // Add bottom padding to avoid cutting off the last card
+                            } .padding(.horizontal) 
+                                .padding(.bottom)
                         }
                         .scrollIndicators(.never)
                     }
                     .onAppear {
+                        
                         if let user = Auth.auth().currentUser {
                             let userUID = user.uid
                             Task {
@@ -161,6 +236,10 @@ public struct Trends: View {
                         } else {
                             print("User is not logged in.")
                         }
+//                        Task {
+//                                       await healthKitManager.fetchDistanceData()
+//                                       await healthKitManager.fetchStepData()
+//                                   }
                         
                         //            DataCard(#imageLiteral(resourceName: "simulator_screenshot_349651C7-2510-4B06-943D-963D2708613E.png")
                         //                            icon: "figure.walk",
@@ -191,6 +270,7 @@ public struct Trends: View {
         let keys = sortedDict.map { $0.0 }
         return keys
     }
+
 
 // This just removes this section from being counted in our % "test coverage"
 #if !TESTING
