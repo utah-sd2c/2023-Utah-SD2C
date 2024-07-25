@@ -164,11 +164,6 @@ struct DataCard: View {
             else if title == "Average Distance Traveled" {
                 await getAverageDistanceData()
             }
-//            else if title == "Average Step Count1" {
-//                await getAverageStepData()
-//            }
-            
-        }
     }
     
     private func convertToMiles(meters: Double) -> Double {
