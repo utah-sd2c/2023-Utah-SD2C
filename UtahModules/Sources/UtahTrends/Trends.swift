@@ -77,7 +77,7 @@ public struct Trends: View {
                         //                                StepCountChart()
                         //                            }
                         
-                            // Gets data from healthkit manager file
+                        // Gets data from healthkit manager file
                         DataCard(
                             icon: "shoeprints.fill",
                             title: "Average Step Count",
@@ -270,7 +270,6 @@ public struct Trends: View {
         let keys = sortedDict.map { $0.0 }
         return keys
     }
-
 
 // This just removes this section from being counted in our % "test coverage"
 #if !TESTING

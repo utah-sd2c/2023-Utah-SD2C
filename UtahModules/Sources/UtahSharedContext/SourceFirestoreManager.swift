@@ -112,7 +112,7 @@ public class FirestoreManager: ObservableObject {
         }
     }
     
-//    // 6MWT function to get data
+    // 6MWT function to get data
 //    public func getSixMinuteWalkTestResults(userUID: String) async {
 //           let collectionRef = db.collection("users").document(userUID).collection("SixMinuteWalkTestResult")
 //           print("Querying collection path: \(collectionRef.path)")
