@@ -258,7 +258,7 @@ public struct Trends: View {
                         ////                        .sheet(isPresented: $showWalkTestChart) {
                         ////                                            SixMinuteWalkTestChartView()
                         ////
-                        ////                                        }
+                        //                                 }
                         Spacer()
                         
                         
