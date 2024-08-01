@@ -51,8 +51,6 @@ public class HealthKitManager: ObservableObject {
                 await fetchDistanceData()
                 await fetchStepData()
                
-            } catch {
-                print("Error requesting HealthKit authorization: \(error)")
             }
         }
     }
@@ -63,7 +61,7 @@ public class HealthKitManager: ObservableObject {
             do {
                 try await requestAuthorization()
             } catch {
-                print("Error requesting HealthKit authorization: \(error)")
+               
             }
         }
     }
@@ -84,12 +82,10 @@ public class HealthKitManager: ObservableObject {
                 }
             }
         }
-        print("HealthKit authorization granted.")
     }
     
     public func fetchDistanceData() async {
         guard HKHealthStore.isHealthDataAvailable() else {
-            print("Health data is not available on this device.")
             return
         }
 
@@ -108,13 +104,11 @@ public class HealthKitManager: ObservableObject {
 
         distanceQuery.initialResultsHandler = { [weak self] query, results, error in
             guard let self = self else { return }
-            if let error = error {
-                print("Failed to fetch distance data: \(error.localizedDescription)")
-                return
-            }
+            if let _ = error {
+                   return
+               }
 
             guard let results = results else {
-                print("No results found.")
                 return
             }
 
@@ -129,10 +123,7 @@ public class HealthKitManager: ObservableObject {
                     
                     tempTotalDistance += distance
                     tempDistanceData.append(DistanceData(date: dateString, distance: distance))
-                } else {
-                    print("No sum quantity found for date: \(statistics.startDate)")
-                }
-            }
+                }             }
 
             self.updateDistanceDataOnMainThread(newDistanceData: tempDistanceData, totalDistance: tempTotalDistance)
         }
@@ -145,14 +136,12 @@ public class HealthKitManager: ObservableObject {
             guard let self = self else { return }
             self.distanceData = newDistanceData
             self.averageDistance = newDistanceData.isEmpty ? 0 : totalDistance / Double(newDistanceData.count)
-            print("Captured distance data: \(newDistanceData)")
         }
     }
 
 
     public func fetchStepData() async {
         guard HKHealthStore.isHealthDataAvailable() else {
-            print("Health data is not available on this device.")
             return
         }
 
@@ -171,13 +160,11 @@ public class HealthKitManager: ObservableObject {
 
         stepQuery.initialResultsHandler = { [weak self] query, results, error in
             guard let self = self else { return }
-            if let error = error {
-                print("Failed to fetch step data: \(error.localizedDescription)")
-                return
-            }
+            if let _ = error {
+                   return
+               }
 
             guard let results = results else {
-                print("No results found.")
                 return
             }
 
@@ -192,9 +179,6 @@ public class HealthKitManager: ObservableObject {
                     
                     tempTotalSteps += Int(steps)
                     tempStepData.append(StepData(date: dateString, steps: Int(steps)))
-                    print("Fetched steps: \(steps) for date: \(dateString)")
-                } else {
-                    print("No sum quantity found for date: \(statistics.startDate)")
                 }
             }
 
@@ -209,7 +193,6 @@ public class HealthKitManager: ObservableObject {
             guard let self = self else { return }
             self.stepData = newStepData
             self.averageSteps = newStepData.isEmpty ? 0 : Double(totalSteps) / Double(newStepData.count)
-            print("Captured step data: \(newStepData)")
         }
     }
     private func dateFormatter(date: Date) -> String {
@@ -224,7 +207,6 @@ public class HealthKitManager: ObservableObject {
  
     public func StepCountCollectionExistsAndUpload(stepData: [StepData], completion: @escaping (Bool) -> Void) {
          guard let user = Auth.auth().currentUser else {
-             print("User not logged in")
              completion(false)
              return
          }
@@ -234,12 +216,11 @@ public class HealthKitManager: ObservableObject {
          let stepCountCollection = userCollection.collection("stepCountData")
 
          stepCountCollection.order(by: "date", descending: true).limit(to: 1).getDocuments { (querySnapshot, error) in
-             if let error = error {
-                 print("Error checking step count collection: \(error)")
+             if let _ = error{
                  completion(false)
                  return
              }
-
+       
              let dateFormatter = DateFormatter()
              dateFormatter.dateFormat = "yyyy-MM-dd"
              let todayDateString = dateFormatter.string(from: Date())
@@ -275,7 +256,6 @@ public class HealthKitManager: ObservableObject {
 
      private func uploadStepCountData(stepData: [StepData], date: String, completion: @escaping (Bool) -> Void) {
          guard let user = Auth.auth().currentUser else {
-             print("User not logged in")
              completion(false)
              return
          }
@@ -301,11 +281,9 @@ public class HealthKitManager: ObservableObject {
                      "steps": totalSteps,
                      "lastUpdatedAt": lastUpdatedAt
                  ]) { error in
-                     if let error = error {
-                         print("Error updating step count data for \(date): \(error)")
+                     if let _ = error {
                          completion(false)
                      } else {
-                         print("Step count data updated successfully for \(date)")
                          completion(true)
                      }
                  }
@@ -319,11 +297,9 @@ public class HealthKitManager: ObservableObject {
                  ]
 
                  docRef.setData(dataDict) { error in
-                     if let error = error {
-                         print("Error creating step count data for \(date): \(error)")
+                     if let _ = error {
                          completion(false)
                      } else {
-                         print("Step count data created successfully for \(date)")
                          completion(true)
                      }
                  }
@@ -371,11 +347,8 @@ public class HealthKitManager: ObservableObject {
              group.enter()
 
              docRef.setData(dataDict) { error in
-                 if let error = error {
-                     print("Error creating step count data for \(currentDateString): \(error)")
+                 if let _ = error{
                      allUploadsSuccess = false
-                 } else {
-                     print("Step count data created successfully for \(currentDateString)")
                  }
                  group.leave()
              }
@@ -391,7 +364,6 @@ public class HealthKitManager: ObservableObject {
 
       public func DistanceDataCollectionExistsAndUpload(distanceData: [DistanceData], completion: @escaping (Bool) -> Void) {
           guard let user = Auth.auth().currentUser else {
-              print("User not logged in")
               completion(false)
               return
           }
@@ -401,8 +373,7 @@ public class HealthKitManager: ObservableObject {
           let distanceDataCollection = userCollection.collection("distanceData")
 
           distanceDataCollection.order(by: "date", descending: true).limit(to: 1).getDocuments { (querySnapshot, error) in
-              if let error = error {
-                  print("Error checking distance data collection: \(error)")
+              if let _ = error {
                   completion(false)
                   return
               }
@@ -415,6 +386,7 @@ public class HealthKitManager: ObservableObject {
                   let latestDate = latestDocument.get("date") as? String ?? ""
 
                   if latestDate == todayDateString {
+                      // Here we update today's document
                       self.uploadDistanceData(distanceData: distanceData, date: todayDateString, completion: completion)
                   } else {
                       // if it's not the latest dates data, we update previous day's document, then upload missing days and today's data
@@ -441,7 +413,6 @@ public class HealthKitManager: ObservableObject {
 
       private func uploadDistanceData(distanceData: [DistanceData], date: String, completion: @escaping (Bool) -> Void) {
           guard let user = Auth.auth().currentUser else {
-              print("User not logged in")
               completion(false)
               return
           }
@@ -465,11 +436,9 @@ public class HealthKitManager: ObservableObject {
                       "distance": totalDistance,
                       "lastUpdatedAt": lastUpdatedAt
                   ]) { error in
-                      if let error = error {
-                          print("Error updating distance data for \(date): \(error)")
+                      if let _ = error {
                           completion(false)
                       } else {
-                          print("Distance data updated successfully for \(date)")
                           completion(true)
                       }
                   }
@@ -482,11 +451,11 @@ public class HealthKitManager: ObservableObject {
                   ]
 
                   docRef.setData(dataDict) { error in
-                      if let error = error {
-                          print("Error creating distance data for \(date): \(error)")
+                      if let _ = error {
+                         
                           completion(false)
                       } else {
-                          print("Distance data created successfully for \(date)")
+                          
                           completion(true)
                       }
                   }
@@ -534,11 +503,11 @@ public class HealthKitManager: ObservableObject {
               group.enter()
 
               docRef.setData(dataDict) { error in
-                  if let error = error {
-                      print("Error creating distance data for \(currentDateString): \(error)")
+                  if let _ = error {
+                    
                       allUploadsSuccess = false
                   } else {
-                      print("Distance data created successfully for \(currentDateString)")
+                     
                   }
                   group.leave()
               }
