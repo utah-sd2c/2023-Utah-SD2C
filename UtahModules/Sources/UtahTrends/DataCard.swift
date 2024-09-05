@@ -164,9 +164,7 @@ struct DataCard: View {
             else if title == "Average Distance Traveled" {
                 await getAverageDistanceData()
             }
-            //            else if title == "Average Step Count1" {
-//                await getAverageStepData()
-//            }
+        }
     }
     
     private func convertToMiles(meters: Double) -> Double {
@@ -197,12 +195,12 @@ struct DataCard: View {
         }
 
     // Gets the latest 6MWT session
- func getSixMinuteWalkTestData() async {
+    func getSixMinuteWalkTestData() async {
         // Initializing values to 0
         self.distance = 0.0
         self.steps = 0
         self.restCount = 0
-
+        
         if let user = Auth.auth().currentUser {
             let userUID = user.uid
             await firestoreManager.getSixMinuteWalkTestResults(userUID: userUID)
