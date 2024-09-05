@@ -1,4 +1,3 @@
-//
 // This source file is part of the CS342 2023 Utah Team Application project
 //
 // SPDX-FileCopyrightText: 2023 Stanford University
@@ -38,8 +37,10 @@ public struct Trends: View {
     @State private var averageDistance: Double = 0.0
     @State private var buttonEnabled = true
     @State private var showAlert = false
-        @State private var alertMessage = ""
-        @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var alertTitle = ""
+    @State private var isLoadingsteps = false
+    @State private var isLoadingdistance = false
 
 
     
@@ -93,28 +94,36 @@ public struct Trends: View {
                             
                             
                         }
-                        // button to sync data
-                        Button(action: {
-                            healthKitManager.StepCountCollectionExistsAndUpload(stepData: healthKitManager.stepData) { success in
-                                if success {
-                                    alertTitle = "Success"
-                                    alertMessage = "Step data synced successfully."
-                                } else {
-                                    alertTitle = "Error"
-                                    alertMessage = "Failed to sync Step data."
-                                }
-                                showAlert = true
-                            }
-                        }) {
-                            Text("Sync Step Data")
-                                .font(.headline)
-                                .foregroundColor(.white)
+                        // Sync button and loading icon
+                        if isLoadingsteps {
+                            ProgressView("Syncing...")
+                                .progressViewStyle(CircularProgressViewStyle())
                                 .padding()
-                                .background(Color.green)
-                                .cornerRadius(10)
-                        }
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        } else {
+                            Button(action: {
+                                isLoadingsteps = true
+                                healthKitManager.StepCountCollectionExistsAndUpload() { success in
+                                    isLoadingsteps = false
+                                    if success {
+                                        alertTitle = "Success"
+                                        alertMessage = "Step data synced successfully."
+                                    } else {
+                                        alertTitle = "Error"
+                                        alertMessage = "Failed to sync Step data."
+                                    }
+                                    showAlert = true
+                                }
+                            }) {
+                                Text("Sync Step Data")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.green)
+                                    .cornerRadius(10)
+                            }
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
                         }
                         // gets distance data from healtkit manager file
                         DataCard(
@@ -132,28 +141,36 @@ public struct Trends: View {
                             DistanceTraveledChart()
                                 .environmentObject(healthKitManager)
                         }
-                        // sync button
-                        Button(action: {
-                            healthKitManager.DistanceDataCollectionExistsAndUpload(distanceData: healthKitManager.distanceData) { success in
-                                if success {
-                                    alertTitle = "Success"
-                                    alertMessage = "Distance data synced successfully."
-                                } else {
-                                    alertTitle = "Error"
-                                    alertMessage = "Failed to sync distance data."
-                                }
-                                showAlert = true
-                            }
-                        }) {
-                            Text("Sync Distance Data")
-                                .font(.headline)
-                                .foregroundColor(.white)
+                        // sync button and loading icon
+                        if isLoadingdistance{
+                            ProgressView("Syncing...")
+                                .progressViewStyle(CircularProgressViewStyle())
                                 .padding()
-                                .background(Color.orange)
-                                .cornerRadius(10)
-                        }
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                        } else {
+                            Button(action: {
+                                isLoadingdistance = true
+                                healthKitManager.DistanceDataCollectionExistsAndUpload() { success in
+                                    isLoadingdistance = false
+                                    if success {
+                                        alertTitle = "Success"
+                                        alertMessage = "Distance data synced successfully."
+                                    } else {
+                                        alertTitle = "Error"
+                                        alertMessage = "Failed to sync distance data."
+                                    }
+                                    showAlert = true
+                                }
+                            }) {
+                                Text("Sync Distance Data")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.orange)
+                                    .cornerRadius(10)
+                            }
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
                         }
                     }
                   
@@ -221,8 +238,8 @@ public struct Trends: View {
                                             .environmentObject(firestoreManager)
                                     }
                                 }
-                            } .padding(.horizontal) 
-                                .padding(.bottom) 
+                            } .padding(.horizontal)
+                                .padding(.bottom)
                         }
                         .scrollIndicators(.never)
                     }
@@ -283,3 +300,4 @@ struct Trends_Previews: PreviewProvider {
 }
 
 #endif
+
