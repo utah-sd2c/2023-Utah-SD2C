@@ -45,8 +45,8 @@ class EdmontonWIQAndVEINESViewCoordinator: NSObject, ORKTaskViewControllerDelega
             // Separate the Surveys for storage/scoring
             
             // Edmonton Upload
-            // Remove the 7 WIQ and 26 VEINES questions
-            edmontonResponse.item?.removeLast(33)
+            // Remove the 14 WIQ and 26 VEINES questions
+            edmontonResponse.item?.removeLast(40)
             // remove instruction step from fhir
             let instructionStepIndex = edmontonResponse.item!.endIndex - 2
             edmontonResponse.item?.remove(at: instructionStepIndex)
@@ -70,8 +70,8 @@ class EdmontonWIQAndVEINESViewCoordinator: NSObject, ORKTaskViewControllerDelega
             _ = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: wiqResponse, firebaseCollection: "wiqsurveys", surveyType: "wiq")
             
             // VEINES Upload
-            // Remove the 12 Edmonton and 7 WIQ questions
-            veinesResponse.item?.removeFirst(19)
+            // Remove the 12 Edmonton and 14 WIQ questions
+            veinesResponse.item?.removeFirst(26)
             _ = QuestionnaireUtil.uploadQuestionnaire(fhirResponse: veinesResponse, firebaseCollection: "veinessurveys", surveyType: "veines")
 
             // updates trends tab

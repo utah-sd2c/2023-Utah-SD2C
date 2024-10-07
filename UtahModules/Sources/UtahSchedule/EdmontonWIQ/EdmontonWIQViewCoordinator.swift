@@ -44,7 +44,7 @@ class EdmontonWIQViewCoordinator: NSObject, ORKTaskViewControllerDelegate {
             // Separate the Surveys for storage/scoring
             
             // Edmonton Upload
-            edmontonResponse.item?.removeLast(7)
+            edmontonResponse.item?.removeLast(14)
             
             // remove instruction step from fhir
             let instructionStepIndex = edmontonResponse.item!.endIndex - 2
