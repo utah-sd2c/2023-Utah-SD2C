@@ -289,7 +289,7 @@ public enum QuestionnaireUtil {
         )
         let q8b = ORKFormItem(
             identifier: "VEINES 8b",
-            text: "Have you felt ittitable?",
+            text: "Have you felt irritable?",
             answerFormat: q8AnswerFormat
         )
         let q8c = ORKFormItem(
