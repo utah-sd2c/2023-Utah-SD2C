@@ -94,6 +94,9 @@ public enum QuestionnaireUtil {
                         """
         )
         q1Step.formItems = [q1a, q1b, q1c, q1d, q1e, q1f, q1g, q1h, q1i]
+        for q in q1Step.formItems! {
+            q.isOptional = false
+        }
         q1Step.isOptional = false
         steps += [q1Step]
 
@@ -182,6 +185,9 @@ public enum QuestionnaireUtil {
                         """
         )
         q4StepV.formItems = [q4a, q4b, q4c, q4d]
+        for q in q4StepV.formItems! {
+            q.isOptional = false
+        }
         q4StepV.isOptional = false
         steps += [q4StepV]
 
@@ -222,6 +228,9 @@ public enum QuestionnaireUtil {
                         """
         )
         q5StepV.formItems = [q5a, q5b, q5c, q5d]
+        for q in q5StepV.formItems! {
+            q.isOptional = false
+        }
         q5StepV.isOptional = false
         steps += [q5StepV]
 
@@ -316,6 +325,9 @@ public enum QuestionnaireUtil {
                         """
         )
         q8Step.formItems = [q8a, q8b, q8c, q8d, q8e]
+        for q in q8Step.formItems! {
+            q.isOptional = false
+        }
         q8Step.isOptional = false
         steps += [q8Step]
     }
