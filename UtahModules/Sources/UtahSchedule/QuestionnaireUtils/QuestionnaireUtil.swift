@@ -566,6 +566,7 @@ public enum QuestionnaireUtil {
                         print("Error writing document: \(err)")
                     } else {
                         print("Document successfully written.")
+                        SwiftUI.Task { await NotificationUtil.SetAssessmentBundleNotifications() }
                     }
                 }
             }

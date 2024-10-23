@@ -87,10 +87,10 @@ struct TaskScheduling: View {
                                 if (notificationExists == false)
                                 {
                                     // Configure notification content
-                                    let content = UNMutableNotificationContent()
-                                    content.title = "Complete your surveys"
-                                    content.subtitle = "Take your Assessment Bundle and 6 Minute Walk Test today!"
-                                    content.sound = UNNotificationSound.default
+                                    //let content = UNMutableNotificationContent()
+                                    //content.title = "Complete your surveys"
+                                    //content.subtitle = "Take your Assessment Bundle and 6 Minute Walk Test today!"
+                                    //content.sound = UNNotificationSound.default
 
                                     // Configuring a recurring date for the notification
                                     //var dateComponents = DateComponents()
@@ -109,18 +109,18 @@ struct TaskScheduling: View {
                                     //    repeats: true
                                     //)
                                     
-                                    let secondsIn30Days = 60.0*60*24*30
-                                    let intervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsIn30Days, repeats: true)
+                                    //let secondsIn30Days = 60.0*60*24*30
+                                    //let intervalTrigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsIn30Days, repeats: true)
                                     
                                     
                                     // Create the notification request
-                                    let request = UNNotificationRequest(
-                                        identifier: "edu.utah.ustep.remindernotification",
-                                        content: content,
-                                        trigger: intervalTrigger
-                                    )
+                                    //let request = UNNotificationRequest(
+                                    //    identifier: "edu.utah.ustep.remindernotification",
+                                    //    content: content,
+                                    //    trigger: intervalTrigger
+                                    //)
                                     // Add the notification request to the notification center
-                                    UNUserNotificationCenter.current().add(request)
+                                    //UNUserNotificationCenter.current().add(request)
                                 }
                             } else if let error = error {
                                 print("Couldn't get permission for notifications: \(error.localizedDescription)")

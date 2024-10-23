@@ -121,7 +121,7 @@ public enum SixMinuteWalkTestUtil {
                                     print("Error writing document: \(err2)")
                                 } else {
                                     print("Document successfully written.")
-                                }
+                                    SwiftUI.Task { await NotificationUtil.SetSixMinuteWalkTestNotifications() }                                }
                             }
                         }
                     }
